@@ -20,18 +20,18 @@ export class Edge extends EventDispatcher
 		this.basePlanes = []; // always visible
 		
 		//Debug wall intersection planes. Edge.plane is the plane used for intersection
-//		this.phantomPlanes.push(this.edge.plane);//Enable this line to see the wall planes
+		//		this.phantomPlanes.push(this.edge.plane);//Enable this line to see the wall planes
 		
 		this.texture = new TextureLoader();
-
+		
 		this.lightMap = new TextureLoader().load('rooms/textures/walllightmap.png');
 		this.fillerColor = 0xdddddd;
 		this.sideColor = 0xcccccc;
 		this.baseColor = 0xdddddd;
 		this.visible = false;
-
+		
 		var scope = this;
-
+		
 		this.redrawevent = ()=>{scope.redraw();};
 		this.visibilityevent = ()=>{scope.updateVisibility();};
 		this.showallevent =  ()=>{scope.showAll();};
@@ -49,18 +49,18 @@ export class Edge extends EventDispatcher
 		this.controls.removeEventListener(EVENT_CAMERA_ACTIVE_STATUS, this.showallevent);
 		this.removeFromScene();
 	}
-
+	
 	init()
 	{
 		this.edge.addEventListener(EVENT_REDRAW, this.redrawevent);
 		this.controls.addEventListener(EVENT_CAMERA_MOVED, this.visibilityevent);
 		this.controls.addEventListener(EVENT_CAMERA_ACTIVE_STATUS, this.showallevent);
-
+		
 		this.updateTexture();
 		this.updatePlanes();
 		this.addToScene();
 	}
-
+	
 	redraw()
 	{
 		this.removeFromScene();
@@ -251,6 +251,7 @@ export class Edge extends EventDispatcher
 	// start, end have x and y attributes (i.e. corners)
 	makeWall(start, end, transform, invTransform, material)
 	{
+		
 		var v1 = this.toVec3(start);
 		var v2 = this.toVec3(end);
 		var v3 = v2.clone();
@@ -259,8 +260,8 @@ export class Edge extends EventDispatcher
 		v3.y = this.edge.getEnd().elevation;
 		v4.y = this.edge.getStart().elevation;
 		
-//		v3.y = this.wall.getClosestCorner(end).elevation;
-//		v4.y = this.wall.getClosestCorner(start).elevation;
+		//		v3.y = this.wall.getClosestCorner(end).elevation;
+		//		v4.y = this.wall.getClosestCorner(start).elevation;
 		
 		var points = [v1.clone(), v2.clone(), v3.clone(), v4.clone()];
 
@@ -313,6 +314,7 @@ export class Edge extends EventDispatcher
 
 		var mesh = new Mesh(geometry, material);
 		mesh.name = 'wall';
+		console.log(this.planes.geometry);
 		return mesh;
 	}
 

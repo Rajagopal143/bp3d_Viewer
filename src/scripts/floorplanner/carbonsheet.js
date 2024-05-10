@@ -89,7 +89,7 @@ export class CarbonSheet extends EventDispatcher {
   }
 
   set url(val) {
-    console.log(val);
+    
     if (!val || val == null) {
       return;
     }

@@ -1,17 +1,17 @@
-import $ from "jquery";
-import { Vector2 } from "three";
-import { WallTypes } from "../core/constants.js";
-import { Utils } from "../core/utils.js";
-import { EVENT_UPDATED } from "../core/events.js";
+import $ from 'jquery';
+import { Vector2 } from 'three';
+import { WallTypes } from '../core/constants.js';
+import { Utils } from '../core/utils.js';
+import { EVENT_UPDATED } from '../core/events.js';
 
-import { Dimensioning } from "../core/dimensioning.js";
+import { Dimensioning } from '../core/dimensioning.js';
 import {
   Configuration,
   gridSpacing,
   configWallThickness,
   wallInformation,
-} from "../core/configuration.js";
-import { CarbonSheet } from "./carbonsheet.js";
+} from '../core/configuration.js';
+import { CarbonSheet } from './carbonsheet.js';
 
 /** */
 export const floorplannerModes = {
@@ -23,43 +23,44 @@ export const floorplannerModes = {
 // grid parameters
 //export const gridSpacing = Dimensioning.cmToPixel(25);//20; // pixels
 export const gridWidth = 1;
-export const gridColor = "#80808010";
+export const gridColor = '#80808010';
 
 // room config
 // export const roomColor = '#f9f9f9';
-export const roomColor = "#fedaff66";
-export const roomColorHover = "#008cba66";
-export const roomColorSelected = "#00ba8c66";
+export const roomColor = '#fedaff66';
+export const roomColorHover = '#008cba66';
+export const roomColorSelected = '#00ba8c66';
 
 // wall config
 export var wallWidth = 5;
 export var wallWidthHover = 7;
 export var wallWidthSelected = 9;
-export const wallColor = "#dddddd";
-export const wallColorHover = "#008cba";
-export const wallColorSelected = "#00ba8c";
+export const wallColor = '#dddddd';
+export const wallColorHover = '#008cba';
+export const wallColorSelected = '#00ba8c';
 
-export const edgeColor = "#888888";
-export const edgeColorHover = "#008cba";
+export const edgeColor = '#888888';
+export const edgeColorHover = '#008cba';
 export const edgeWidth = 1;
 
-export const deleteColor = "#ff0000";
+export const deleteColor = '#ff0000';
 
 // corner config
 export const cornerRadius = 3;
 export const cornerRadiusHover = 6;
 export const cornerRadiusSelected = 9;
-export const cornerColor = "#cccccc";
-export const cornerColorHover = "#008cba";
-export const cornerColorSelected = "#00ba8c";
+export const cornerColor = '#cccccc';
+export const cornerColorHover = '#008cba';
+export const cornerColorSelected = '#00ba8c';
 /**
  * The View to be used by a Floorplanner to render in/interact with.
  */
+export var imgdata = '';
 export class FloorplannerView2D {
   constructor(floorplan, viewmodel, canvas) {
     this.canvasElement = document.getElementById(canvas);
     this.canvas = canvas;
-    this.context = this.canvasElement.getContext("2d");
+    this.context = this.canvasElement.getContext('2d');
     this.floorplan = floorplan;
     this.viewmodel = viewmodel;
 
@@ -74,27 +75,25 @@ export class FloorplannerView2D {
     $(window).resize(() => {
       scope.handleWindowResize();
     });
-    $(window).on("orientationchange", () => {
+    $(window).on('orientationchange', () => {
       scope.orientationChange();
     });
 
     this.handleWindowResize();
     this.imageUrl;
-    $("#loadFile2d").on("change", (event) => {
+    $('#loadFile2d').on('change', (event) => {
       const file = event.target.files[0];
       this.setfile(file);
     });
   }
+
   setfile(file) {
-    // localStorage.clear();
     const reader = new FileReader();
-    // When the FileReader has loaded the file, set the image src to the result
-    reader.onload = function (e) {
-      localStorage.setItem("image", e.target.result);
-      // Assuming you have an img element with the id 'imagePreview'
+    reader.onload = (e) => {
+      this._imgdata = e.target.result;
+      this._carbonsheet.url = this._imgdata; // Assuming it's a public property
     };
     reader.readAsDataURL(file);
-    this._carbonsheet.url = localStorage.getItem("image");
   }
 
   get carbonSheet() {
@@ -107,7 +106,7 @@ export class FloorplannerView2D {
 
   /** */
   handleWindowResize() {
-    var canvasSel = $("#" + this.canvas);
+    var canvasSel = $('#' + this.canvas);
     var parent = canvasSel.parent();
 
     parent.css({
@@ -200,8 +199,8 @@ export class FloorplannerView2D {
         var vector = b.clone().sub(a);
         var sAngle = (vector.angle() * 180) / Math.PI;
         var result = this.viewmodel.lastNode.closestAngle(sAngle);
-        var eAngle = result["angle"];
-        var closestVector = result["point"].sub(a);
+        var eAngle = result['angle'];
+        var closestVector = result['point'].sub(a);
 
         var textDistance = 60;
         var radius = Math.min(textDistance, vector.length());
@@ -221,7 +220,7 @@ export class FloorplannerView2D {
         sAngle = (sAngle * Math.PI) / 180;
         eAngle = (eAngle * Math.PI) / 180;
 
-        this.context.strokeStyle = "#FF0000";
+        this.context.strokeStyle = '#FF0000';
         this.context.lineWidth = 4;
         this.context.beginPath();
         this.context.arc(
@@ -248,7 +247,7 @@ export class FloorplannerView2D {
         this.viewmodel.convertX(this.viewmodel._clickedWallControl.x),
         this.viewmodel.convertY(this.viewmodel._clickedWallControl.y),
         7,
-        "#F7F7F7"
+        '#F7F7F7'
       );
     }
   }
@@ -260,12 +259,12 @@ export class FloorplannerView2D {
     var originx = this.viewmodel.canvasElement.innerWidth() / 2.0;
     var originy = this.viewmodel.canvasElement.innerHeight() / 2.0;
 
-    if (Configuration.getNumericValue("scale") != 1) {
+    if (Configuration.getNumericValue('scale') != 1) {
       this.context.setTransform(1, 0, 0, 1, 0, 0);
       this.context.translate(originx, originy);
       this.context.scale(
-        Configuration.getNumericValue("scale"),
-        Configuration.getNumericValue("scale")
+        Configuration.getNumericValue('scale'),
+        Configuration.getNumericValue('scale')
       );
       this.context.translate(-originx, -originy);
     } else {
@@ -292,7 +291,7 @@ export class FloorplannerView2D {
         continue;
       }
       var ccwise = Math.abs(corner.startAngles[i] - corner.endAngles[i]) > 180;
-      this.context.strokeStyle = "#000000";
+      this.context.strokeStyle = '#000000';
       this.context.lineWidth = 4;
       this.context.beginPath();
       if (angle == 90) {
@@ -352,10 +351,10 @@ export class FloorplannerView2D {
     var oy = this.viewmodel.convertY(0);
 
     //draw origin crosshair
-    this.context.fillStyle = "#0000FF";
+    this.context.fillStyle = '#0000FF';
     this.context.fillRect(ox - 2, oy - 7.5, 4, 15);
     this.context.fillRect(ox - 7.5, oy - 2, 15, 4);
-    this.context.strokeStyle = "#FF0000";
+    this.context.strokeStyle = '#FF0000';
     this.context.fillRect(ox - 1.25, oy - 5, 2.5, 10);
     this.context.fillRect(ox - 5, oy - 1.25, 10, 2.5);
   }
@@ -384,6 +383,7 @@ export class FloorplannerView2D {
   }
 
   drawWallLabelsMiddle(wall) {
+    // console.log(wall.wallLength());
     if (!wallInformation.midline) {
       return;
     }
@@ -393,7 +393,7 @@ export class FloorplannerView2D {
       // dont draw labels on walls this short
       return;
     }
-    var label = !wallInformation.labels ? "" : wallInformation.midlinelabel;
+    var label = !wallInformation.labels ? '' : wallInformation.midlinelabel;
     this.drawTextLabel(
       `${label}${Dimensioning.cmToMeasure(length)}`,
       this.viewmodel.convertX(pos.x),
@@ -410,7 +410,7 @@ export class FloorplannerView2D {
       return;
     }
     if (wallInformation.exterior) {
-      var label = !wallInformation.labels ? "" : wallInformation.exteriorlabel;
+      var label = !wallInformation.labels ? '' : wallInformation.exteriorlabel;
       this.drawTextLabel(
         `${label}${Dimensioning.cmToMeasure(length)}`,
         this.viewmodel.convertX(pos.x),
@@ -428,7 +428,7 @@ export class FloorplannerView2D {
       return;
     }
     if (wallInformation.interior) {
-      var label = !wallInformation.labels ? "" : wallInformation.interiorlabel;
+      var label = !wallInformation.labels ? '' : wallInformation.interiorlabel;
       this.drawTextLabel(
         `${label}${Dimensioning.cmToMeasure(length)}`,
         this.viewmodel.convertX(pos.x),
@@ -441,14 +441,14 @@ export class FloorplannerView2D {
     label,
     x,
     y,
-    textcolor = "#000000",
-    strokecolor = "#ffffff",
-    style = "normal"
+    textcolor = '#000000',
+    strokecolor = '#ffffff',
+    style = 'normal'
   ) {
     this.context.font = `${style} 12px Arial`;
     this.context.fillStyle = textcolor;
-    this.context.textBaseline = "middle";
-    this.context.textAlign = "center";
+    this.context.textBaseline = 'middle';
+    this.context.textAlign = 'center';
     this.context.strokeStyle = strokecolor;
     this.context.lineWidth = 4;
     this.context.strokeText(label, x, y);
@@ -514,7 +514,7 @@ export class FloorplannerView2D {
         this.viewmodel.convertX(wall.a.x),
         this.viewmodel.convertY(wall.a.y),
         5,
-        "#006600"
+        '#006600'
       );
       this.drawLine(
         this.viewmodel.convertX(wall.a.x),
@@ -522,7 +522,7 @@ export class FloorplannerView2D {
         this.viewmodel.convertX(wall.b.x),
         this.viewmodel.convertY(wall.b.y),
         5,
-        "#006600"
+        '#006600'
       );
       this.drawLine(
         this.viewmodel.convertX(wall.b.x),
@@ -530,7 +530,7 @@ export class FloorplannerView2D {
         this.viewmodel.convertX(wall.getEndX()),
         this.viewmodel.convertY(wall.getEndY()),
         5,
-        "#06600"
+        '#06600'
       );
 
       this.drawLine(
@@ -539,7 +539,7 @@ export class FloorplannerView2D {
         this.viewmodel.convertX(wall.a.x),
         this.viewmodel.convertY(wall.a.y),
         1,
-        "#00FF00"
+        '#00FF00'
       );
       this.drawLine(
         this.viewmodel.convertX(wall.a.x),
@@ -547,7 +547,7 @@ export class FloorplannerView2D {
         this.viewmodel.convertX(wall.b.x),
         this.viewmodel.convertY(wall.b.y),
         1,
-        "#00FF00"
+        '#00FF00'
       );
       this.drawLine(
         this.viewmodel.convertX(wall.b.x),
@@ -555,20 +555,20 @@ export class FloorplannerView2D {
         this.viewmodel.convertX(wall.getEndX()),
         this.viewmodel.convertY(wall.getEndY()),
         1,
-        "#00FF00"
+        '#00FF00'
       );
 
       this.drawCircle(
         this.viewmodel.convertX(wall.a.x),
         this.viewmodel.convertY(wall.a.y),
         10,
-        "#D7D7D7"
+        '#D7D7D7'
       );
       this.drawCircle(
         this.viewmodel.convertX(wall.b.x),
         this.viewmodel.convertY(wall.b.y),
         10,
-        "#D7D7D7"
+        '#D7D7D7'
       );
     }
 
@@ -624,7 +624,7 @@ export class FloorplannerView2D {
       this.viewmodel.canvasElement.innerWidth() / 2.0,
       this.viewmodel.canvasElement.innerHeight() / 2.0,
       3,
-      "#FF0000"
+      '#FF0000'
     );
   }
 
@@ -658,22 +658,21 @@ export class FloorplannerView2D {
     }
 
     this.drawPolygonCurved(polygonPoints, true, color);
-
     this.drawTextLabel(
       Dimensioning.cmToMeasure(room.area, 2) + String.fromCharCode(178),
       this.viewmodel.convertX(room.areaCenter.x),
       this.viewmodel.convertY(room.areaCenter.y),
-      "#0000FF",
-      "#00FF0000",
-      "bold"
+      '#0000FF',
+      '#00FF0000',
+      'bold'
     );
     this.drawTextLabel(
       room.name,
       this.viewmodel.convertX(room.areaCenter.x),
       this.viewmodel.convertY(room.areaCenter.y + 30),
-      "#363636",
-      "#00FF0000",
-      "bold italic"
+      '#363636',
+      '#00FF0000',
+      'bold italic'
     );
 
     //		Debuggin Room for correct order of polygon points with room walls
@@ -748,7 +747,7 @@ export class FloorplannerView2D {
     }
   }
 
-  drawBezierObject(bezier, width = 3, color = "#f0f0f0") {
+  drawBezierObject(bezier, width = 3, color = '#f0f0f0') {
     this.drawCurvedLine(
       this.viewmodel.convertX(bezier.points[0].x),
       this.viewmodel.convertY(bezier.points[0].y),
@@ -772,7 +771,7 @@ export class FloorplannerView2D {
     this.context.bezierCurveTo(aX, aY, bX, bY, endX, endY);
     //		this.context.closePath();
     this.context.lineWidth = width + 3;
-    this.context.strokeStyle = "#999999";
+    this.context.strokeStyle = '#999999';
     this.context.stroke();
 
     // width is an integer
@@ -803,9 +802,9 @@ export class FloorplannerView2D {
   drawPolygonCurved(
     pointsets,
     fill = true,
-    fillColor = "#FF00FF",
+    fillColor = '#FF00FF',
     stroke = false,
-    strokeColor = "#000000",
+    strokeColor = '#000000',
     strokeWidth = 5
   ) {
     // fillColor is a hex string, i.e. #ff0000
@@ -917,7 +916,7 @@ export class FloorplannerView2D {
     var offsetY = this.calculateGridOffset(-this.viewmodel.originY);
     var width = this.canvasElement.width;
     var height = this.canvasElement.height;
-    var scale = Configuration.getNumericValue("scale");
+    var scale = Configuration.getNumericValue('scale');
     if (scale < 1.0) {
       width = width / scale;
       height = height / scale;

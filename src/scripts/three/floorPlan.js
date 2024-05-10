@@ -19,7 +19,7 @@ export class Floorplan3D extends EventDispatcher
 		this.updatedroomsevent = () => {scope.redraw();};
 		this.floorplan.addEventListener(EVENT_UPDATED, this.updatedroomsevent);
 	}
-
+	
 	switchWireframe(flag)
 	{
 		this.floors.forEach((floor)=>{
@@ -29,7 +29,7 @@ export class Floorplan3D extends EventDispatcher
 			edge.switchWireframe(flag);
 		});
 	}
-
+	
 	redraw()
 	{
 		var scope = this;
@@ -37,20 +37,20 @@ export class Floorplan3D extends EventDispatcher
 		this.floors.forEach((floor) => {
 			floor.removeFromScene();
 		});
-
+		
 		this.edges.forEach((edge) => {
 			edge.remove();
 		});
 		this.floors = [];
 		this.edges = [];
-
+		
 		// draw floors
 		this.floorplan.getRooms().forEach((room) => {
 			var threeFloor = new Floor(this.scene, room);
 			this.floors.push(threeFloor);
 			threeFloor.addToScene();
 		});
-
+		
 		var eindex = 0;
 		// draw edges
 		this.floorplan.wallEdges().forEach((edge) => {
@@ -60,7 +60,7 @@ export class Floorplan3D extends EventDispatcher
 			eindex+=1;
 		});
 	}
-
+	
 	showRoof(flag)
 	{
 		// draw floors

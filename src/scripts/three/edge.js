@@ -20,7 +20,7 @@ export class Edge extends EventDispatcher
 		this.basePlanes = []; // always visible
 		
 		//Debug wall intersection planes. Edge.plane is the plane used for intersection
-		//		this.phantomPlanes.push(this.edge.plane);//Enable this line to see the wall planes
+				this.phantomPlanes.push(this.edge.plane);//Enable this line to see the wall planes
 		
 		this.texture = new TextureLoader();
 		
@@ -59,6 +59,7 @@ export class Edge extends EventDispatcher
 		this.updateTexture();
 		this.updatePlanes();
 		this.addToScene();
+		this.getBottomPhase();
 	}
 	
 	redraw()
@@ -248,6 +249,9 @@ export class Edge extends EventDispatcher
 //		this.planes.push(this.buildSideFillter(this.edge.interiorEnd(), this.edge.exteriorEnd(), extEndCorner.endElevation, this.sideColor));
 	}
 
+	getBottomPhase() {
+		console.log(this.basePlanes);
+	}
 	// start, end have x and y attributes (i.e. corners)
 	makeWall(start, end, transform, invTransform, material)
 	{
@@ -314,7 +318,8 @@ export class Edge extends EventDispatcher
 
 		var mesh = new Mesh(geometry, material);
 		mesh.name = 'wall';
-		console.log(this.planes.geometry);
+		// console.log(this.planes.geometry.vertices);
+		// console.log(this.planes);
 		return mesh;
 	}
 

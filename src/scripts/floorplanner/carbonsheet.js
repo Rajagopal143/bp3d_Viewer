@@ -101,7 +101,7 @@ export class CarbonSheet extends EventDispatcher {
       scope._rawHeightPixels = this.height;
       scope._rawWidth = scope._rawWidthPixels * cmPerPixel;
       scope._rawHeight = scope._rawHeightPixels * cmPerPixel;
-
+      
       scope._widthByHeightRatio = this.width / this.height;
 
       if (scope._widthPixels < 2.0) {

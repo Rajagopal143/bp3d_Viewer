@@ -22,7 +22,7 @@ export const floorplannerModes = {
 
 // grid parameters
 //export const gridSpacing = Dimensioning.cmToPixel(25);//20; // pixels
-export const gridWidth = 1;
+export const gridWidth = 10;
 export const gridColor = '#80808010';
 
 // room config
@@ -33,8 +33,8 @@ export const roomColorSelected = '#00ba8c66';
 
 // wall config
 export var wallWidth = 5;
-export var wallWidthHover = 7;
-export var wallWidthSelected = 9;
+export var wallWidthHover = 70;
+export var wallWidthSelected = 150;
 export const wallColor = '#dddddd';
 export const wallColorHover = '#008cba';
 export const wallColorSelected = '#00ba8c';
@@ -58,33 +58,32 @@ export const cornerColorSelected = '#00ba8c';
 export var imgdata = '';
 export class FloorplannerView2D {
   constructor(floorplan, viewmodel, canvas) {
+
     this.canvasElement = document.getElementById(canvas);
     this.canvas = canvas;
     this.context = this.canvasElement.getContext('2d');
     this.floorplan = floorplan;
     this.viewmodel = viewmodel;
-
     var scope = this;
     this._carbonsheet = new CarbonSheet(floorplan, viewmodel, canvas);
     this._carbonsheet.addEventListener(EVENT_UPDATED, function () {
       scope.draw();
     });
-
     this.floorplan.carbonSheet = this._carbonsheet;
-
     $(window).resize(() => {
       scope.handleWindowResize();
     });
     $(window).on('orientationchange', () => {
       scope.orientationChange();
     });
-
     this.handleWindowResize();
     this.imageUrl;
-    $('#loadFile2d').on('change', (event) => {
+    $('#loadImage2d').on('change', (event) => {
       const file = event.target.files[0];
       this.setfile(file);
     });
+
+    
   }
 
   setfile(file) {
@@ -610,6 +609,8 @@ export class FloorplannerView2D {
     if (!hover && !selected && wall.frontEdge) {
       this.drawEdge(wall.frontEdge, hover, isCurved);
     }
+
+
     if (!hover && !selected && wall.backEdge) {
       this.drawEdge(wall.backEdge, hover, isCurved);
     }

@@ -24,7 +24,7 @@ export class Room extends EventDispatcher
 	constructor(floorplan, corners)
 	{
 		super();
-		this._name = 'A New Room';
+		this._name = '';
 		this.min = null;
 		this.max = null;
 		this.center = null;
@@ -122,6 +122,7 @@ export class Room extends EventDispatcher
 			}
 			edge.setTexture(textureUrl, textureStretch, textureScale);
 		}
+		console.log(this.edgePointer);
 	}
 
 	/**
@@ -163,6 +164,8 @@ export class Room extends EventDispatcher
 	generatePlane()
 	{
 		var points = [];
+		console.log("wall");
+		console.log(this.edgePointer);
 		this.interiorCorners.forEach((corner) => {
 			points.push(new Vector2(corner.x,corner.y));
 		});

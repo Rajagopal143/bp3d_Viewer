@@ -346,7 +346,7 @@ export class Floorplan extends EventDispatcher {
       type: EVENT_DELETED,
       item: this,
       deleted: wall,
-      item_type: "wall",
+      item_type: 'wall',
     });
     Utils.removeValue(this.walls, wall);
     this.update();
@@ -363,7 +363,7 @@ export class Floorplan extends EventDispatcher {
       type: EVENT_DELETED,
       item: this,
       deleted: corner,
-      item_type: "corner",
+      item_type: 'corner',
     });
     Utils.removeValue(this.corners, corner);
   }
@@ -506,12 +506,9 @@ export class Floorplan extends EventDispatcher {
       // });
       // var ids = cornerids.join(',');
       var ids = room.roomByCornersId;
-      metaroom["name"] = room.name;
-      metaroom["area"] =
-        Dimensioning.cmToMeasure(room.floorplan.rooms[index].area, 2) +
-        String.fromCharCode(178);
-        
-    
+      // console.log(ids);
+        metaroom['name'] = room.name;
+      metaroom['area'] =Dimensioning.cmToMeasure(room.floorplan.rooms[index].area, 2) +  String.fromCharCode(178);
       metaRoomData[ids] = metaroom;
     });
     return metaRoomData;
@@ -583,14 +580,14 @@ export class Floorplan extends EventDispatcher {
     floorplans.rooms = this.getMetaRoomData();
 
     if (this.carbonSheet) {
-      floorplans.carbonSheet["url"] = this.carbonSheet.url;
-      floorplans.carbonSheet["transparency"] = this.carbonSheet.transparency;
-      floorplans.carbonSheet["x"] = this.carbonSheet.x;
-      floorplans.carbonSheet["y"] = this.carbonSheet.y;
-      floorplans.carbonSheet["anchorX"] = this.carbonSheet.anchorX;
-      floorplans.carbonSheet["anchorY"] = this.carbonSheet.anchorY;
-      floorplans.carbonSheet["width"] = this.carbonSheet.width;
-      floorplans.carbonSheet["height"] = this.carbonSheet.height;
+      floorplans.carbonSheet['url'] = this.carbonSheet.url;
+      floorplans.carbonSheet['transparency'] = this.carbonSheet.transparency;
+      floorplans.carbonSheet['x'] = this.carbonSheet.x;
+      floorplans.carbonSheet['y'] = this.carbonSheet.y;
+      floorplans.carbonSheet['anchorX'] = this.carbonSheet.anchorX;
+      floorplans.carbonSheet['anchorY'] = this.carbonSheet.anchorY;
+      floorplans.carbonSheet['width'] = this.carbonSheet.width;
+      floorplans.carbonSheet['height'] = this.carbonSheet.height;
     }
 
     floorplans.newFloorTextures = this.floorTextures;
@@ -609,8 +606,8 @@ export class Floorplan extends EventDispatcher {
     var corners = {};
     if (
       floorplan == null ||
-      !("corners" in floorplan) ||
-      !("walls" in floorplan)
+      !('corners' in floorplan) ||
+      !('walls' in floorplan)
     ) {
       return;
     }
@@ -637,10 +634,10 @@ export class Floorplan extends EventDispatcher {
       }
       // Adding of a, b, wallType (straight, curved) for walls happened
       // with introduction of 0.0.2a
-      if (Version.isVersionHigherThan(floorplan.version, "0.0.2a")) {
+      if (Version.isVersionHigherThan(floorplan.version, '0.0.2a')) {
         newWall.a = wall.a;
         newWall.b = wall.b;
-        if (wall.wallType == "CURVED") {
+        if (wall.wallType == 'CURVED') {
           newWall.wallType = WallTypes.CURVED;
         } else {
           newWall.wallType = WallTypes.STRAIGHT;
@@ -648,23 +645,23 @@ export class Floorplan extends EventDispatcher {
       }
     });
 
-    if ("newFloorTextures" in floorplan) {
+    if ('newFloorTextures' in floorplan) {
       this.floorTextures = floorplan.newFloorTextures;
     }
     this.metaroomsdata = floorplan.rooms;
     this.update();
 
-    if ("carbonSheet" in floorplan) {
+    if ('carbonSheet' in floorplan) {
       this.carbonSheet.clear();
       this.carbonSheet.maintainProportion = false;
-      this.carbonSheet.x = floorplan.carbonSheet["x"];
-      this.carbonSheet.y = floorplan.carbonSheet["y"];
-      this.carbonSheet.transparency = floorplan.carbonSheet["transparency"];
-      this.carbonSheet.anchorX = floorplan.carbonSheet["anchorX"];
-      this.carbonSheet.anchorY = floorplan.carbonSheet["anchorY"];
-      this.carbonSheet.width = floorplan.carbonSheet["width"];
-      this.carbonSheet.height = floorplan.carbonSheet["height"];
-      this.carbonSheet.url = floorplan.carbonSheet["url"];
+      this.carbonSheet.x = floorplan.carbonSheet['x'];
+      this.carbonSheet.y = floorplan.carbonSheet['y'];
+      this.carbonSheet.transparency = floorplan.carbonSheet['transparency'];
+      this.carbonSheet.anchorX = floorplan.carbonSheet['anchorX'];
+      this.carbonSheet.anchorY = floorplan.carbonSheet['anchorY'];
+      this.carbonSheet.width = floorplan.carbonSheet['width'];
+      this.carbonSheet.height = floorplan.carbonSheet['height'];
+      this.carbonSheet.url = floorplan.carbonSheet['url'];
       this.carbonSheet.maintainProportion = true;
     }
     this.dispatchEvent({ type: EVENT_LOADED, item: this });
@@ -782,16 +779,16 @@ export class Floorplan extends EventDispatcher {
         var room = o.item;
         scope.dispatchEvent(o);
         if (scope.metaroomsdata[room.roomByCornersId]) {
-          scope.metaroomsdata[room.roomByCornersId]["name"] = room.name;
+          scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;
         } else {
           scope.metaroomsdata[room.roomByCornersId] = {};
-          scope.metaroomsdata[room.roomByCornersId]["name"] = room.name;
+          scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;
         }
       });
 
       if (scope.metaroomsdata) {
         if (scope.metaroomsdata[room.roomByCornersId]) {
-          room.name = scope.metaroomsdata[room.roomByCornersId]["name"];
+          room.name = scope.metaroomsdata[room.roomByCornersId]['name'];
         }
       }
     });
@@ -883,7 +880,7 @@ export class Floorplan extends EventDispatcher {
   }
 
   /**
-   * Find the "rooms" in our planar straight-line graph. Rooms are set of the
+   * Find the 'rooms' in our planar straight-line graph. Rooms are set of the
    * smallest (by area) possible cycles in this graph.
    *
    * @param corners
@@ -914,7 +911,7 @@ export class Floorplan extends EventDispatcher {
       var hashFunc = function (corner) {
         return corner.id;
       };
-      var sep = "-";
+      var sep = '-';
       for (var i = 0; i < roomArray.length; i++) {
         // rooms are cycles, shift it around to check uniqueness
         var add = true;

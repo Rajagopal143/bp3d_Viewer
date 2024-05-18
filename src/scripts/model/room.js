@@ -31,7 +31,7 @@ export class Room extends EventDispatcher
 		this.area = 0.0;
 		this.areaCenter = null;
 		this._polygonPoints = [];
-
+		this._roomDetails = {};
 		this.floorplan = floorplan;
 		this.corners = corners;
 		this.interiorCorners = [];
@@ -74,6 +74,12 @@ export class Room extends EventDispatcher
 	get name()
 	{
 		return this._name;
+	}
+	get roomDetails() {
+		return this._roomDetails;
+	}
+	set roomDetails(values) {
+		this._roomDetails = values;
 	}
 
 	roomIdentifier()
@@ -122,8 +128,7 @@ export class Room extends EventDispatcher
 			}
 			edge.setTexture(textureUrl, textureStretch, textureScale);
 		}
-		console.log(this.edgePointer);
-	}
+		}
 
 	/**
 	 * textureStretch always true, just an argument for consistency with walls

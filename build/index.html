@@ -60,7 +60,7 @@
 			</div>
 			<div class="btn-hint ">Press the "Esc" key to stop drawing
 				walls</div>
-			<canvas id="floorplanner-canvas"></canvas>
+			<canvas id="floorplanner-canvas" ></canvas>
 		</div>
 
 		<div id="viewer" class='back'>
@@ -221,5 +221,21 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="roomDetails" style="display: none;">
+		<label > Room Name</label>
+			<input type="text" id="roomname">
+			 <div id="inputs">
+        <div class="input-group">
+            <label>Key:</label>
+            <input type="text" class="keyInput">
+            <label>Value:</label>
+            <input type="text" class="valueInput">
+        </div>
+    </div>
+    <button id="addButton">Add</button>
+    <button id="formsubmit">Submit</button>
+	</div>
+	
 </body>
 </html>

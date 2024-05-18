@@ -27,8 +27,7 @@ div {
 #interfaces, #interface-controls
 {
 	position: absolute; 
-/* 	width: 100%; */
-/* 	height: 100%; */
+
 }
 
 #interfaces
@@ -47,8 +46,7 @@ div {
 #camera-controls
 {
 	float: left;
-/* 	right: 50%; */
-/* 	bottom: 50px; */
+
 }
 
 #floorplanner, #viewer
@@ -127,17 +125,6 @@ div {
 	overflow-y: scroll;
 }
 
-/* .ui-dialog, .ui-dialog-content, .ui-widget-content */
-/* { */
-/* 	min-width: 50%; */
-/* 	max-height: 500px; */
-/* 	height: 500px; */
-/*     overflow: auto; */
-/*     position: relative; */
-/*     padding: 0 !important; */
-/* } */
-
-/* Enable multiple lines in bootstrap tooltips */
 .tooltip-inner {
     white-space:pre-wrap;
 }
@@ -145,4 +132,43 @@ div {
 .dg select
 {
 	color: #000000;
+}
+
+.roomDetails {
+position: absolute;
+top: 20px;
+right: 20px;
+z-index: 100;
+background: white;
+padding: 20px;
+text-shadow: none;
+user-select: none;
+}
+
+
+
+
+
+
+.dg.main {
+    background: #333 !important;  /* Dark background */
+    border: 1px solid #555 !important; /* Border color */
+}
+
+.dg.main .close-button {
+    background: #555 !important; /* Close button background */
+    color: #fff !important; /* Close button text color */
+}
+
+.dg.main .cr.boolean,
+.dg.main .cr.function,
+.dg.main .cr.number,
+.dg.main .cr.string {
+    background: #444 !important; /* Control row background */
+    color: #fff !important; /* Control row text color */
+}
+
+.dg.main .cr.number input[type="text"] {
+    background: #555 !important; /* Number input background */
+    color: #fff !important; /* Number input text color */
 }

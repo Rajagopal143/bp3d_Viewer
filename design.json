@@ -1,210 +1,74 @@
-{
-  "floorplan": {
-    "version": "0.0.2a",
-    "corners": {
-      "71d4f128-ae80-3d58-9bd2-711c6ce6cdf2": {
-        "x": 0,
-        "y": 0,
-        "elevation": 4
-      },
-      "f90da5e3-9e0e-eba7-173d-eb0b071e838e": {
-        "x": 0,
-        "y": 5,
-        "elevation": 2.5
-      },
-      "da026c08-d76a-a944-8e7b-096b752da9ed": {
-        "x": 5,
-        "y": 5,
-        "elevation": 2.5
-      },
-      "4e3d65cb-54c0-0681-28bf-bddcc7bdb571": {
-        "x": 5,
-        "y": 0,
-        "elevation": 4
-      },
-      "f0d92352-1eeb-21db-9bf8-42f7bfc6bbe0": {
-        "x": -9.184,
-        "y": 0.6,
-        "elevation": 2.5
-      },
-      "5dd24089-c6f5-cb43-190a-0db8a6542d55": {
-        "x": -4.307,
-        "y": 0.6,
-        "elevation": 2.5
-      },
-      "9b96ffa0-cbf7-cf93-e871-347e5695de18": {
-        "x": -4.307,
-        "y": 5.111,
-        "elevation": 2.5
-      },
-      "f466ae5d-34ed-662c-6f99-e2a9dbfa5206": {
-        "x": -9.204,
-        "y": 5.111,
-        "elevation": 2.5
-      }
+[
+  [
+    {
+      "x": 42.65599822998047,
+      "y": 56.880001068115234
     },
-    "walls": [
-      {
-        "corner1": "71d4f128-ae80-3d58-9bd2-711c6ce6cdf2",
-        "corner2": "f90da5e3-9e0e-eba7-173d-eb0b071e838e",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": -176.7766952966369, "y": 176.7766952966369 },
-        "b": { "x": -176.7766952966369, "y": 323.22330470336317 }
-      },
-      {
-        "corner1": "f90da5e3-9e0e-eba7-173d-eb0b071e838e",
-        "corner2": "da026c08-d76a-a944-8e7b-096b752da9ed",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": 176.7766952966369, "y": 676.776695296637 },
-        "b": { "x": 323.22330470336317, "y": 676.776695296637 }
-      },
-      {
-        "corner1": "da026c08-d76a-a944-8e7b-096b752da9ed",
-        "corner2": "4e3d65cb-54c0-0681-28bf-bddcc7bdb571",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": 676.776695296637, "y": 323.2233047033631 },
-        "b": { "x": 676.776695296637, "y": 176.77669529663686 }
-      },
-      {
-        "corner1": "4e3d65cb-54c0-0681-28bf-bddcc7bdb571",
-        "corner2": "71d4f128-ae80-3d58-9bd2-711c6ce6cdf2",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": 323.2233047033631, "y": -176.7766952966369 },
-        "b": { "x": 176.77669529663686, "y": -176.7766952966369 }
-      },
-      {
-        "corner1": "f0d92352-1eeb-21db-9bf8-42f7bfc6bbe0",
-        "corner2": "5dd24089-c6f5-cb43-190a-0db8a6542d55",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": -745.9790824754723, "y": 232.42891752452772 },
-        "b": { "x": -603.1409175245277, "y": 232.42891752452772 }
-      },
-      {
-        "corner1": "5dd24089-c6f5-cb43-190a-0db8a6542d55",
-        "corner2": "9b96ffa0-cbf7-cf93-e871-347e5695de18",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": -590.2093487101882, "y": 219.49734871018816 },
-        "b": { "x": -590.2093487101882, "y": 351.62265128981187 }
-      },
-      {
-        "corner1": "9b96ffa0-cbf7-cf93-e871-347e5695de18",
-        "corner2": "f466ae5d-34ed-662c-6f99-e2a9dbfa5206",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": -603.8593380142133, "y": 337.9726619857868 },
-        "b": { "x": -747.2926619857867, "y": 337.9726619857868 }
-      },
-      {
-        "corner1": "f466ae5d-34ed-662c-6f99-e2a9dbfa5206",
-        "corner2": "f0d92352-1eeb-21db-9bf8-42f7bfc6bbe0",
-        "frontTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "backTexture": {
-          "url": "rooms/textures/wallmap.png",
-          "stretch": true,
-          "scale": 0
-        },
-        "wallType": "STRAIGHT",
-        "a": { "x": -760.2242308001263, "y": 352.3410717794974 },
-        "b": { "x": -759.6290717794973, "y": 220.2157691998737 }
-      }
-    ],
-    "rooms": {
-      "f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed": {
-        "name": "A New Room"
-      },
-      "f0d92352-1eeb-21db-9bf8-42f7bfc6bbe0,5dd24089-c6f5-cb43-190a-0db8a6542d55,9b96ffa0-cbf7-cf93-e871-347e5695de18,f466ae5d-34ed-662c-6f99-e2a9dbfa5206": {
-        "name": "room1"
-      },
-      "71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed,f90da5e3-9e0e-eba7-173d-eb0b071e838e": {
-        "name": "Room2"
-      }
+    {
+      "x": 477.66400146484375,
+      "y": 56.880001068115234
     },
-    "wallTextures": [],
-    "floorTextures": {},
-    "newFloorTextures": {},
-    "carbonSheet": {
-      "url": "",
-      "transparency": 1,
-      "x": 0,
-      "y": 0,
-      "anchorX": 0,
-      "anchorY": 0,
-      "width": 0.01,
-      "height": 0.01
+    {
+      "x": 487.66400146484375,
+      "y": 46.880001068115234
+    },
+    {
+      "x": 32.65599822998047,
+      "y": 46.880001068115234
     }
-  },
-  "items": []
-}
+  ],
+  [
+    {
+      "x": 477.66400146484375,
+      "y": 56.880001068115234
+    },
+    {
+      "x": 477.66400146484375,
+      "y": 493.9200134277344
+    },
+    {
+      "x": 487.66400146484375,
+      "y": 503.9200134277344
+    },
+    {
+      "x": 487.66400146484375,
+      "y": 46.880001068115234
+    }
+  ],
+  [
+    {
+      "x": 477.66400146484375,
+      "y": 493.9200134277344
+    },
+    {
+      "x": 42.65599822998047,
+      "y": 493.9200134277344
+    },
+    {
+      "x": 32.65599822998047,
+      "y": 503.9200134277344
+    },
+    {
+      "x": 487.66400146484375,
+      "y": 503.9200134277344
+    }
+  ],
+  [
+    {
+      "x": 42.65599822998047,
+      "y": 493.9200134277344
+    },
+    {
+      "x": 42.65599822998047,
+      "y": 56.880001068115234
+    },
+    {
+      "x": 32.65599822998047,
+      "y": 46.880001068115234
+    },
+    {
+      "x": 32.65599822998047,
+      "y": 503.9200134277344
+    }
+  ]
+]

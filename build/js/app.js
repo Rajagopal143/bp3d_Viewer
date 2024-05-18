@@ -17,11 +17,12 @@ var myhome1 = '{"floorplan":{"corners":{"16b020d0-fa1e-f198-bbc6-2ad1a59268d0":{
 
 
 /*
- * Floorplanner controls
- */
+* Floorplanner controls
+*/
 
 var ViewerFloorplanner = function(blueprint3d)
 {
+
   var canvasWrapper = '#floorplanner';
   // buttons
   var move = '#move';

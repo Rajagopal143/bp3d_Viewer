@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { Vector2 } from 'three';
 import { WallTypes } from '../core/constants.js';
 import { Utils } from '../core/utils.js';
-import { EVENT_UPDATED } from '../core/events.js';
+import { EVENT_ROOM_2D_CLICKED, EVENT_UPDATED } from '../core/events.js';
 
 import { Dimensioning } from '../core/dimensioning.js';
 import {
@@ -58,12 +58,12 @@ export const cornerColorSelected = '#00ba8c';
 export var imgdata = '';
 export class FloorplannerView2D {
   constructor(floorplan, viewmodel, canvas) {
-
     this.canvasElement = document.getElementById(canvas);
     this.canvas = canvas;
     this.context = this.canvasElement.getContext('2d');
     this.floorplan = floorplan;
     this.viewmodel = viewmodel;
+    this.selected = false;
     var scope = this;
     this._carbonsheet = new CarbonSheet(floorplan, viewmodel, canvas);
     this._carbonsheet.addEventListener(EVENT_UPDATED, function () {
@@ -82,8 +82,13 @@ export class FloorplannerView2D {
       const file = event.target.files[0];
       this.setfile(file);
     });
-
     
+
+  }
+
+
+  details(e,room) {
+    room._name = e.target.value;
   }
 
   setfile(file) {
@@ -249,6 +254,7 @@ export class FloorplannerView2D {
         '#F7F7F7'
       );
     }
+
   }
 
   /**
@@ -610,7 +616,6 @@ export class FloorplannerView2D {
       this.drawEdge(wall.frontEdge, hover, isCurved);
     }
 
-
     if (!hover && !selected && wall.backEdge) {
       this.drawEdge(wall.backEdge, hover, isCurved);
     }
@@ -639,7 +644,11 @@ export class FloorplannerView2D {
     if (hover) {
       color = roomColorHover;
     } else if (selected) {
+      this.selected = true;
       color = roomColorSelected;
+      this.getAndSetRoomDetails(room);
+    } else {
+      this.selected = false;
     }
     //		this.drawPolygon(
     //				Utils.map(room.corners, (corner) =>
@@ -686,7 +695,20 @@ export class FloorplannerView2D {
     //				this.drawTextLabel(`p:${i+0}`, this.viewmodel.convertX(p.x), this.viewmodel.convertY(p.y), '#363636', '#00FF0000', 'bold italic');
     //			}
     //		}
+
+    
   }
+  
+  getAndSetRoomDetails(room) {
+    $('#formsubmit').click(() => {
+      var name = $('#roomname').val();
+      room.name = name;
+    });
+    this.floorplan.addEventListener(EVENT_ROOM_2D_CLICKED, (room) => {
+      console.log(room.item); 
+    });
+      
+    }
 
   /** */
   drawCorner(corner) {

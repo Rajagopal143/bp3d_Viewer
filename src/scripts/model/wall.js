@@ -116,6 +116,7 @@ export class Wall extends EventDispatcher
 //		});
 		this.addCornerMoveListener(this.start);
 		this.addCornerMoveListener(this.end);
+		// console.log(this.backEdge, this.getStartY());
 	}
 	
 	addCornerMoveListener(corner, remove=false)

@@ -507,11 +507,11 @@ export class FloorplannerView2D {
     }
     var isCurved = wall.wallType == WallTypes.CURVED;
     if (wall.wallType == WallTypes.CURVED && selected) {
-      //			this.drawCircle(this.viewmodel.convertX(wall.start.x), this.viewmodel.convertY(wall.start.y), 10, '#AAAAAA');
-      //			this.drawCircle(this.viewmodel.convertX(wall.end.x), this.viewmodel.convertY(wall.end.y), 10, '#000000');
+      			// this.drawCircle(this.viewmodel.convertX(wall.start.x), this.viewmodel.convertY(wall.start.y), 10, '#AAAAAA');
+      			// this.drawCircle(this.viewmodel.convertX(wall.end.x), this.viewmodel.convertY(wall.end.y), 10, '#000000');
 
-      //			this.drawCircle(this.viewmodel.convertX(wall.a.x), this.viewmodel.convertY(wall.a.y), 10, '#ff8cd3');
-      //			this.drawCircle(this.viewmodel.convertX(wall.b.x), this.viewmodel.convertY(wall.b.y), 10, '#eacd28');
+      			// this.drawCircle(this.viewmodel.convertX(wall.a.x), this.viewmodel.convertY(wall.a.y), 10, '#ff8cd3');
+      			// this.drawCircle(this.viewmodel.convertX(wall.b.x), this.viewmodel.convertY(wall.b.y), 10, '#eacd28');
 
       this.drawLine(
         this.viewmodel.convertX(wall.getStartX()),
@@ -705,7 +705,6 @@ export class FloorplannerView2D {
       room.name = name;
     });
     this.floorplan.addEventListener(EVENT_ROOM_2D_CLICKED, (room) => {
-      console.log(room.item); 
     });
       
     }

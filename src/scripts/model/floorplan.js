@@ -24,6 +24,8 @@ export class Floorplan extends EventDispatcher {
   /** Constructs a floorplan. */
   constructor() {
     super();
+
+    this.edges = [];
     /**
      * List of elements of Wall instance
      *
@@ -116,9 +118,12 @@ export class Floorplan extends EventDispatcher {
     this.walls.forEach((wall) => {
       if (wall.frontEdge) {
         edges.push(wall.frontEdge);
+        // console.log(wall.frontEdge);
+        // this.edges.push(wall.frontEdge.plane);
       }
       if (wall.backEdge) {
         edges.push(wall.backEdge);
+        // this.edges.push(wall.backEdge.plane);
       }
     });
     return edges;
@@ -395,6 +400,10 @@ export class Floorplan extends EventDispatcher {
     return this.rooms;
   }
 
+  getWallEdge() {
+    return this.wallEdges();
+  }
+
   /**
    * Gets the room overlapping the location x, y.
    *
@@ -507,7 +516,12 @@ export class Floorplan extends EventDispatcher {
       // var ids = cornerids.join(',');
       var ids = room.roomByCornersId;
       // console.log(ids);
-        metaroom['name'] = room.name;
+      metaroom['name'] = room.name;
+      const roomData = room.roomDetails;
+      Object.keys(room.roomDetails).map(key => {
+        metaroom[key] = roomData[key];
+      });
+      metaroom['vertices'] = room.edgeVertices;
       metaroom['area'] =Dimensioning.cmToMeasure(room.floorplan.rooms[index].area, 2) +  String.fromCharCode(178);
       metaRoomData[ids] = metaroom;
     });
@@ -541,7 +555,6 @@ export class Floorplan extends EventDispatcher {
     // this.corners.forEach((corner) => {
     // floorplans.corners[corner.id] = {'x': corner.x,'y': corner.y};
     // });
-
 	  this.walls.forEach((wall, index) => {
       if (wall.getStart() && wall.getEnd()) {
         floorplans.walls.push({

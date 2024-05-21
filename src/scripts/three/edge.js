@@ -39,7 +39,7 @@ export class Edge extends EventDispatcher
 		this.visibilityfactor = true;
 		this.init();
 		
-		
+		// console.log(this.edge.interiorStart(),this.edge.exteriorStart());
 	}
 
 	remove()
@@ -59,7 +59,6 @@ export class Edge extends EventDispatcher
 		this.updateTexture();
 		this.updatePlanes();
 		this.addToScene();
-		this.getBottomPhase();
 	}
 	
 	redraw()
@@ -250,7 +249,12 @@ export class Edge extends EventDispatcher
 	}
 
 	getBottomPhase() {
-		console.log(this.basePlanes);
+		// console.log(this.basePlanes);
+		const vertices = [];
+		this.basePlanes.forEach(plane => {
+			vertices.push(plane.geometry.vertices);
+		})
+		return vertices;
 	}
 	// start, end have x and y attributes (i.e. corners)
 	makeWall(start, end, transform, invTransform, material)

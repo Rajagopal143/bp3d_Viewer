@@ -150,9 +150,13 @@ user-select: none;
 
 
 
+/* custom-dat-gui.css */
+
+/* General styles */
 .dg.main {
     background: #333 !important;  /* Dark background */
     border: 1px solid #555 !important; /* Border color */
+    transition: all 0.3s ease; /* Smooth transition for GUI */
 }
 
 .dg.main .close-button {
@@ -160,15 +164,58 @@ user-select: none;
     color: #fff !important; /* Close button text color */
 }
 
+/* Control row styles */
 .dg.main .cr.boolean,
 .dg.main .cr.function,
 .dg.main .cr.number,
 .dg.main .cr.string {
     background: #444 !important; /* Control row background */
     color: #fff !important; /* Control row text color */
+    transition: all 0.3s ease; /* Smooth transition for control rows */
 }
 
+/* Input box styles */
+.dg.main .cr input[type="text"],
+.dg.main .cr select {
+    background: #555 !important; /* Input background */
+    color: #fff !important; /* Input text color */
+    font-size: 14px !important; /* Larger font size */
+    border: 1px solid #666 !important; /* Input border */
+    border-radius: 4px !important; /* Rounded corners */
+    width: 100px !important; /* Increased width */
+    transition: all 0.3s ease; /* Smooth transition for inputs */
+}
+
+/* Hover effect for inputs */
+.dg.main .cr input[type="text"]:hover,
+.dg.main .cr select:hover {
+    background: #db2e2e !important; /* Hover background */
+    border-color: #777 !important; /* Hover border color */
+}
+
+/* Number input styles */
 .dg.main .cr.number input[type="text"] {
-    background: #555 !important; /* Number input background */
-    color: #fff !important; /* Number input text color */
+    width: 60px !important; /* Specific width for number inputs */
+    height: 20px;
+}
+
+/* Control label styles */
+.dg.main .cr label {
+    font-size: 14px !important; /* Larger font size for labels */
+    color: #ddd !important; /* Lighter color for labels */
+    transition: all 0.3s ease; /* Smooth transition for labels */
+}
+
+/* Slider styles */
+.dg.main .slider {
+    background: #555 !important; /* Slider background */
+    border-radius: 5px !important; /* Rounded slider */
+}
+
+/* Slider handle styles */
+.dg.main .slider .handle {
+    background: #fff !important; /* Handle background */
+    width: 10px !important; /* Handle width */
+    height: 10px !important; /* Handle height */
+    border-radius: 50% !important; /* Rounded handle */
 }

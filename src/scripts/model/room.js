@@ -44,7 +44,6 @@ export class Room extends EventDispatcher
 		this.updateInteriorCorners();
 		this.generatePlane();
 		this.generateRoofPlane();
-
 		var cornerids = [];
 		for(var i=0;i<this.corners.length;i++)
 		{
@@ -53,6 +52,7 @@ export class Room extends EventDispatcher
 			cornerids.push(c.id);
 		}
 		this._roomByCornersId = cornerids.join(',');
+		console.log(this);
 	}
 	
 	get roomCornerPoints()
@@ -169,8 +169,7 @@ export class Room extends EventDispatcher
 	generatePlane()
 	{
 		var points = [];
-		console.log("wall");
-		console.log(this.edgePointer);
+		// console.log(this.floorPlane)
 		this.interiorCorners.forEach((corner) => {
 			points.push(new Vector2(corner.x,corner.y));
 		});

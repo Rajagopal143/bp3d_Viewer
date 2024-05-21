@@ -28,6 +28,9 @@
 				<a 
 					class="btn btn-default btn-sm "id='uploadToGraph'
 					 title=""><img class="graphUpload" src="./rooms/thumbnails/graph-svgrepo-com.svg" alt="" title="Upload To Graph"></a>
+					<a
+					 class="btn btn-default btn-sm "id='getVertices'
+					 title="">V</a>
 				<a 
 					class="btn btn-default btn-sm "id='downloadReport'
 					 title=""><img class="graphUpload" src="./rooms/thumbnails/icons8-download-graph-report-50.png" alt="" title="Download Report"></a>
@@ -222,19 +225,13 @@
 		</div>
 	</div>
 
-	<div class="roomDetails" style="display: none;">
-		<label > Room Name</label>
-			<input type="text" id="roomname">
-			 <div id="inputs">
+	<div class="roomDetails" style="display:none ;">
         <div class="input-group">
             <label>Key:</label>
             <input type="text" class="keyInput">
-            <label>Value:</label>
-            <input type="text" class="valueInput">
         </div>
+		<button id="formsubmit">Submit</button>
     </div>
-    <button id="addButton">Add</button>
-    <button id="formsubmit">Submit</button>
 	</div>
 	
 </body>

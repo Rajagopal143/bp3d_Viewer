@@ -177,7 +177,6 @@ export class Main extends EventDispatcher
 
 		scope.lights = new Lights(scope.scene, scope.model.floorplan);
 		scope.floorplan = new Floorplan3D(scope.scene, scope.model.floorplan, scope.controls);
-
 		function animate()
 		{
 //			requestAnimationFrame(animate);
@@ -505,6 +504,9 @@ export class Main extends EventDispatcher
 		this.model.switchWireframe(false);
 		this.floorplan.switchWireframe(false);
 		this.render(true);
+	}
+	getvertices() {
+		return this.floorplan;
 	}
 
 	shouldRender()

@@ -119,8 +119,8 @@ export class BlueprintJS
 		if (!options.widget)
 		{
 			/**
-			* @property {Floorplanner2D} floorplanner
-			* @type {Floorplanner2D}
+			 * @property {Floorplanner2D} floorplanner
+			 * @type {Floorplanner2D}
 			**/
 			this.floorplanner = new Floorplanner2D(options.floorplannerElement, this.model.floorplan);
 		}
@@ -128,5 +128,8 @@ export class BlueprintJS
 		{
 			this.three.getController().enabled = false;
 		}
+	}
+	getvertices() {
+		this.three;
 	}
 }

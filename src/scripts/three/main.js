@@ -90,7 +90,7 @@ export class Main extends EventDispatcher
 		this.clippingEmpty = Object.freeze([]);
 		this.clippingEnabled = false;
 
-//		console.log('THIS ON MOBILE DEVICE ::: ', isMobile, isTablet);
+//		//('THIS ON MOBILE DEVICE ::: ', isMobile, isTablet);
 
 		this.init();
 	}

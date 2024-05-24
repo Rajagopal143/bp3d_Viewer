@@ -219,3 +219,81 @@ user-select: none;
     height: 10px !important; /* Handle height */
     border-radius: 50% !important; /* Rounded handle */
 }
+
+
+.container,.wallDetails {
+    max-width: 350px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+label {
+    flex: 1;
+    margin-right: 10px;
+    color: #333;
+}
+
+input[type="text"] {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="button"] {
+    background-color: #28a745;
+}
+
+button[type="button"]:hover,
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+#getkeyValue{
+  width: 250px;
+  height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+}

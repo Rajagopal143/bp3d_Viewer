@@ -39,7 +39,7 @@ export class Edge extends EventDispatcher
 		this.visibilityfactor = true;
 		this.init();
 		
-		// console.log(this.edge.interiorStart(),this.edge.exteriorStart());
+		// //(this.edge.interiorStart(),this.edge.exteriorStart());
 	}
 
 	remove()
@@ -249,7 +249,7 @@ export class Edge extends EventDispatcher
 	}
 
 	getBottomPhase() {
-		// console.log(this.basePlanes);
+		// //(this.basePlanes);
 		const vertices = [];
 		this.basePlanes.forEach(plane => {
 			vertices.push(plane.geometry.vertices);
@@ -322,8 +322,8 @@ export class Edge extends EventDispatcher
 
 		var mesh = new Mesh(geometry, material);
 		mesh.name = 'wall';
-		// console.log(this.planes.geometry.vertices);
-		// console.log(this.planes);
+		// //(this.planes.geometry.vertices);
+		// //(this.planes);
 		return mesh;
 	}
 

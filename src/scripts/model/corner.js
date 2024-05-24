@@ -306,7 +306,7 @@ export class Corner extends EventDispatcher
 		* Dispatches an event when removed from the floorplan({@link Floorplan}) instance. The event object contains reference to this {@link Corner} instance as item.
 		* @example
 		* let corner = new Corner(floorplan, 0, 0);
-		* function cornerRemoved(e) { console.log('I WAS REMOVED FROM LOCATION ', e.item.x, e.item.y) };
+		* function cornerRemoved(e) {('I WAS REMOVED FROM LOCATION ', e.item.x, e.item.y) };
 		* corner.remove();
 		* @emits {EVENT_DELETED}
 	**/
@@ -321,7 +321,7 @@ export class Corner extends EventDispatcher
 		* @example
 		* let corner1 = new Corner(floorplan, 0, 0);
 		* let corner2 = new Corner(floorplan, 10, 0);
-		* function cornerRemoved(e) { console.log('I WAS REMOVED FROM LOCATION ', e.item.x, e.item.y) } //Will log twice for two corners;
+		* function cornerRemoved(e) { ('I WAS REMOVED FROM LOCATION ', e.item.x, e.item.y) } //Will log twice for two corners;
 		* corner.removeAll();
 	**/
 	removeAll()
@@ -476,7 +476,7 @@ export class Corner extends EventDispatcher
 		{
 			return;
 		}
-//		console.log('UPDATE ALL ATTACHED ROOMS :: ');
+//		//('UPDATE ALL ATTACHED ROOMS :: ');
 		this.attachedRooms.forEach((room)=>{
 			room.updateArea();
 		});
@@ -534,7 +534,7 @@ export class Corner extends EventDispatcher
 	distanceFrom(point)
 	{
 		var distance = Utils.distance(point, new Vector2(this.x, this.y));
-		//console.log('x,y ' + x + ',' + y + ' to ' + this.getX() + ',' + this.getY() + ' is ' + distance);
+		////('x,y ' + x + ',' + y + ' to ' + this.getX() + ',' + this.getY() + ' is ' + distance);
 		return distance;
 	}
 
@@ -682,7 +682,7 @@ export class Corner extends EventDispatcher
 	mergeWithIntersected(updateFloorPlan=true)
 	{
 		var i =0;
-		//console.log('mergeWithIntersected for object: ' + this.type);
+		//('mergeWithIntersected for object: ' + this.type);
 		// check corners
 		for (i = 0; i < this.floorplan.getCorners().length; i++)
 		{

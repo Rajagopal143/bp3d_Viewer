@@ -121,8 +121,8 @@ export class FloorplannerView2D {
     var w = window.innerWidth; //parent.innerWidth();
     var h = window.innerHeight; //parent.innerHeight();
 
-    //		console.log(window.innerWidth, window.innerHeight);
-    //		console.log(w, h);
+    //		//(window.innerWidth, window.innerHeight);
+    //		//(w, h);
 
     canvasSel.height(h);
     canvasSel.width(w);
@@ -388,7 +388,7 @@ export class FloorplannerView2D {
   }
 
   drawWallLabelsMiddle(wall) {
-    // console.log(wall.wallLength());
+    // //(wall.wallLength());
     if (!wallInformation.midline) {
       return;
     }

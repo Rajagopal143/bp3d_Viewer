@@ -225,13 +225,40 @@
 		</div>
 	</div>
 
-	<div class="roomDetails" style="display:none ;">
-        <div class="input-group">
-            <label>Key:</label>
-            <input type="text" class="keyInput">
-        </div>
-		<button id="formsubmit">Submit</button>
+	   <div class="container">
+        <h1>Room</h1>
+        <form id="jsonForm">
+			<div id="mainDetails">
+				<label for="name">Room Name</label><input type="text" id="roomname" placeholder="Name">
+				     <label for="name">Area</label><input type="text" id="roomarea"   disabled title="can't change the value">
+			</div>
+            <div id="formFields">
+                <!-- Dynamic input fields will be added here -->
+            </div>
+            <button type="button" id="addButton">Add</button>
+            <button type="submit">Submit</button>
+        </form>
     </div>
+	</div>
+	<div id="getkeyValue">
+		<label for="key">Key</label>
+		<input type="text" id="key" name="key" placeholder="key">
+		<label for="Value">Value</label>
+		<input type="text" id="value" name="Value" placeholder="Value">
+		<button id="setKeyValue">submit</button>
+	</div>
+
+	<div class="wallDetails">
+		<h1>Wall</h1>
+		<label for="walltype">Wall Type</label>
+		<select name="walltype" id="walltype">
+			<option value='Straight'>straight</option>
+			<option value='Curved'>curved</option>
+		</select><br>
+		<label for="walllength">Wall Length</label>
+		<input type="text" placeholder="Wall length" id="wallLength" >
+		<label for="wallthikness">Wall Thickness</label>
+		<input type="text"  id="wallthikness" >
 	</div>
 	
 </body>

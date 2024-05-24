@@ -118,7 +118,7 @@ export class Floorplan extends EventDispatcher {
     this.walls.forEach((wall) => {
       if (wall.frontEdge) {
         edges.push(wall.frontEdge);
-        // console.log(wall.frontEdge);
+        // //(wall.frontEdge);
         // this.edges.push(wall.frontEdge.plane);
       }
       if (wall.backEdge) {
@@ -508,23 +508,24 @@ export class Floorplan extends EventDispatcher {
   getMetaRoomData() {
     var metaRoomData = {};
     this.rooms.forEach((room, index) => {
-      var metaroom = {};
+      var metaroom = {'roomDetails':{}};
       // var cornerids = [];
       // room.corners.forEach((corner)=>{
       // cornerids.push(corner.id);
       // });
       // var ids = cornerids.join(',');
       var ids = room.roomByCornersId;
-      // console.log(ids);
+      // //(ids);
       metaroom['name'] = room.name;
       const roomData = room.roomDetails;
       Object.keys(room.roomDetails).map(key => {
-        metaroom[key] = roomData[key];
+        metaroom['roomDetails'][key] = roomData[key];
       });
       metaroom['vertices'] = room.edgeVertices;
       metaroom['area'] =Dimensioning.cmToMeasure(room.floorplan.rooms[index].area, 2) +  String.fromCharCode(178);
       metaRoomData[ids] = metaroom;
     });
+    //(metaRoomData);
     return metaRoomData;
   }
   getFirstTwoDigits(number) {
@@ -615,6 +616,7 @@ export class Floorplan extends EventDispatcher {
    * @emits {EVENT_LOADED}
    */
   loadFloorplan(floorplan) {
+    //(floorplan);
     this.reset();
     var corners = {};
     if (
@@ -662,6 +664,7 @@ export class Floorplan extends EventDispatcher {
       this.floorTextures = floorplan.newFloorTextures;
     }
     this.metaroomsdata = floorplan.rooms;
+    // //(this.metaroomsdata);
     this.update();
 
     if ('carbonSheet' in floorplan) {
@@ -751,7 +754,7 @@ export class Floorplan extends EventDispatcher {
     updatecorners = null //Should include for , updatewalls=null, updaterooms=null
   ) {
     if (updatecorners != null) {
-      //			console.log('UPDATE CORNER ANGLES ::: ', updatecorners.length);
+      //			//('UPDATE CORNER ANGLES ::: ', updatecorners.length);
       updatecorners.forEach((corner) => {
         corner.updateAngles();
       });
@@ -762,7 +765,7 @@ export class Floorplan extends EventDispatcher {
       return;
     }
 
-    //		console.log('UPDATE ROOM WITH NEW ENTRIES ::: ');
+    //		//('UPDATE ROOM WITH NEW ENTRIES ::: ');
 
     var scope = this;
     this.walls.forEach((wall) => {
@@ -782,7 +785,9 @@ export class Floorplan extends EventDispatcher {
 
     roomCorners.forEach((corners) => {
       var room = new Room(scope, corners);
+      // scope.metaroomsdata
       room.updateArea();
+
       scope.rooms.push(room);
 
       room.addEventListener(EVENT_ROOM_NAME_CHANGED, (e) => {
@@ -793,22 +798,28 @@ export class Floorplan extends EventDispatcher {
         scope.dispatchEvent(o);
         if (scope.metaroomsdata[room.roomByCornersId]) {
           scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;
+          scope.metaroomsdata[room.roomByCornersId]['roomDetails'] =
+            room.roomDetails;
         } else {
           scope.metaroomsdata[room.roomByCornersId] = {};
           scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;
+          scope.metaroomsdata[room.roomByCornersId]['roomDetails'] = room.roomDetails;
         }
       });
-
+      
       if (scope.metaroomsdata) {
         if (scope.metaroomsdata[room.roomByCornersId]) {
           room.name = scope.metaroomsdata[room.roomByCornersId]['name'];
+          room.setObjectDetails(
+            this.metaroomsdata[room.roomByCornersId]["roomDetails"]
+          );
         }
       }
     });
     this.assignOrphanEdges();
     this.updateFloorTextures();
     this.dispatchEvent({ type: EVENT_UPDATED, item: this });
-    // console.log('TOTAL WALLS ::: ', this.walls.length);
+    // //('TOTAL WALLS ::: ', this.walls.length);
   }
 
   /**

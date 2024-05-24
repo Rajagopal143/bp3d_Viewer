@@ -88,7 +88,7 @@
 	// browser or node.js. TODO JSHint Documentation has more, but it is not clear since what JSHint version they appeared 
 	"browser" : false, // Standard browser globals e.g. `window`, `document`.
 	"couch" : false, // Enable globals exposed by CouchDB.
-	"devel" : false, // Allow development statements e.g. `console.log();`.
+	"devel" : false, // Allow development statements e.g. `//();`.
 	"dojo" : false, // Enable globals exposed by Dojo Toolkit.
 	"jquery" : false, // Enable globals exposed by jQuery JavaScript library.
 	"mootools" : false, // Enable globals exposed by MooTools JavaScript framework.

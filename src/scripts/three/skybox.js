@@ -115,7 +115,7 @@ export class Skybox extends EventDispatcher
 			scope.toggleEnvironment(scope.useEnvironment);			
 		}, undefined, function()
 		{
-			console.log('ERROR LOADEING FILE');
+			//('ERROR LOADEING FILE');
 		});
 	}
 	

@@ -6,7 +6,7 @@
  *  var exporter = new THREE.PLYExporter();
  *
  *  // second argument is a list of options
- *  exporter.parse(mesh, data => console.log(data), { binary: true, excludeAttributes: [ 'color' ] });
+ *  exporter.parse(mesh, data => (data), { binary: true, excludeAttributes: [ 'color' ] });
  *
  * Format Definition:
  * http://paulbourke.net/dataformats/ply/

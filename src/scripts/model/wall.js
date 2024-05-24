@@ -116,7 +116,7 @@ export class Wall extends EventDispatcher
 //		});
 		this.addCornerMoveListener(this.start);
 		this.addCornerMoveListener(this.end);
-		// console.log(this.backEdge, this.getStartY());
+		// //(this.backEdge, this.getStartY());
 	}
 	
 	addCornerMoveListener(corner, remove=false)
@@ -480,7 +480,7 @@ export class Wall extends EventDispatcher
 		}
 		else
 		{
-			console.log('Wall does not connect to corner');
+			//('Wall does not connect to corner');
 			return null;
 		}
 	}

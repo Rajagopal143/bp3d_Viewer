@@ -17,29 +17,29 @@ var myhome =
 // var myhome1 = '{"floorplan":{"corners":{"16b020d0-fa1e-f198-bbc6-2ad1a59268d0":{"x":135.31850000000009,"y":-887.476},"8d92c038-8852-f4ea-e8bb-ac03f938f703":{"x":-44.06899999999996,"y":359.15600000000006},"5eee22b8-d773-5b93-c4c8-bf4286ac436d":{"x":-220.09100000000012,"y":-887.476},"4cd3d434-0921-ccfa-0e29-29d3778be8be":{"x":-220.09100000000012,"y":-105.15599999999995},"79dd4e37-0bc6-c662-2197-ec97c356a7d4":{"x":135.31850000000009,"y":-265.6840000000001},"e8c4dc18-0a85-92a9-85b2-37dee45f4a00":{"x":-220.09100000000012,"y":-403.85999999999984},"ea1bedfe-ca15-1744-4108-5450cc842661":{"x":-66.42100000000008,"y":-403.85999999999984},"b1c87f68-9c9e-99d2-859c-fb793355d90b":{"x":-66.42100000000008,"y":-265.6840000000001},"c8a304a1-b9bd-6b76-92e9-2321af0bd415":{"x":-44.06899999999996,"y":-105.15599999999995},"263a453c-9952-75d6-8810-8477a3265bc6":{"x":188.1505000000002,"y":-105.15599999999995},"483d787d-0016-0751-aeda-087bab3a0ed6":{"x":188.1505000000002,"y":-188.4679999999999},"e3e27b42-3226-3fe2-5153-1bbb7a498584":{"x":326.3265000000001,"y":-188.4679999999999},"22ad9451-b853-12b7-f471-9299192489e4":{"x":326.3265000000001,"y":-381.5079999999999},"3eb61572-0237-0254-1e1a-8526c2a71ec6":{"x":452.31050000000005,"y":-381.5079999999999},"1b0e7027-3dc4-12cb-0937-370a669217a5":{"x":604.52,"y":-887.476},"d326e87e-4117-7033-7844-e7486d249b1e":{"x":604.52,"y":-381.5079999999999},"4f68435b-ee33-c4cb-2b60-69945652cacd":{"x":326.3265000000001,"y":-499.36400000000003},"f0569ab9-d17a-cb83-cd6d-1ccff1b4025a":{"x":135.31850000000009,"y":-499.36400000000003},"56aa05eb-95de-2e11-d759-38814b8d9ce0":{"x":452.31050000000005,"y":-499.36400000000003},"a4c70aaa-7fcb-5c76-0308-50c45bbe10a0":{"x":604.52,"y":-499.36400000000003},"007d1f79-7d8f-827e-60ce-b3efb21444eb":{"x":604.52,"y":-105.15599999999995},"b8dc05af-4819-456f-63e1-6a975118bbb4":{"x":604.52,"y":359.15600000000006},"bf238f73-f50e-a2c6-d877-0c39e7c2c330":{"x":326.3265000000001,"y":-105.15599999999995}},"walls":[{"corner1":"4cd3d434-0921-ccfa-0e29-29d3778be8be","corner2":"c8a304a1-b9bd-6b76-92e9-2321af0bd415","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"5eee22b8-d773-5b93-c4c8-bf4286ac436d","corner2":"16b020d0-fa1e-f198-bbc6-2ad1a59268d0","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"16b020d0-fa1e-f198-bbc6-2ad1a59268d0","corner2":"1b0e7027-3dc4-12cb-0937-370a669217a5","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"16b020d0-fa1e-f198-bbc6-2ad1a59268d0","corner2":"f0569ab9-d17a-cb83-cd6d-1ccff1b4025a","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"8d92c038-8852-f4ea-e8bb-ac03f938f703","corner2":"c8a304a1-b9bd-6b76-92e9-2321af0bd415","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"8d92c038-8852-f4ea-e8bb-ac03f938f703","corner2":"b8dc05af-4819-456f-63e1-6a975118bbb4","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"4cd3d434-0921-ccfa-0e29-29d3778be8be","corner2":"e8c4dc18-0a85-92a9-85b2-37dee45f4a00","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"e8c4dc18-0a85-92a9-85b2-37dee45f4a00","corner2":"5eee22b8-d773-5b93-c4c8-bf4286ac436d","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"e8c4dc18-0a85-92a9-85b2-37dee45f4a00","corner2":"ea1bedfe-ca15-1744-4108-5450cc842661","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"ea1bedfe-ca15-1744-4108-5450cc842661","corner2":"b1c87f68-9c9e-99d2-859c-fb793355d90b","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"b1c87f68-9c9e-99d2-859c-fb793355d90b","corner2":"79dd4e37-0bc6-c662-2197-ec97c356a7d4","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"c8a304a1-b9bd-6b76-92e9-2321af0bd415","corner2":"263a453c-9952-75d6-8810-8477a3265bc6","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"263a453c-9952-75d6-8810-8477a3265bc6","corner2":"bf238f73-f50e-a2c6-d877-0c39e7c2c330","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"263a453c-9952-75d6-8810-8477a3265bc6","corner2":"483d787d-0016-0751-aeda-087bab3a0ed6","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"483d787d-0016-0751-aeda-087bab3a0ed6","corner2":"e3e27b42-3226-3fe2-5153-1bbb7a498584","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"e3e27b42-3226-3fe2-5153-1bbb7a498584","corner2":"bf238f73-f50e-a2c6-d877-0c39e7c2c330","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"007d1f79-7d8f-827e-60ce-b3efb21444eb","corner2":"d326e87e-4117-7033-7844-e7486d249b1e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"d326e87e-4117-7033-7844-e7486d249b1e","corner2":"3eb61572-0237-0254-1e1a-8526c2a71ec6","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"22ad9451-b853-12b7-f471-9299192489e4","corner2":"e3e27b42-3226-3fe2-5153-1bbb7a498584","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"4f68435b-ee33-c4cb-2b60-69945652cacd","corner2":"22ad9451-b853-12b7-f471-9299192489e4","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"4f68435b-ee33-c4cb-2b60-69945652cacd","corner2":"56aa05eb-95de-2e11-d759-38814b8d9ce0","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"56aa05eb-95de-2e11-d759-38814b8d9ce0","corner2":"3eb61572-0237-0254-1e1a-8526c2a71ec6","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"3eb61572-0237-0254-1e1a-8526c2a71ec6","corner2":"22ad9451-b853-12b7-f471-9299192489e4","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"1b0e7027-3dc4-12cb-0937-370a669217a5","corner2":"a4c70aaa-7fcb-5c76-0308-50c45bbe10a0","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4f68435b-ee33-c4cb-2b60-69945652cacd","corner2":"f0569ab9-d17a-cb83-cd6d-1ccff1b4025a","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"f0569ab9-d17a-cb83-cd6d-1ccff1b4025a","corner2":"79dd4e37-0bc6-c662-2197-ec97c356a7d4","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"56aa05eb-95de-2e11-d759-38814b8d9ce0","corner2":"a4c70aaa-7fcb-5c76-0308-50c45bbe10a0","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"a4c70aaa-7fcb-5c76-0308-50c45bbe10a0","corner2":"d326e87e-4117-7033-7844-e7486d249b1e","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"bf238f73-f50e-a2c6-d877-0c39e7c2c330","corner2":"007d1f79-7d8f-827e-60ce-b3efb21444eb","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300}},{"corner1":"007d1f79-7d8f-827e-60ce-b3efb21444eb","corner2":"b8dc05af-4819-456f-63e1-6a975118bbb4","frontTexture":{"url":"rooms/textures/marbletiles.jpg","stretch":false,"scale":300},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"wallTextures":[],"floorTextures":{},"newFloorTextures":{}},"items":[{"item_name":"Open Door","item_type":7,"model_url":"models/js/open_door.js","xpos":45.60973158833667,"ypos":110.5,"zpos":-265.1840000000001,"rotation":0,"scale_x":1.1771369721936153,"scale_y":0.997292171703541,"scale_z":0.9994150405405762,"fixed":true},{"item_name":"Open Door","item_type":7,"model_url":"models/js/open_door.js","xpos":226.19923363943076,"ypos":110.800000297771,"zpos":-499.86400000000003,"rotation":3.141592653589793,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Open Door","item_type":7,"model_url":"models/js/open_door.js","xpos":71.15100000000002,"ypos":110.5,"zpos":-104.65599999999995,"rotation":0,"scale_x":1.5695159629248197,"scale_y":0.997292171703541,"scale_z":0.9994150405405762,"fixed":true},{"item_name":"Dresser - Dark Wood","item_type":1,"model_url":"models/js/DWR_MATERA_DRESSER2.js","xpos":549.2058844807959,"ypos":57.785001860754996,"zpos":329.7799662755366,"rotation":-1.5707963267948966,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"NYC Poster","item_type":2,"model_url":"models/js/nyc-poster2.js","xpos":598.25,"ypos":183.62661902009813,"zpos":117.68045683694481,"rotation":-1.5707963267948966,"scale_x":0.7142842857142857,"scale_y":0.8421024709178014,"scale_z":1.0129608601270457,"fixed":true},{"item_name":"Blue Rug","item_type":8,"model_url":"models/js/cb-blue-block-60x96.js","xpos":184.68588061910788,"ypos":0.250005,"zpos":122.38666413809182,"rotation":1.5707963267948966,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Coffee Table - Wood","item_type":1,"model_url":"models/js/ik-stockholmcoffee-brown.js","xpos":272.6962787349586,"ypos":24.01483158034958,"zpos":126.73694950426048,"rotation":-1.5707963267948966,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Window","item_type":3,"model_url":"models/js/whitewindow.js","xpos":512.6434934035085,"ypos":157.07894848817114,"zpos":-886.976,"rotation":0,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Window","item_type":3,"model_url":"models/js/whitewindow.js","xpos":-120.92122752323827,"ypos":168.10483780571963,"zpos":-886.976,"rotation":0,"scale_x":0.6603999999996408,"scale_y":0.5810892360052958,"scale_z":1.0332383005354289,"fixed":true},{"item_name":"Window","item_type":3,"model_url":"models/js/whitewindow.js","xpos":438.5412557798525,"ypos":159.40045156749102,"zpos":358.65600000000006,"rotation":3.141592653589793,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Window","item_type":3,"model_url":"models/js/whitewindow.js","xpos":307.85036934553574,"ypos":159.1968280144008,"zpos":358.6560000000001,"rotation":3.141592653589793,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Window","item_type":3,"model_url":"models/js/whitewindow.js","xpos":182.15084546678992,"ypos":159.0605552363389,"zpos":358.6560000000001,"rotation":3.141592653589793,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Closed Door","item_type":7,"model_url":"models/js/closed-door28x80_baked.js","xpos":-103.81899999999992,"ypos":110.80000022010701,"zpos":-105.65599999999995,"rotation":3.141592653589793,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Closed Door","item_type":7,"model_url":"models/js/closed-door28x80_baked.js","xpos":325.8265000000001,"ypos":110.5,"zpos":-280.9525143309595,"rotation":-1.5707963267948966,"scale_x":1.2294541709577755,"scale_y":0.9972921724026447,"scale_z":0.9482825135211149,"fixed":true},{"item_name":"Closed Door","item_type":7,"model_url":"models/js/closed-door28x80_baked.js","xpos":325.8265000000001,"ypos":110.80000022010701,"zpos":-439.4767618863214,"rotation":-1.5707963267948966,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Closed Door","item_type":7,"model_url":"models/js/closed-door28x80_baked.js","xpos":250.42795654332926,"ypos":110.80000022010701,"zpos":-188.9679999999999,"rotation":3.141592653589793,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Closed Door","item_type":7,"model_url":"models/js/closed-door28x80_baked.js","xpos":527.7045416935933,"ypos":110.80000022010701,"zpos":-499.86400000000003,"rotation":3.141592653589793,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Closed Door","item_type":7,"model_url":"models/js/closed-door28x80_baked.js","xpos":17.379725040490854,"ypos":110.5,"zpos":-886.976,"rotation":0,"scale_x":1.1771369721936145,"scale_y":0.9972921724026447,"scale_z":0.948282513521117,"fixed":true},{"item_name":"Media Console - White","item_type":9,"model_url":"models/js/cb-clapboard_baked.js","xpos":574.12,"ypos":67.89999754396,"zpos":131.42070309211852,"rotation":-1.5707963267948966,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true},{"item_name":"Sofa - Grey","item_type":1,"model_url":"models/js/cb-rochelle-gray_baked.js","xpos":12.257267191489404,"ypos":42.54509923821,"zpos":136.8119273061203,"rotation":1.5707963267948966,"scale_x":1,"scale_y":1,"scale_z":1,"fixed":true}]}';
 
 // $(document).ready(() => {
-//   console.log($(".ac").context.firstElementChild);
-  // 	const customDiv = document.createElement("div");
-  // 	customDiv.innerHTML = '<button id="customButton">Custom Button</button>';
-  // 	document.querySelector(".dg.main").appendChild(customDiv);
-  // 	const guiContainer = document.querySelector(".dg.main");
-  // 	guiContainer.style.backgroundColor = "#333";
-  //   guiContainer.style.border = "1px solid #555";
+//   //($(".ac").context.firstElementChild);
+// 	const customDiv = document.createElement("div");
+// 	customDiv.innerHTML = '<button id="customButton">Custom Button</button>';
+// 	document.querySelector(".dg.main").appendChild(customDiv);
+// 	const guiContainer = document.querySelector(".dg.main");
+// 	guiContainer.style.backgroundColor = "#333";
+//   guiContainer.style.border = "1px solid #555";
 
-  //   const controls = guiContainer.querySelectorAll(".cr");
-  //   controls.forEach((control) => {
-  // 	  control.style.backgroundColor = "#444";
-  // 	  control.style.color = "#fff";
-  // 	});
+//   const controls = guiContainer.querySelectorAll(".cr");
+//   controls.forEach((control) => {
+// 	  control.style.backgroundColor = "#444";
+// 	  control.style.color = "#fff";
+// 	});
 
-  // 	const numberInputs = guiContainer.querySelectorAll(
-  // 		'.cr.number input[type="text"]'
-  // 		);
-  // 		numberInputs.forEach((input) => {
-  // 			input.style.backgroundColor = "#555";
-  // 			input.style.color = "#fff";
-  // 		});
-  // 		$(window).resize(scope.handleWindowResize);
-  // 		scope.handleWindowResize();
+// 	const numberInputs = guiContainer.querySelectorAll(
+// 		'.cr.number input[type="text"]'
+// 		);
+// 		numberInputs.forEach((input) => {
+// 			input.style.backgroundColor = "#555";
+// 			input.style.color = "#fff";
+// 		});
+// 		$(window).resize(scope.handleWindowResize);
+// 		scope.handleWindowResize();
 // });
 
 /*
@@ -187,6 +187,26 @@ var mainControls = function (blueprint3d) {
       saveGLTFCallback
     );
   }
+  $("#floorplanner-canvas").on("wheel", function (event) {
+   const scale = BP3DJS.Configuration.getData().scale;
+   const scaleStep = 0.2; // Use smaller increments for smoother scaling
+
+   // Prevent the default scroll behavior
+   event.preventDefault();
+
+   // Decrease scale on scrolling down, but do not go below 0.5
+   if (event.originalEvent.deltaY < 0 && scale > 0.5) {
+     BP3DJS.Configuration.setValue("scale", Math.max(0.5, scale - scaleStep));
+     
+   }
+   // Increase scale on scrolling up, but do not go above 5
+   else if (event.originalEvent.deltaY > 0 && scale < 5) {
+     BP3DJS.Configuration.setValue("scale", Math.min(5, scale + scaleStep));
+     
+   }
+   // Redraw the floorplan view
+   blueprint3d.floorplanner.view.draw();
+  });
 
   init();
 };
@@ -225,7 +245,8 @@ var GlobalProperties = function () {
       blueprint3d.floorplanner
     );
     blueprint3d.floorplanner.view.draw();
-    for (var i in this.guiControllers) { // Iterate over gui controllers to update the values
+    for (var i in this.guiControllers) {
+      // Iterate over gui controllers to update the values
       this.guiControllers[i].updateDisplay();
     }
   };
@@ -328,63 +349,136 @@ var RoomProperties = function (room, gui) {
   this.gui = gui;
   this.room = room;
   this.name = room.name;
-	this.f = gui.addFolder("Current Room");
-	
-	
-	this.namecontrol = this.f.add(this.room, 'name').name("Name");
-	this.detailsFolder = this.f.addFolder("Room Details");
-	
-	// Function to update room details in the GUI
-	this.updateRoomDetails = function () {
-    // Remove all previous controllers
-		clearFolder(this.detailsFolder);
+  this.f = gui.addFolder("CurrentRoom");
+  this.data = {};
 
-    // Add controllers for each key in roomDetails
-    for (const key in room.roomDetails) {
-      if (room.roomDetails.hasOwnProperty(key)) {
-        this.detailsFolder.add(room.roomDetails, key).name(key);
-      }
+  //   $("#mainDetails")
+  //     .append(`
+  //
+  // `);
+  $("#roomarea").val(BP3DJS.Dimensioning.cmToMeasure(this.room.area, 2));
+  $(".container").show();
+  $("#roomname").on("change", function () {
+    const value = $(this).val();
+    setName(value);
+  });
+  $("#roomname").val(this.room.name);
+  // this.namecontrol = this.f.add(this.room, 'name').name("Name");
+  renderFormFields(this.room.roomDetails);
+  $("#addButton").click(() => {
+    $("#getkeyValue").show();
+    $(document).on("click", "#setKeyValue", function () {
+      const key = $("#key").val();
+      const value = $("#value").val();
+      addkeyValue(key, value);
+    });
+    $(document).on("click", "#remove-button", function () {
+      removeData(this);
+    });
+  });
+  function setName(value) {
+    this.room.name = value;
+  }
+  function addkeyValue(key, value) {
+    if (key == "" && value == "") {
+      $("#getkeyValue").hide();
+      return;
     }
-		this.detailsFolder.open(); // Open the details folder
-		
-  };
-
-  // Initial population of room details
-	this.updateRoomDetails();
-  // Add a button to prompt user for key-value input
-  var addKeyValueButton = {
-    addKeyValue: function () {
-      $(".roomDetails").show();
-      $("#formsubmit")
-        .on("click", function () {
-          var key = $(".keyInput").val();
-          if (key === null || key.trim() === "") return; // User canceled or entered invalid key
-
-          // Add key-value pair to roomDetails
-			room.roomDetails[key] = '';
-			
-			$(".roomDetails").hide();
-			scope.updateRoomDetails();
-		});
-		$(".keyInput").val('')
-		  room.name = room.name;
-    },
-  };
-	function clearFolder(folder) {
-    // Remove all controllers in the folder
-    folder.__controllers.forEach((controller) => {
-      folder.remove(controller);
-    });
-
-    // Remove all folders within the folder
-    Object.keys(folder.__folders).forEach((key) => {
-      folder.removeFolder(folder.__folders[key]);
-    });
+    $("#getkeyValue").hide();
+    this.room.setRoomDetails(key, value);
+    renderFormFields(this.room.roomDetails);
+    $("#key").val("");
+    $("#value").val("");
   }
 
-  this.f
-    .add(addKeyValueButton, "addKeyValue")
-    .name("Add Key-Value");
+  function renderFormFields(data) {
+    $("#formFields").empty(); // Clear existing fields
+    for (let key in data) {
+      $("#formFields").append(`
+                <div class="key-value-pair form-group">
+                    <label for="${key}">${key}</label>
+                    <input type="text" id="${key}" name="${key}" value="${data[key]}" data-key="${key}" />
+                    <span class="colon">:</span>
+                    <button type="button" id="remove-button" data-key="${key}">Del</button>
+                </div>
+            `);
+    }
+  }
+
+  function removeData(data) {
+    const key = $(data).data("key");
+    this.room.deleteRoomDetails(key);
+    renderFormFields(this.room.roomDetails);
+  }
+  $("#jsonForm").submit((e) => {
+    submitfrom(e)
+  });
+  function submitfrom(e) {
+    e.preventDefault();
+    const jsonData = {};
+    const formData = $("#jsonForm").serializeArray();
+    // formData.forEach((item) => {
+    //   addkeyValue(item.name, item.value);
+    // });
+    this.room.setAllroomDetails(formData);
+    $(".container").hide();
+    $("#getkeyValue").hide();
+  }
+  // this.detailsFolder = this.f.addFolder("Room Details");
+
+  // // Function to update room details in the GUI
+  // this.updateRoomDetails = function () {
+  //   // Remove all previous controllers
+  // 	clearFolder(this.detailsFolder);
+
+  //   // Add controllers for each key in roomDetails
+  //   for (const key in room.roomDetails) {
+  //     if (room.roomDetails.hasOwnProperty(key)) {
+  //       this.detailsFolder.add(room.roomDetails, key).name(key);
+  //     }
+  //   }
+  // 	this.detailsFolder.open(); // Open the details folder
+  //     this.namecontrol.initialValue = this.namecontrol.initialValue + "";
+
+  // };
+
+  // // Initial population of room details
+  // this.updateRoomDetails();
+  // // Add a button to prompt user for key-value input
+  // var addKeyValueButton = {
+  //   addKeyValue: function () {
+  //     $(".roomDetails").show();
+  //     $("#formsubmit")
+  //       .on("click", function () {
+  //         var key = $(".keyInput").val();
+  //         if (key === null || key.trim() === "") return; // User canceled or entered invalid key
+
+  //         // Add key-value pair to roomDetails
+  // 		room.roomDetails[key] = '';
+
+  // 		$(".roomDetails").hide();
+  // 		scope.updateRoomDetails();
+  // 	});
+  // 	$(".keyInput").val('')
+  // 	  room.name = room.name;
+  //   },
+
+  // };
+  // function clearFolder(folder) {
+  //   // Remove all controllers in the folder
+  //   folder.__controllers.forEach((controller) => {
+  //     folder.remove(controller);
+  //   });
+
+  //   // Remove all folders within the folder
+  //   Object.keys(folder.__folders).forEach((key) => {
+  //     folder.removeFolder(folder.__folders[key]);
+  //   });
+  // }
+
+  // this.f
+  //   .add(addKeyValueButton, "addKeyValue")
+  //   .name("Add Key-Value");
 
   return this.f;
 };
@@ -395,6 +489,38 @@ var Wall2DProperties = function (wall2d, gui) {
   this.wall2d = wall2d;
   this.walltype = "Straight";
   this.walllength = BP3DJS.Dimensioning.cmToMeasureRaw(wall2d.wallSize);
+  $(".wallDetails").show();
+  $("#wallLength").val(this.walllength);
+  $("#wallLength").on("change", function () {
+    setWallLength($(this).val());
+  });
+  $("#walltype").val("Straight");
+  $("#walltype").on("change", function () {
+    setWallType($(this).val());
+  });
+  // $("#wallthikness").val(
+  //   BP3DJS.Configuration.getStringValue(BP3DJS.configWallThickness)
+  // );
+  $("#wallthikness").on("change", function () {
+    BP3DJS.Configuration.setValue(BP3DJS.configWallThickness, $(this).val());
+  });
+
+  function setWallType(value) {
+    const select = value;
+    scope.walltype = select;
+    if (scope.walltype == "Straight") {
+      scope.wall2d.wallType = BP3DJS.WallTypes.STRAIGHT;
+    } else if (scope.walltype == "Curved") {
+      scope.wall2d.wallType = BP3DJS.WallTypes.CURVED;
+    }
+    blueprint3d.floorplanner.view.draw();
+  }
+
+  function setWallLength(value) {
+    scope.wall2d.wallSize = BP3DJS.Dimensioning.cmFromMeasureRaw(Number(value));
+    blueprint3d.floorplanner.view.draw();
+  }
+
   function onChangeWallType() {
     if (scope.walltype == "Straight") {
       scope.wall2d.wallType = BP3DJS.WallTypes.STRAIGHT;
@@ -467,7 +593,8 @@ var ItemProperties = function (gui) {
       this.fixed = item.fixed;
       this.proportionalsize = item.getProportionalResize();
 
-      for (var i in this.guiControllers) { // Iterate over gui controllers to update the values
+      for (var i in this.guiControllers) {
+        // Iterate over gui controllers to update the values
         this.guiControllers[i].updateDisplay();
       }
 
@@ -694,23 +821,35 @@ function addBlueprintListeners(blueprint3d) {
   });
 
   function echoEvents(o) {
-    //    	console.log(o.type, o.item);
+    // //(o.type, o.item);
   }
 
   function addGUIFolder(o) {
-    //    	console.log(o.type, o.item);
+    //    	//(o.type, o.item);
     if (currentFolder) {
       selectionsFolder.removeFolder(currentFolder.name);
     }
     if (o.type == BP3DJS.EVENT_CORNER_2D_CLICKED) {
+      $(".container").hide();
+      $("#getkeyValue").hide();
+      $(".wallDetails").hide();
       currentFolder = CornerProperties(o.item, selectionsFolder); //getCornerPropertiesFolder(gui, o.item);
-      console.log(o);
+      //(o);
     } else if (o.type == BP3DJS.EVENT_ROOM_2D_CLICKED) {
-      console.log(o);
+      $(".container").show();
+      $(".wallDetails").hide();
+      //(o);
       currentFolder = RoomProperties(o.item, selectionsFolder); //getRoomPropertiesFolder(gui, );
     } else if (o.type == BP3DJS.EVENT_WALL_2D_CLICKED) {
-      console.log(o);
+      $(".wallDetails").show();
+      $(".container").hide();
+      $("#getkeyValue").hide();
+
       currentFolder = Wall2DProperties(o.item, selectionsFolder);
+    } else {
+      $(".container").hide();
+      $("#getkeyValue").hide();
+      $(".wallDetails").hide();
     }
     if (currentFolder) {
       currentFolder.open();
@@ -731,6 +870,7 @@ function addBlueprintListeners(blueprint3d) {
     BP3DJS.EVENT_ROOM_2D_DOUBLE_CLICKED,
     echoEvents
   );
+  model_floorplan.addEventListener("scroll", echoEvents);
 
   model_floorplan.addEventListener(BP3DJS.EVENT_NOTHING_CLICKED, addGUIFolder);
   model_floorplan.addEventListener(
@@ -739,7 +879,6 @@ function addBlueprintListeners(blueprint3d) {
   );
   model_floorplan.addEventListener(BP3DJS.EVENT_WALL_2D_CLICKED, addGUIFolder);
   model_floorplan.addEventListener(BP3DJS.EVENT_ROOM_2D_CLICKED, addGUIFolder);
-
   model_floorplan.addEventListener(BP3DJS.EVENT_CORNER_2D_HOVER, echoEvents);
   model_floorplan.addEventListener(BP3DJS.EVENT_WALL_2D_HOVER, echoEvents);
   model_floorplan.addEventListener(BP3DJS.EVENT_ROOM_2D_HOVER, echoEvents);
@@ -758,7 +897,7 @@ function addBlueprintListeners(blueprint3d) {
   );
 
   function deleteEvent(evt) {
-    console.log("DELETED ", evt);
+    //("DELETED ", evt);
   }
 
   model_floorplan.addEventListener(BP3DJS.EVENT_DELETED, deleteEvent);
@@ -1084,7 +1223,7 @@ $(document).ready(function () {
   var viewerFloorplanner = new ViewerFloorplanner(blueprint3d);
 
   blueprint3d.model.addEventListener(BP3DJS.EVENT_LOADED, function () {
-    console.log("LOAD SERIALIZED JSON ::: ");
+    //("LOAD SERIALIZED JSON ::: ");
   });
 
   mainControls(blueprint3d);
@@ -1094,7 +1233,7 @@ $(document).ready(function () {
   datGUI(blueprint3d.three, blueprint3d.floorplanner);
   blueprint3d.three.stopSpin();
   //	gui.closed = true;
-  
+
   $("#showAddItems").hide();
   $("#viewcontrols").hide();
 
@@ -1126,8 +1265,6 @@ $(document).ready(function () {
     blueprint3d.three.switchFPSMode(false);
   });
   $("#showFirstPerson").click(function () {
- 
-
     blueprint3d.model.floorplan.update();
     $(".card").flip(true);
     //		gui.closed = true;
@@ -1171,7 +1308,7 @@ $(document).ready(function () {
         itemType: itemType,
         format: itemFormat,
       };
-      console.log("ITEM TYPE ::: ", itemType);
+      //("ITEM TYPE ::: ", itemType);
       if ([2, 3, 7, 9].indexOf(metadata.itemType) != -1 && aWall.currentWall) {
         var placeAt = aWall.currentWall.center.clone();
         blueprint3d.model.scene.addItem(
@@ -1205,38 +1342,45 @@ $(document).ready(function () {
     const edgedata = blueprint3d.three.getvertices().edges;
     const chunkedArray = [];
     for (let i = 0; i < edgedata.length; i += 1) {
-      const [ chunk] = edgedata[i].getBottomPhase();
-      console.log(chunk);
+      const [chunk] = edgedata[i].getBottomPhase();
+      //(chunk);
       chunkedArray.push(chunk);
     }
-   const jsonString = JSON.stringify(chunkedArray, null, 2);
+    const jsonString = JSON.stringify(chunkedArray, null, 2);
 
-   // Create a Blob from the JSON string
-   const blob = new Blob([jsonString], { type: "application/json" });
+    // Create a Blob from the JSON string
+    const blob = new Blob([jsonString], { type: "application/json" });
 
-   // Create a temporary anchor element
-   const a = document.createElement("a");
+    // Create a temporary anchor element
+    const a = document.createElement("a");
 
-   // Create a URL for the Blob and set it as the href attribute
-   const url = URL.createObjectURL(blob);
-   a.href = url;
+    // Create a URL for the Blob and set it as the href attribute
+    const url = URL.createObjectURL(blob);
+    a.href = url;
 
-   // Set the download attribute with the desired file name
-   a.download = "data.json";
+    // Set the download attribute with the desired file name
+    a.download = "data.json";
 
-   // Programmatically click the anchor to trigger the download
-   a.click();
+    // Programmatically click the anchor to trigger the download
+    a.click();
 
-   // Clean up by revoking the object URL
-   URL.revokeObjectURL(url);
-  })
+    // Clean up by revoking the object URL
+    URL.revokeObjectURL(url);
+  });
   $("#uploadToGraph").click(async () => {
     const floorplan = blueprint3d.model.exportSerialized();
+    const edgedata = blueprint3d.three.getvertices().edges;
+    const chunkedArray = [];
+    for (let i = 0; i < edgedata.length; i += 1) {
+      const [chunk] = edgedata[i].getBottomPhase();
+      chunkedArray.push(chunk);
+    }
     const data = JSON.parse(floorplan);
-    console.log(data);
+    //(data);
     data.carbonSheet = "";
     data.floorplan.carbonSheet = "";
-    console.log(data);
+    data["vertices"] = chunkedArray;
+    //(data);
     try {
       const response = await fetch("http://localhost:3000/api/architect", {
         method: "POST",
@@ -1246,9 +1390,9 @@ $(document).ready(function () {
         body: JSON.stringify(data),
       });
       const json = await response.json();
-      console.log(json);
+      //(json);
     } catch (err) {
-      console.log(err);
+      //(err);
       return;
     }
   });
@@ -1280,11 +1424,11 @@ $(document).ready(function () {
       }
       floorplan["vertices"] = chunkedArray;
     }
-    console.log(floorplan);
+    //(floorplan);
     return floorplan;
   }
   $("#downloadReport").click(async () => {
-       // API endpoint URL
+    // API endpoint URL
     const apiUrl = "http://localhost:3000/api/getgraph";
     // Make a fetch request to the API
     fetch(apiUrl)
@@ -1297,16 +1441,14 @@ $(document).ready(function () {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        //(data);
         // Once data is received, convert it to CSV format
-        const csvContent = jsonToCsv(data);
-
-        // Initiate the download
-        const blob = new Blob([csvContent], { type: "text/csv" });
+        const jsonData = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonData], { type: "application/json" });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "data.csv";
+        a.download = "data.json";
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
@@ -1360,7 +1502,7 @@ $(document).ready(function () {
       });
       csvContent += row.join(",") + "\n";
     });
-    console.log(csvContent);
+    //(csvContent);
     return csvContent;
   }
 });

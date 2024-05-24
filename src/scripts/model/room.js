@@ -24,7 +24,7 @@ export class Room extends EventDispatcher
 	constructor(floorplan, corners)
 	{
 		super();
-		this._name = '';
+		this._name = 'A New Room';
 		this.min = null;
 		this.max = null;
 		this.center = null;
@@ -33,6 +33,7 @@ export class Room extends EventDispatcher
 		this._polygonPoints = [];
 		this._roomDetails = {};
 		this.floorplan = floorplan;
+		this.metaroomsdata = floorplan.metaroomsdata;
 		this.corners = corners;
 		this.interiorCorners = [];
 		this.edgePointer = null;
@@ -52,7 +53,7 @@ export class Room extends EventDispatcher
 			cornerids.push(c.id);
 		}
 		this._roomByCornersId = cornerids.join(',');
-		console.log(this);
+		//(this.metaroomsdata);
 	}
 	
 	get roomCornerPoints()
@@ -78,15 +79,53 @@ export class Room extends EventDispatcher
 	get roomDetails() {
 		return this._roomDetails;
 	}
-	set roomDetails(values) {
-		this._roomDetails = values;
+	setAllroomDetails(data) {
+		var oldvalues = this;
+		for (let d of data) {
+			this._roomDetails[d.name] = d.value;
+		}
+		this.dispatchEvent({
+			type: EVENT_ROOM_ATTRIBUTES_CHANGED,
+			item: this,
+			info: { from: oldvalues, to: this },
+		});
+	}
+	setObjectDetails(data) {
+		var oldvalues = this;
+		Object.keys(data).forEach((key) => {
+		
+			this._roomDetails[key] = data[key];
+		});
+    this.dispatchEvent({
+      type: EVENT_ROOM_ATTRIBUTES_CHANGED,
+      item: this,
+      info: { from: oldvalues, to: this },
+    });
+	}
+	setRoomDetails(key, value) {
+		var oldvalues = this;
+		this._roomDetails[key] = value;
+		this.dispatchEvent({
+      type: EVENT_ROOM_ATTRIBUTES_CHANGED,
+      item: this,
+      info: { from: oldvalues, to: this },
+    });
+}
+deleteRoomDetails(key) {
+	var oldvalues = this;
+	delete this._roomDetails[key];
+		this.dispatchEvent({
+			type: EVENT_ROOM_ATTRIBUTES_CHANGED,
+			item: this,
+			info: { from: oldvalues, to: this },
+		});
 	}
 
 	roomIdentifier()
 	{
 		var cornerids = [];
 		this.corners.forEach((corner)=>{
-				cornerids.push(corner.id);
+			cornerids.push(corner.id);
 		});
 		var ids = cornerids.join(',');
 		return ids;
@@ -169,7 +208,7 @@ export class Room extends EventDispatcher
 	generatePlane()
 	{
 		var points = [];
-		// console.log(this.floorPlane)
+		// //(this.floorPlane)
 		this.interiorCorners.forEach((corner) => {
 			points.push(new Vector2(corner.x,corner.y));
 		});
@@ -466,7 +505,7 @@ export class Room extends EventDispatcher
 			else
 			{
 				// something horrible has happened
-				console.log('corners arent connected by a wall, uh oh');
+				//('corners arent connected by a wall, uh oh');
 			}
 
 			if (i == 0)

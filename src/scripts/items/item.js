@@ -520,7 +520,7 @@ export class Item extends Mesh
 		var c4 = new Vector3(-halfSize.x, 0, halfSize.z);
 
 		var transform = new Matrix4();
-		// console.log(this.rotation.y);
+		// //(this.rotation.y);
 		transform.makeRotationY(this.rotation.y); // + Math.PI/2)
 
 		c1.applyMatrix4(transform);

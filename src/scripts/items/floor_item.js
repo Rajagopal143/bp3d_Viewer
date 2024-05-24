@@ -84,7 +84,7 @@ export class FloorItem extends Item
               }
               if (!utils.polygonOutsidePolygon(corners, objects[i].getCorners('x', 'z')) ||
                   utils.polygonPolygonIntersect(corners, objects[i].getCorners('x', 'z'))) {
-                  //console.log('object not outside other objects');
+                  ////('object not outside other objects');
                   return false;
               }
           }

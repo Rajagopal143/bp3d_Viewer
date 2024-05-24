@@ -18,7 +18,7 @@ export class Floorplan3D extends EventDispatcher
 		// floorPlan.fireOnUpdatedRooms(redraw);
 		this.updatedroomsevent = () => {scope.redraw();};
 		this.floorplan.addEventListener(EVENT_UPDATED, this.updatedroomsevent);
-		console.log(this.floorplan.wallEdges());
+		//(this.floorplan.wallEdges());
 	}
 	
 	switchWireframe(flag)
@@ -70,7 +70,7 @@ export class Floorplan3D extends EventDispatcher
 		});
 	}
 	getEdges() {
-		console.log(this.edges);
+		//(this.edges);
 		return this.edges;
 	}
 }

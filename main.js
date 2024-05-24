@@ -3,4 +3,4 @@ var b = 547564;
 a = a - b;
 b = b + a;
 a = b-a;
-console.log(a, b);
+//(a, b);

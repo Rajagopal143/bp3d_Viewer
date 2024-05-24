@@ -444,7 +444,7 @@ function OrbitControls( object, domElement )
 
 	function handleMouseDownRotate( event ) {
 
-		// console.log( 'handleMouseDownRotate' );
+		// //( 'handleMouseDownRotate' );
 
 		rotateStart.set( event.clientX, event.clientY );
 
@@ -452,7 +452,7 @@ function OrbitControls( object, domElement )
 
 	function handleMouseDownDolly( event ) {
 
-		// console.log( 'handleMouseDownDolly' );
+		// //( 'handleMouseDownDolly' );
 
 		dollyStart.set( event.clientX, event.clientY );
 
@@ -460,7 +460,7 @@ function OrbitControls( object, domElement )
 
 	function handleMouseDownPan( event ) {
 
-		// console.log( 'handleMouseDownPan' );
+		// //( 'handleMouseDownPan' );
 
 		panStart.set( event.clientX, event.clientY );
 
@@ -468,7 +468,7 @@ function OrbitControls( object, domElement )
 
 	function handleMouseMoveRotate( event ) {
 
-		// console.log( 'handleMouseMoveRotate' );
+		// //( 'handleMouseMoveRotate' );
 
 		rotateEnd.set( event.clientX, event.clientY );
 
@@ -489,7 +489,7 @@ function OrbitControls( object, domElement )
 
 	function handleMouseMoveDolly( event ) {
 
-		// console.log( 'handleMouseMoveDolly' );
+		// //( 'handleMouseMoveDolly' );
 
 		dollyEnd.set( event.clientX, event.clientY );
 
@@ -513,7 +513,7 @@ function OrbitControls( object, domElement )
 
 	function handleMouseMovePan( event ) {
 
-		// console.log( 'handleMouseMovePan' );
+		// //( 'handleMouseMovePan' );
 
 		panEnd.set( event.clientX, event.clientY );
 
@@ -529,13 +529,13 @@ function OrbitControls( object, domElement )
 
 	function handleMouseUp( /* event */ ) {
 
-		// console.log( 'handleMouseUp' );
+		// //( 'handleMouseUp' );
 
 	}
 
 	function handleMouseWheel( event ) {
 
-		// console.log( 'handleMouseWheel' );
+		// //( 'handleMouseWheel' );
 
 		if ( event.deltaY < 0 ) {
 
@@ -553,7 +553,7 @@ function OrbitControls( object, domElement )
 
 	function handleKeyDown( event ) {
 
-		// console.log( 'handleKeyDown' );
+		// //( 'handleKeyDown' );
 
 		switch ( event.keyCode ) {
 
@@ -583,7 +583,7 @@ function OrbitControls( object, domElement )
 
 	function handleTouchStartRotate( event ) {
 
-		// console.log( 'handleTouchStartRotate' );
+		// //( 'handleTouchStartRotate' );
 
 		rotateStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
 
@@ -591,7 +591,7 @@ function OrbitControls( object, domElement )
 
 	function handleTouchStartDollyPan( event ) {
 
-		// console.log( 'handleTouchStartDollyPan' );
+		// //( 'handleTouchStartDollyPan' );
 
 		if ( scope.enableZoom ) {
 
@@ -617,7 +617,7 @@ function OrbitControls( object, domElement )
 
 	function handleTouchMoveRotate( event ) {
 
-		// console.log( 'handleTouchMoveRotate' );
+		// //( 'handleTouchMoveRotate' );
 
 		rotateEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
 
@@ -638,7 +638,7 @@ function OrbitControls( object, domElement )
 
 	function handleTouchMoveDollyPan( event ) {
 
-		// console.log( 'handleTouchMoveDollyPan' );
+		// //( 'handleTouchMoveDollyPan' );
 
 		if ( scope.enableZoom ) {
 
@@ -678,7 +678,7 @@ function OrbitControls( object, domElement )
 
 	function handleTouchEnd( /* event */ ) {
 
-		// console.log( 'handleTouchEnd' );
+		// //( 'handleTouchEnd' );
 
 	}
 

@@ -431,7 +431,7 @@ export class Floorplanner2D extends EventDispatcher
 //		else if (this.mouseDown && (this.activeCorner==null) && (this.activeWall==null) && (this._clickedWallControl == null))
 //		else if (this.mouseDown && (!this._clickedCorner) && (!this._clickedWall) && (this._clickedWallControl == null))
 		{
-//			console.log('PANNING :: ', this.activeCorner, this.activeWall);
+//			//('PANNING :: ', this.activeCorner, this.activeWall);
 			this.originX += (this.lastX - this.rawMouseX);
 			this.originY += (this.lastY - this.rawMouseY);
 			this.unScaledOriginX += (this.lastX - this.rawMouseX) * (1 / Configuration.getNumericValue('scale'));

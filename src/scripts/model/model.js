@@ -38,8 +38,9 @@ export class Model extends EventDispatcher
 		// TODO: a much better serialization format.
 		this.dispatchEvent({type: EVENT_LOADING, item: this});
 		//      this.roomLoadingCallbacks.fire();
-
+          
 		var data = JSON.parse(json);
+		//("data",data);
 		this.newRoom(data.floorplan, data.items);
 
 		this.dispatchEvent({type: EVENT_LOADED, item: this});
@@ -101,6 +102,7 @@ export class Model extends EventDispatcher
 	newRoom(floorplan, items)
 	{
 		this.scene.clearItems();
+		//(floorplan);
 		this.floorplan.loadFloorplan(floorplan);
 		items.forEach((item) => {
 			var matColors = (item.material_colors) ? item.material_colors : [];

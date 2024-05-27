@@ -52,6 +52,11 @@
 					title="Draw New Walls">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>
+				<select name="wallthickness" id="wallthickness">
+					<option value="11.5">11.5</option>
+					<option value="15">15</option>
+					<option value="23">23</option>
+				</select>
 				<button id="delete" class="btn btn-sm btn-default"
 					title="Delete Walls">
 					<span class="glyphicon glyphicon-remove"></span>
@@ -257,9 +262,17 @@
 		</select><br>
 		<label for="walllength">Wall Length</label>
 		<input type="text" placeholder="Wall length" id="wallLength" >
-		<label for="wallthikness">Wall Thickness</label>
-		<input type="text"  id="wallthikness" >
 	</div>
 	
+	<div id="carbonsheet">
+		<label for="ImageWidth">Image Width</label>
+			<input type="range" id="ImageWidth" min="0" max="300" >
+			<span class="widthValue">0</span>
+			<label for="Imageheight">Image height</label>
+			<input type="range" id="Imageheight" min="0" max="300" >
+			<span class="HeightValue">0</span>
+			<label for="maintain">Maintain:</label>
+			<input type="checkbox" id="maintain">
+	</div>
 </body>
 </html>

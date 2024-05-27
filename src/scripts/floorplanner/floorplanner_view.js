@@ -506,14 +506,15 @@ export class FloorplannerView2D {
       color = wallColorSelected;
     }
     var isCurved = wall.wallType == WallTypes.CURVED;
+    
     if (wall.wallType == WallTypes.CURVED && selected) {
       			// this.drawCircle(this.viewmodel.convertX(wall.start.x), this.viewmodel.convertY(wall.start.y), 10, '#AAAAAA');
       			// this.drawCircle(this.viewmodel.convertX(wall.end.x), this.viewmodel.convertY(wall.end.y), 10, '#000000');
 
       			// this.drawCircle(this.viewmodel.convertX(wall.a.x), this.viewmodel.convertY(wall.a.y), 10, '#ff8cd3');
       			// this.drawCircle(this.viewmodel.convertX(wall.b.x), this.viewmodel.convertY(wall.b.y), 10, '#eacd28');
-
-      this.drawLine(
+            
+            this.drawLine(
         this.viewmodel.convertX(wall.getStartX()),
         this.viewmodel.convertY(wall.getStartY()),
         this.viewmodel.convertX(wall.a.x),
@@ -578,6 +579,9 @@ export class FloorplannerView2D {
     }
 
     if (wall.wallType == WallTypes.STRAIGHT) {
+      // const dx = wall.getEndX() - wall.getStartX();
+      // const dy = wall.getEndY() - wall.getStartY();
+      // console.log(Math.sqrt(dx * dx + dy * dy));
       this.drawLine(
         this.viewmodel.convertX(wall.getStartX()),
         this.viewmodel.convertY(wall.getStartY()),

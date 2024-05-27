@@ -91,6 +91,12 @@ var ViewerFloorplanner = function (blueprint3d) {
     $(remove).click(function () {
       scope.floorplanner.setMode(BP3DJS.floorplannerModes.DELETE);
     });
+
+    $("#wallthickness").on('change', function () {
+      const wallthickness = $(this).val();
+      BP3DJS.Configuration.setValue("wallThickness",wallthickness);
+    })
+
   }
 
   this.updateFloorplanView = function () {
@@ -351,7 +357,6 @@ var RoomProperties = function (room, gui) {
   this.name = room.name;
   this.f = gui.addFolder("CurrentRoom");
   this.data = {};
-
   //   $("#mainDetails")
   //     .append(`
   //
@@ -833,23 +838,31 @@ function addBlueprintListeners(blueprint3d) {
       $(".container").hide();
       $("#getkeyValue").hide();
       $(".wallDetails").hide();
+  $("#carbonsheet").hide();
+
       currentFolder = CornerProperties(o.item, selectionsFolder); //getCornerPropertiesFolder(gui, o.item);
       //(o);
     } else if (o.type == BP3DJS.EVENT_ROOM_2D_CLICKED) {
       $(".container").show();
       $(".wallDetails").hide();
+  $("#carbonsheet").hide();
+
       //(o);
       currentFolder = RoomProperties(o.item, selectionsFolder); //getRoomPropertiesFolder(gui, );
     } else if (o.type == BP3DJS.EVENT_WALL_2D_CLICKED) {
       $(".wallDetails").show();
       $(".container").hide();
       $("#getkeyValue").hide();
+  $("#carbonsheet").hide();
+
 
       currentFolder = Wall2DProperties(o.item, selectionsFolder);
     } else {
       $(".container").hide();
       $("#getkeyValue").hide();
       $(".wallDetails").hide();
+  $("#carbonsheet").show();
+
     }
     if (currentFolder) {
       currentFolder.open();
@@ -1069,6 +1082,32 @@ function getGlobalPropertiesFolder(gui, global, floorplanner) {
 }
 
 function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
+  $("#carbonsheet").show();
+  console.log(carbonsheet);
+  $(".widthValue").text(carbonsheet.width);
+  $("#ImageWidth").on("input", function () {
+    $(".widthValue").text(carbonsheet.width);
+    carbonsheet.width = Number($("#ImageWidth").val());
+  });
+  $(".HeightValue").text(carbonsheet.height);
+  $("#Imageheight").on("input", function () {
+    $(".HeightValue").text(carbonsheet.height);
+    carbonsheet.height = Number($("#Imageheight").val());
+  });
+  if (carbonsheet.maintainProportion) {
+    $("#maintain").attr("checked", "checked");
+  } else {
+    $("#maintain").attr("checked", "unchecked");
+  }
+  $('#maintain').on('change', function () {
+    if ($(this).is(":checked")) {
+      carbonsheet.maintainProportion = false;
+      $("#textInput").prop("disabled", false);
+    } else {
+      carbonsheet.maintainProportion = true;
+      $("#textInput").prop("disabled", true);
+    }
+  })
   var f = gui.addFolder("Carbon Sheet");
   var url = f.add(carbonsheet, "url").name("Url");
   var width = f

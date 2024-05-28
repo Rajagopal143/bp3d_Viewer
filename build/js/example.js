@@ -497,6 +497,10 @@ var ViewerFloorplanner = function(blueprint3d) {
     $(remove).click(function(){
       scope.floorplanner.setMode(BP3DJS.floorplannerModes.DELETE);
     });
+
+    $(doors).click(function () {
+      scope.floorplanner.setMode(BP3DJS.floorplannerModes.DOOR);
+    });
   }
 
   this.updateFloorplanView = function() {

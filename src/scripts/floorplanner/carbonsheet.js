@@ -36,7 +36,7 @@ export class CarbonSheet extends EventDispatcher {
     this._width = this._height = 1.0;
 
     this._drawWidthPixels = this._drawHeightPixels = 1.0;
-    this._scaleX = this._scaleY = 1.0;
+    this._scaleX = this._scaleY = 5.0;
     this._maintainProportion = true;
     this._widthByHeightRatio = 1.0;
   }
@@ -120,6 +120,9 @@ export class CarbonSheet extends EventDispatcher {
       scope._loaded = false;
       scope._url = "";
     };
+  $("#ImageWidth").val(Dimensioning.cmFromMeasureRaw(scope._rawWidthPixels));
+  $("#Imageheight").val(Dimensioning.cmFromMeasureRaw(scope._rawHeightPixels));
+
     this._image.src = this._url;
   }
 
@@ -195,7 +198,6 @@ export class CarbonSheet extends EventDispatcher {
       this._height = this._width / this._widthByHeightRatio;
       this._heightPixels = this._height * pixelsPerCm;
     }
-
     this._calibrate();
     this._updated();
   }
@@ -207,12 +209,10 @@ export class CarbonSheet extends EventDispatcher {
   set height(val) {
     this._height = Dimensioning.cmFromMeasureRaw(val);
     this._heightPixels = this._height * pixelsPerCm;
-
     if (this._maintainProportion) {
       this._width = this._height * this._widthByHeightRatio;
       this._widthPixels = this._width * pixelsPerCm;
     }
-
     this._calibrate();
     this._updated();
   }

@@ -15,54 +15,46 @@ div {
   padding: 0;
 }
 
-.ui-toolip
-{
-	width: auto;
-	height: auto;
+.ui-toolip {
+  width: auto;
+  height: auto;
 }
-.graphUpload{
+.graphUpload {
   width: 13px;
-
 }
-#interfaces, #interface-controls
-{
-	position: absolute; 
-
+#interfaces,
+#interface-controls {
+  position: absolute;
 }
 
-#interfaces
-{
-	z-index: 0;
+#interfaces {
+  z-index: 0;
 }
 
-#interface-controls
-{
-	margin: 0 auto;
-	width: 100%;
-	text-align: center;
-	bottom: 10px;
-	z-index: 100;
+#interface-controls {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  bottom: 10px;
+  z-index: 100;
 }
-#camera-controls
-{
-	float: left;
-
+#camera-controls {
+  float: left;
 }
 
-#floorplanner, #viewer
-{  
+#floorplanner,
+#viewer {
   position: absolute;
   width: 100vw;
-  height:100vh;
+  height: 100vh;
 }
 
-#floorplanner-controls 
-{
+#floorplanner-controls {
   position: absolute;
   left: 0;
   top: 0;
   margin: 20px 0;
-  padding: 0 20px; 
+  padding: 0 20px;
   width: 100%;
 }
 
@@ -70,14 +62,13 @@ div {
   position: absolute;
   top: 20px;
   left: 20px;
-  padding: 0;  
+  padding: 0;
 }
 
-#walltextures
-{
-	position: absolute;
-	right: 100px;
-	top: 100px;
+#walltextures {
+  position: absolute;
+  right: 100px;
+  top: 100px;
 }
 
 .btn-file {
@@ -87,7 +78,7 @@ div {
   overflow: hidden;
 }
 
-.btn-file input[type=file] {
+.btn-file input[type="file"] {
   position: absolute;
   top: 0;
   right: 0;
@@ -99,18 +90,16 @@ div {
   display: block;
 }
 
-.btn-hint 
-{
+.btn-hint {
   position: absolute;
   left: 20px;
   bottom: 20px;
-  background-color: rgba(0, 0, 0, 0.50);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #ffffff;
   padding: 5px 10px;
   z-index: 10;
   display: none;
 }
-
 
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
@@ -119,49 +108,42 @@ div {
   background-color: #428bca;
 }
 
-.inventory-content
-{
-	max-height: 500px;
-	overflow-y: scroll;
+.inventory-content {
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 .tooltip-inner {
-    white-space:pre-wrap;
+  white-space: pre-wrap;
 }
 
-.dg select
-{
-	color: #000000;
+.dg select {
+  color: #000000;
 }
 
 .roomDetails {
-position: absolute;
-top: 20px;
-right: 20px;
-z-index: 100;
-background: white;
-padding: 20px;
-text-shadow: none;
-user-select: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: white;
+  padding: 20px;
+  text-shadow: none;
+  user-select: none;
 }
-
-
-
-
-
 
 /* custom-dat-gui.css */
 
 /* General styles */
 .dg.main {
-    background: #333 !important;  /* Dark background */
-    border: 1px solid #555 !important; /* Border color */
-    transition: all 0.3s ease; /* Smooth transition for GUI */
+  background: #333 !important; /* Dark background */
+  border: 1px solid #555 !important; /* Border color */
+  transition: all 0.3s ease; /* Smooth transition for GUI */
 }
 
 .dg.main .close-button {
-    background: #555 !important; /* Close button background */
-    color: #fff !important; /* Close button text color */
+  background: #555 !important; /* Close button background */
+  color: #fff !important; /* Close button text color */
 }
 
 /* Control row styles */
@@ -169,119 +151,118 @@ user-select: none;
 .dg.main .cr.function,
 .dg.main .cr.number,
 .dg.main .cr.string {
-    background: #444 !important; /* Control row background */
-    color: #fff !important; /* Control row text color */
-    transition: all 0.3s ease; /* Smooth transition for control rows */
+  background: #444 !important; /* Control row background */
+  color: #fff !important; /* Control row text color */
+  transition: all 0.3s ease; /* Smooth transition for control rows */
 }
 
 /* Input box styles */
 .dg.main .cr input[type="text"],
 .dg.main .cr select {
-    background: #555 !important; /* Input background */
-    color: #fff !important; /* Input text color */
-    font-size: 14px !important; /* Larger font size */
-    border: 1px solid #666 !important; /* Input border */
-    border-radius: 4px !important; /* Rounded corners */
-    width: 100px !important; /* Increased width */
-    transition: all 0.3s ease; /* Smooth transition for inputs */
+  background: #555 !important; /* Input background */
+  color: #fff !important; /* Input text color */
+  font-size: 14px !important; /* Larger font size */
+  border: 1px solid #666 !important; /* Input border */
+  border-radius: 4px !important; /* Rounded corners */
+  width: 100px !important; /* Increased width */
+  transition: all 0.3s ease; /* Smooth transition for inputs */
 }
 
 /* Hover effect for inputs */
 .dg.main .cr input[type="text"]:hover,
 .dg.main .cr select:hover {
-    background: #db2e2e !important; /* Hover background */
-    border-color: #777 !important; /* Hover border color */
+  background: #db2e2e !important; /* Hover background */
+  border-color: #777 !important; /* Hover border color */
 }
 
 /* Number input styles */
 .dg.main .cr.number input[type="text"] {
-    width: 60px !important; /* Specific width for number inputs */
-    height: 20px;
+  width: 60px !important; /* Specific width for number inputs */
+  height: 20px;
 }
 
 /* Control label styles */
 .dg.main .cr label {
-    font-size: 14px !important; /* Larger font size for labels */
-    color: #ddd !important; /* Lighter color for labels */
-    transition: all 0.3s ease; /* Smooth transition for labels */
+  font-size: 14px !important; /* Larger font size for labels */
+  color: #ddd !important; /* Lighter color for labels */
+  transition: all 0.3s ease; /* Smooth transition for labels */
 }
 
 /* Slider styles */
 .dg.main .slider {
-    background: #555 !important; /* Slider background */
-    border-radius: 5px !important; /* Rounded slider */
+  background: #555 !important; /* Slider background */
+  border-radius: 5px !important; /* Rounded slider */
 }
 
 /* Slider handle styles */
 .dg.main .slider .handle {
-    background: #fff !important; /* Handle background */
-    width: 10px !important; /* Handle width */
-    height: 10px !important; /* Handle height */
-    border-radius: 50% !important; /* Rounded handle */
+  background: #fff !important; /* Handle background */
+  width: 10px !important; /* Handle width */
+  height: 10px !important; /* Handle height */
+  border-radius: 50% !important; /* Rounded handle */
 }
 
-
-.container,.wallDetails {
-    max-width: 350px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 50;
-    display: none;
+.container,
+.wallDetails {
+  max-width: 350px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+  display: none;
 }
 
 h1 {
-    text-align: center;
-    color: #333;
+  text-align: center;
+  color: #333;
 }
 
 .form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 label {
-    flex: 1;
-    margin-right: 10px;
-    color: #333;
+  flex: 1;
+  margin-right: 10px;
+  color: #333;
 }
 
 input[type="text"] {
-    flex: 2;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  flex: 2;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
-    display: inline-block;
-    padding: 10px 15px;
-    font-size: 16px;
-    color: white;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 button[type="button"] {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 
 button[type="button"]:hover,
 button[type="submit"]:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
-
-#getkeyValue{
+#getkeyValue {
   width: 250px;
   height: 200px;
   padding: 10px;
@@ -289,11 +270,30 @@ button[type="submit"]:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   background: white;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  display: none;
+}
+
+#wallthickness {
+  padding: 5px 0px;
+  margin-top: 10px;
+}
+
+#carbonsheet{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   display: none;
 }

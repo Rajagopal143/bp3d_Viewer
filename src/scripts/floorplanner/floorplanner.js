@@ -41,9 +41,9 @@ export class Floorplanner2D extends EventDispatcher
 		/** */
 		this._clickedRoom = null;
 		/** */
-		this.originX = 0;
+		this.originX = 5;
 		/** */
-		this.originY = 0;
+		this.originY = 10;
 		/** */
 		this.unScaledOriginX = 0;
 		/** */

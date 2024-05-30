@@ -18,6 +18,7 @@ export const floorplannerModes = {
   MOVE: 0,
   DRAW: 1,
   DELETE: 2,
+  DOOR: 3
 };
 
 // grid parameters

@@ -291,6 +291,11 @@ export class Floorplanner2D extends EventDispatcher
 		this.mouseX = Dimensioning.pixelToCm((event.clientX - this.canvasElement.offset().left)) + Dimensioning.pixelToCm(this.originX);
 		this.mouseY = Dimensioning.pixelToCm((event.clientY - this.canvasElement.offset().top)) + Dimensioning.pixelToCm(this.originY);		
 		
+		if (this.mode == floorplannerModes.DOOR){
+			var selectedWall = this.floorplan.overlappedWall(this.mouseX, this.mouseY);
+
+			return;
+		}
 //		this.mouseX = (event.clientX - this.canvasElement.offset().left)  * this.cmPerPixel + this.originX * this.cmPerPixel;
 //		this.mouseY = (event.clientY - this.canvasElement.offset().top) * this.cmPerPixel + this.originY * this.cmPerPixel;
 		
@@ -303,6 +308,7 @@ export class Floorplanner2D extends EventDispatcher
 				return;
 			}
 		}
+		
 		
 		
 		var mDownCorner = this.floorplan.overlappedCorner(this.mouseX, this.mouseY);

@@ -61,7 +61,10 @@ var ViewerFloorplanner = function (blueprint3d) {
       scope.floorplanner.setMode(BP3DJS.floorplannerModes.DELETE);
     });
 
-    $("#wallthickness").on("change", function () {
+     $(doors).click(function () {
+       scope.floorplanner.setMode(BP3DJS.floorplannerModes.DOOR);
+     });
+    $("#wallthickness").on('change', function () {
       const wallthickness = $(this).val();
       BP3DJS.Configuration.setValue("wallThickness", wallthickness);
     });

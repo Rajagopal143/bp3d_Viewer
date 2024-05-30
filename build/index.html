@@ -26,6 +26,9 @@
 		<div id="floorplanner" class='front'>
 			<div id="floorplanner-controls">
 				<a 
+					class="btn btn-sm btn-default btn-file "id='updateVariable'
+					 title=""><input type="file"  id="updatejson"> U</a>
+				<a 
 					class="btn btn-default btn-sm "id='uploadToGraph'
 					 title=""><img class="graphUpload" src="./rooms/thumbnails/graph-svgrepo-com.svg" alt="" title="Upload To Graph"></a>
 					<a
@@ -273,6 +276,22 @@
 			<span class="HeightValue">0</span>
 			<label for="maintain">Maintain:</label>
 			<input type="checkbox" id="maintain">
+	</div>
+	<div id="threeDwallControls">
+        <label for="wall">Wall</label>
+		<select name="wall" id="wall">
+			<option value="0">Grey</option>
+			<option value="1">Yellow</option>
+			<option value="2">Checker</option>
+			<option value="3">Marble</option>
+			<option value="4">Bricks</option>
+		</select>
+		<label for="floor">Floor</label>
+		<select name="floor" id="floor">
+			<option value="5">Fine wood</option>
+			<option value="6">Hard wood</option>
+		</select>
+		<button id="submit2dControles">submit</button>
 	</div>
 </body>
 </html>

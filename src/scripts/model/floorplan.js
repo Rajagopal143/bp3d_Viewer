@@ -616,7 +616,7 @@ export class Floorplan extends EventDispatcher {
    * @emits {EVENT_LOADED}
    */
   loadFloorplan(floorplan) {
-    //(floorplan);
+    console.log(floorplan);
     this.reset();
     var corners = {};
     if (

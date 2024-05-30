@@ -284,14 +284,14 @@ button[type="submit"]:hover {
   margin-top: 10px;
 }
 
-#carbonsheet{
+#carbonsheet ,#threeDwallControls{
   width: 200px;
   height: 200px;
   position: absolute;
   bottom: 20px;
   right: 20px;
   background: white;
-  z-index: 50;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   padding: 20px;

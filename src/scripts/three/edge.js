@@ -254,11 +254,12 @@ export class Edge extends EventDispatcher
 		this.basePlanes.forEach(plane => {
 			vertices.push(plane.geometry.vertices);
 		})
-		return vertices;
+		return vertices;	
 	}
 	// start, end have x and y attributes (i.e. corners)
 	makeWall(start, end, transform, invTransform, material)
 	{
+		this.getBottomPhase();
 		
 		var v1 = this.toVec3(start);
 		var v2 = this.toVec3(end);
@@ -312,7 +313,6 @@ export class Edge extends EventDispatcher
 		geometry.faceVertexUvs[1] = geometry.faceVertexUvs[0];
 		geometry.computeFaceNormals();
 		geometry.computeVertexNormals();
-
 		function vertexToUv(vertex)
 		{
 			var x = Utils.distance(new Vector2(v1.x, v1.z), new Vector2(vertex.x, vertex.z)) / totalDistance;

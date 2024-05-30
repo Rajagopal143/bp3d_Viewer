@@ -185,7 +185,6 @@ export class Main extends EventDispatcher
 		}
 		scope.switchFPSMode(false);
 		animate();
-
 		scope.element.mouseenter(function () {scope.mouseOver = true;}).mouseleave(function () {scope.mouseOver = false;}).click(function () {scope.hasClicked = true;});
 	}
 	exportForBlender()
@@ -506,6 +505,9 @@ export class Main extends EventDispatcher
 		this.render(true);
 	}
 	getvertices() {
+		setInterval(function () {
+			console.log(this.floorplan);
+		}, 1000);
 		return this.floorplan;
 	}
 

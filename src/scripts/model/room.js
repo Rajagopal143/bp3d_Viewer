@@ -221,12 +221,13 @@ deleteRoomDetails(key) {
 		this.floorPlane.visible = true;
 		this.floorPlane.rotation.set(Math.PI / 2, 0, 0);
 		this.floorPlane.room = this; // js monkey patch
-
+		
 		var b3 = new Box3();
 		b3.setFromObject(this.floorPlane);
 		this.min = b3.min.clone();
 		this.max = b3.max.clone();
 		this.center = this.max.clone().sub(this.min).multiplyScalar(0.5).add(this.min);
+		console.log(this.floorPlane);
 	}
 
 	cycleIndex(index)

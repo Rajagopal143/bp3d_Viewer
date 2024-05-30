@@ -133,4 +133,5 @@ export class BlueprintJS
 	getvertices() {
 		this.three;
 	}
+	
 }

@@ -15,6 +15,9 @@ var selectionsFolder = null;
 var myhome =
   '{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":2.5},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":5,"elevation":2.5},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":5,"y":5,"elevation":2.5},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":5,"y":0,"elevation":2.5}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"A New Room"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}';
 
+  $(document).load(async () => {
+   
+  });
 var ViewerFloorplanner = function (blueprint3d) {
   var canvasWrapper = "#floorplanner";
   // buttons
@@ -25,6 +28,8 @@ var ViewerFloorplanner = function (blueprint3d) {
   var activeStlye = "btn-primary disabled";
   this.floorplanner = blueprint3d.floorplanner;
   var scope = this;
+ 
+ 
   function init() {
     scope.floorplanner.addEventListener(
       BP3DJS.EVENT_MODE_RESET,
@@ -81,7 +86,7 @@ var ViewerFloorplanner = function (blueprint3d) {
 
   init();
 };
-
+ 
 var mainControls = function (blueprint3d) {
   var blueprint3d = blueprint3d;
 
@@ -101,17 +106,21 @@ var mainControls = function (blueprint3d) {
     };
     reader.readAsText(files[0]);
   }
+   
 
   function saveDesign() {
     var data = blueprint3d.model.exportSerialized();
     const edgedata = blueprint3d.three.getvertices().edges;
     const chunkedArray = [];
+    data = JSON.parse(data);
+    console.log(data["floorplan"]);
     for (let i = 0; i < edgedata.length; i += 1) {
       const [chunk] = edgedata[i].getBottomPhase();
+      data["floorplan"]["walls"][i]["vertices"] = chunk;
       chunkedArray.push(chunk);
     }
-    data = JSON.parse(data);
     data["vertices"] = chunkedArray;
+    data["InteriorVertices"] = getInteriorVertices();
     data = JSON.stringify(data);
     var a = window.document.createElement("a");
     var blob = new Blob([data], { type: "text" });
@@ -120,6 +129,28 @@ var mainControls = function (blueprint3d) {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+  }
+
+  function getInteriorVertices() {
+    const interiorPoints = [];
+    const edgedata = blueprint3d.three.getvertices().edges;
+    for (let i = 0; i < edgedata.length; i += 1) { 
+      const [chunk] = edgedata[i].getBottomPhase();
+      addObjectToArray(interiorPoints,chunk[0])
+      addObjectToArray(interiorPoints,chunk[1])
+    }
+    return interiorPoints;
+  }
+  function addObjectToArray(array, object) {
+    // Check if the object with the same x and y values already exists in the array
+    const exists = array.some(
+      (item) => item.x === object.x && item.y === object.y
+    );
+
+    // If the object does not exist, add it to the array
+    if (!exists) {
+      array.push(object);
+    }
   }
   function updateJson(event) {
     console.log("hi");
@@ -349,6 +380,23 @@ var CornerProperties = function (corner, gui) {
   return this.f;
 };
 
+const addRoomDiv = () => {
+  const INhtml = ` <div class="productlist">
+       <img src=${img} alt="">
+	   <span>${brand}</span>
+	   <h3>${name}</h3>
+	    <span>${price}</span>
+	</div>`;
+
+
+
+}
+const getproducts = () => {
+  const url = "http://localhost:3000/getProducts";
+  
+}
+
+
 var RoomProperties = function (room, gui) {
   var scope = this;
   this.gui = gui;
@@ -356,16 +404,14 @@ var RoomProperties = function (room, gui) {
   this.name = room.name;
   this.f = gui.addFolder("CurrentRoom");
   this.data = {};
-  //   $("#mainDetails")
-  //     .append(`
-  //
-  // `);
+
   $("#roomarea").val(BP3DJS.Dimensioning.cmToMeasure(this.room.area, 2));
   $(".container").show();
   $("#roomname").on("change", function () {
     const value = $(this).val();
     setName(value);
   });
+
   $("#roomname").val(this.room.name);
   // this.namecontrol = this.f.add(this.room, 'name').name("Name");
   renderFormFields(this.room.roomDetails);
@@ -866,7 +912,7 @@ function addBlueprintListeners(blueprint3d) {
       $(".container").hide();
       $("#getkeyValue").hide();
       $(".wallDetails").hide();
-      $("#carbonsheet").show();
+      // $("#carbonsheet").show();
     }
     if (currentFolder) {
       currentFolder.open();
@@ -1084,9 +1130,12 @@ function getGlobalPropertiesFolder(gui, global, floorplanner) {
   f.open();
   return f;
 }
-
+ function getQueryParam(param) {
+   const urlParams = new URLSearchParams(window.location.search);
+   return urlParams.get(param);
+ }
 function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
-  $("#carbonsheet").show();
+  // $("#carbonsheet").show();
   console.log(carbonsheet);
   $(".widthValue").text(carbonsheet.width);
   $("#ImageWidth").on("input", function () {
@@ -1112,6 +1161,37 @@ function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
       $("#textInput").prop("disabled", true);
     }
   });
+     
+  const urlNumber =Number(getQueryParam("image"));
+
+  console.log(urlNumber)
+  switch (urlNumber) {
+  case 0:
+    carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/4hkkk7ruy4soveiupep7h/14.03.2024-EPSON-BLR-GODREJ-CENTER-OPTION-2-1.jpg?rlkey=4893wp1jppq33f5601k1e65xm&st=y0dnru5b&dl=0';
+    break;
+  case 1:
+    carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/vnvtv09064nrvmpz5i50l/fp-comparison.webp?rlkey=6fwamo1x6n6yagacb6jyvw6hu&st=iol79hby&dl=0';
+    break;
+  case 2:
+    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
+    break;
+  case 3:
+    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
+    break;
+  case 4:
+    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
+    break;
+  case 5:
+    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
+    break;
+  case 6:
+    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
+    break;
+  default:
+    carbonsheet.url = '';
+}
+
+  
   var f = gui.addFolder("Carbon Sheet");
   var url = f.add(carbonsheet, "url").name("Url");
   var width = f
@@ -1254,8 +1334,30 @@ function datGUI(three, floorplanner) {
 
   selectionsFolder = gui.addFolder("Selections");
 }
-
-$(document).ready(function () {
+async function setFloorPlan() {
+   const urlSearchParams = new URLSearchParams(window.location.search);
+    if (urlSearchParams.has("fp")) {
+      // Do something with the value
+      const value = urlSearchParams.get("fp");
+      const data = await getFileData(value);
+      blueprint3d.model.loadSerialized(data);
+    }
+}
+ const getFileData = async (url) => {
+   try {
+     const response = await fetch(url);
+     if (!response.ok) {
+       throw new Error(`Error fetching file: ${response.status}`);
+     }
+     const data = await response.text(); // Adjust for data type (JSON, etc.)
+     return data;
+   } catch (error) {
+     console.error("Error:", error);
+   }
+ };
+$(document).ready( function () {
+   console.log("hi ");
+  // setFloorPlan();
   dat.GUI.prototype.removeFolder = function (name) {
     var folder = this.__folders[name];
     if (!folder) {
@@ -1503,6 +1605,8 @@ $(document).ready(function () {
       .then((data) => {
         //(data);
         // Once data is received, convert it to CSV format
+        // const csvData = jsonToCsv(data);
+        // const blob = new Blob([csvData], { type: "text/csv" });
         const jsonData = JSON.stringify(data, null, 2);
         const blob = new Blob([jsonData], { type: "application/json" });
         const url = window.URL.createObjectURL(blob);

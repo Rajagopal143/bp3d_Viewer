@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZug-Otx5FIYLv98b4DrULrlXquheZidAwBGjcRryWsWKvC50ctnvgHRYvTV8fBT6nrOIcfrgrli9UoukgsRz1Zv6WfHNZy3UU=w1366-h635-rw-v1",
+		"mapDiffuse" : "SOL_Laminate_1019_1218x198_mm_Laminate_Wood_Floor_-_8_mm.jpg",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

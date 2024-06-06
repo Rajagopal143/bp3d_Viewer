@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZMpCHH2RfnhSg00kjIQfJ3hA8OxMW1thTIwwgFNJWjP0SjwTJBKOH_HLUiYE2Sk99xjY1OY-VPX2O90pcdFnOLmlYyAoRP2zU=w1366-h635",
+		"mapDiffuse" : "5750_GL_Italian_Marble_Brown_8_ft_x_4_ft_Abstract_Gloss_Fi_CeNnM7n.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

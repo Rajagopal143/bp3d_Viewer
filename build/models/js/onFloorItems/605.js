@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihadwECS5QS3JPTSiUmylBra3Dv6jSb3PEf-CCUfo5QQk31u3kzXkVFl8lQXbQkvIV_HjeDG8VEiGqaUgWmESjZ1DnqynjoFVhs=w1366-h635-rw-v1",
+		"mapDiffuse" : "./DT_605_Black_Orchid_500x500_mm_Carpet_Tile.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

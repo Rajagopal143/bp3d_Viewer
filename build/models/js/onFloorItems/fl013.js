@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYIE5oN9pAmdsSLxyaNSj0ozsNLcpUwEQ_gunRhvKALeJpWIMbXoO-31H9ZD7khxvckXPsK6sEXqaqgldoSrD5Hz_Nnc23Qyw=w1366-h635",
+		"mapDiffuse" : "./FL013_Prima_Earthern_Apple_1202x192_mm_Laminate_Wood_Floor_-_8_mm.jpg",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

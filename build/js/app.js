@@ -114,9 +114,10 @@ var mainControls = function (blueprint3d) {
     const chunkedArray = [];
     data = JSON.parse(data);
     console.log(data["floorplan"]);
-    for (let i = 0; i < edgedata.length; i += 1) {
+    for (let i = 0; i < data["floorplan"]["walls"].length; i += 1) {
       const [chunk] = edgedata[i].getBottomPhase();
       data["floorplan"]["walls"][i]["vertices"] = chunk;
+      console.log(data["floorplan"]["walls"][i]);
       chunkedArray.push(chunk);
     }
     data["vertices"] = chunkedArray;

@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihbAgVNZupZ1xX6cOrK0qJimDw7BBJh2iTMjtkYGEPJzIfwyEoSc27E0LqoQW-LH216IMLKkJhqcngeLCD9HKA6VqIoycvCH9g=w1366-h635",
+		"mapDiffuse" : "9139_MG_BianCO_White_Marble_8_ft_x_4_ft_Maxx_Gloss_Marble__G9oWHCu.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

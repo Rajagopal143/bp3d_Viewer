@@ -27,7 +27,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZTL_BY08M6JpvZKpVmAWyGMRHVPJKXmi0r30UkKdIogao0WFLdf1RTUfWrMHSuYpiHyVgL-HLn1f2nAPLE6grUGK6dcmFcUH8=w1366-h635",
+		"mapDiffuse" : "./2913_Aris_Stone_8_ft_x_4_ft_Gloss_Of_Marble_Finish_PVC_Lam_7CaPtvE.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

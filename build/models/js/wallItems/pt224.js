@@ -25,7 +25,7 @@
 		"colorSpecular" : [0.5, 0.5, 0.5],
 		"depthTest" : true,
 		"depthWrite" : true,
-		"mapDiffuse" : "./WHITE_MARBLE-3846_SI_8_ft_x_4_ft_Silk_Tuff_Finish_1mm_Laminate.jpg",
+		"mapDiffuse" : "SD_4018_HG_8_ft_x_4_ft_Superio_Finish_Colour_Core_PVC_Lami_7h5RZ4T.png",
 		"mapDiffuseWrap" : ["repeat", "repeat"],
 		"shading" : "Lambert",
 		"specularCoef" : 50,

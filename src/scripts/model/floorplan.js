@@ -616,7 +616,7 @@ export class Floorplan extends EventDispatcher {
    * @emits {EVENT_LOADED}
    */
   loadFloorplan(floorplan) {
-    console.log(floorplan);
+    // console.log(floorplan);//
     this.reset();
     var corners = {};
     if (
@@ -663,6 +663,7 @@ export class Floorplan extends EventDispatcher {
     if ('newFloorTextures' in floorplan) {
       this.floorTextures = floorplan.newFloorTextures;
     }
+    // console.log(floorplan);
     this.metaroomsdata = floorplan.rooms;
     // //(this.metaroomsdata);
     this.update();
@@ -784,10 +785,13 @@ export class Floorplan extends EventDispatcher {
     });
 
     roomCorners.forEach((corners) => {
+      console.log(this.metaroomsdata);
+      const values = Object.values(this.metaroomsdata);
+      console.log(values);
       var room = new Room(scope, corners);
       // scope.metaroomsdata
       room.updateArea();
-
+      room.name = values.length!=0? values[0].name:'';
       scope.rooms.push(room);
 
       room.addEventListener(EVENT_ROOM_NAME_CHANGED, (e) => {

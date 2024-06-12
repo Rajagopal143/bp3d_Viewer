@@ -12,12 +12,16 @@ var floorPropFolder = null;
 var cameraPropFolder = null;
 var selectionsFolder = null;
 
-var myhome =
-  '{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":2.5},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":5,"elevation":2.5},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":5,"y":5,"elevation":2.5},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":5,"y":0,"elevation":2.5}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"A New Room"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}';
-
-  $(document).load(async () => {
+const RoomName = String(getQueryParam("name"));
+const length = String(getQueryParam("length"));
+const breath = String(getQueryParam("breath"));
+const height = String(getQueryParam("height"));
+console.log(RoomName);
+var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":${height}},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":${length},"elevation":${height}},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":${breath},"y":${length},"elevation":${height}},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":${breath},"y":0,"elevation":${height}}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"${RoomName}"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}`;
+console.log(myhome)
+  // $(document).load(async () => {
    
-  });
+  // });
 var ViewerFloorplanner = function (blueprint3d) {
   var canvasWrapper = "#floorplanner";
   // buttons
@@ -170,17 +174,15 @@ var mainControls = function (blueprint3d) {
     } else {
     }
   }
-  function setMyHome(data) {
+  function setMyHome(data={}) {
     const myroom = JSON.parse(myhome);
     const floorplan = myroom.floorplan;
     const firstKey = Object.keys(floorplan.rooms)[0];
-    floorplan.rooms[firstKey].name = data[0].name;
+      floorplan.rooms[firstKey].name = data[0].name;
+    floorplan.rooms[firstKey].name = RoomName;
     myroom.floorplan = floorplan;
     myhome = JSON.stringify(myroom);
-    // console.log(home);
-    console.log(myhome);
     blueprint3d.model.loadSerialized(myhome);
-    console.log(data);
   }
 
   function saveGLTF() {
@@ -457,6 +459,7 @@ var RoomProperties = function (room, gui) {
   }
 
   function removeData(data) {
+    
     const key = $(data).data("key");
     this.room.deleteRoomDetails(key);
     renderFormFields(this.room.roomDetails);
@@ -531,6 +534,7 @@ var RoomProperties = function (room, gui) {
   //   .add(addKeyValueButton, "addKeyValue")
   //   .name("Add Key-Value");
 
+  
   return this.f;
 };
 
@@ -1173,21 +1177,6 @@ function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
   case 1:
     carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/vnvtv09064nrvmpz5i50l/fp-comparison.webp?rlkey=6fwamo1x6n6yagacb6jyvw6hu&st=iol79hby&dl=0';
     break;
-  case 2:
-    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
-    break;
-  case 3:
-    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
-    break;
-  case 4:
-    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
-    break;
-  case 5:
-    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
-    break;
-  case 6:
-    carbonsheet.url = 'https://dl.dropboxusercontent.com/';
-    break;
   default:
     carbonsheet.url = '';
 }
@@ -1385,6 +1374,7 @@ $(document).ready( function () {
   });
 
   mainControls(blueprint3d);
+  console.log(myhome)
   blueprint3d.model.loadSerialized(myhome);
 
   addBlueprintListeners(blueprint3d);

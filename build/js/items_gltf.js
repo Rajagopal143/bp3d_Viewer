@@ -1001,7 +1001,9 @@ $(document).ready(function() {
       type: "2",
       format: "gltf",
     },
-  ];
+	];
+	
+	
 var modelTypesNum = ["0", "1", "2", "3", "4", "7", "8", "9"];
 
 var modelTypesIds = ["item-items", "floor-items", "wall-items", "in-wall-items", "roof-items", "in-wall-floor-items", "on-floor-items", "wall-floor-items"];

@@ -24,16 +24,18 @@ console.log(myhome)
 const  fetchTextDataFromDropbox = async ()=> {
   try {
     const response = await fetch(
-      "https://dl.dropboxusercontent.com/scl/fi/c4tdfb7xeeavzrh3ilf2n/design.blueprint3d?rlkey=jxxgsxhzohad36uofu2in4585&st=ysvmu10r&dl=0"
+      "http://localhost:4000/api/bpfile/"
     ); // Replace with your server's URL
     const data = await response.json();
 
+    console.log(data.data);
     if (data.error) {
       console.error("Error fetching text data:", data.error);
       throw new Error(data.error);
     }
 
-    const textData = data;
+    const textData = data.data;
+    myhome = JSON.stringify(data.data);
     console.log("Text data fetched successfully:", textData);
     return textData;
   } catch (error) {
@@ -41,25 +43,17 @@ const  fetchTextDataFromDropbox = async ()=> {
     throw error;
   }
 }
-$(document).ready(function () { 
-  fetchTextDataFromDropbox()
-    .then((data) => {
-      // Process the fetched text data here
-      blueprint3d.model.loadSerialized(JSON.stringify(data));
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+// $(document).ready(function () { 
+//   fetchTextDataFromDropbox()
+//     .then((data) => {
+//       // Process the fetched text data here
+//       blueprint3d.model.loadSerialized(JSON.stringify(data));
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
 
-})
-const url = "http://23.20.122.223:4000/api/bpfile/modify";
-const requestOptions = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: myhome, // Assuming myhome is your data object
-};
+// })
 
 // fetch(url, requestOptions)
 //   .then((response) => {

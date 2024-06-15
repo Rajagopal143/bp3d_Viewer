@@ -18,9 +18,64 @@ const breath = String(getQueryParam("breath"));
 const height = String(getQueryParam("height"));
 console.log(RoomName);
 var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":${height}},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":${length},"elevation":${height}},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":${breath},"y":${length},"elevation":${height}},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":${breath},"y":0,"elevation":${height}}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"${RoomName}"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}`;
+// console.log(myhome)
+// $(document).load(async () => {
 console.log(myhome)
-  // $(document).load(async () => {
-   
+const  fetchTextDataFromDropbox = async ()=> {
+  try {
+    const response = await fetch(
+      "https://dl.dropboxusercontent.com/scl/fi/c4tdfb7xeeavzrh3ilf2n/design.blueprint3d?rlkey=jxxgsxhzohad36uofu2in4585&st=ysvmu10r&dl=0"
+    ); // Replace with your server's URL
+    const data = await response.json();
+
+    if (data.error) {
+      console.error("Error fetching text data:", data.error);
+      throw new Error(data.error);
+    }
+
+    const textData = data;
+    console.log("Text data fetched successfully:", textData);
+    return textData;
+  } catch (error) {
+    console.error("Error fetching text data:", error);
+    throw error;
+  }
+}
+$(document).ready(function () { 
+  fetchTextDataFromDropbox()
+    .then((data) => {
+      // Process the fetched text data here
+      blueprint3d.model.loadSerialized(JSON.stringify(data));
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+})
+const url = "http://23.20.122.223:4000/api/bpfile/modify";
+const requestOptions = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: myhome, // Assuming myhome is your data object
+};
+
+// fetch(url, requestOptions)
+//   .then((response) => {
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+//     return response.json(); // Parse the JSON from the response
+//   })
+//   .then((data) => {
+//     console.log("Success:", data);
+//     // Handle the data or further actions here
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error);
+//     // Handle errors during fetch or HTTP errors
+//   });
   // });
 var ViewerFloorplanner = function (blueprint3d) {
   var canvasWrapper = "#floorplanner";
@@ -35,6 +90,14 @@ var ViewerFloorplanner = function (blueprint3d) {
  
  
   function init() {
+    fetchTextDataFromDropbox()
+      .then((data) => {
+        // Process the fetched text data here
+        blueprint3d.model.loadSerialized(JSON.stringify(data));
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
     scope.floorplanner.addEventListener(
       BP3DJS.EVENT_MODE_RESET,
       function (mode) {
@@ -1374,8 +1437,8 @@ $(document).ready( function () {
   });
 
   mainControls(blueprint3d);
-  console.log(myhome)
-  blueprint3d.model.loadSerialized(myhome);
+ 
+  
 
   addBlueprintListeners(blueprint3d);
   datGUI(blueprint3d.three, blueprint3d.floorplanner);
@@ -1399,6 +1462,7 @@ $(document).ready( function () {
   });
 
   $("#showDesign").click(function () {
+     
     blueprint3d.model.floorplan.update();
     $(".card").flip(true);
     //		gui.closed = false;

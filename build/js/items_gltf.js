@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var items = [
     {
-      name: "Simplecabinet",
+      name: 'Simplecabinet',
       image: "models/thumbnails_new/SimpleCabinet.png",
       model: "models/gltf/SimpleCabinet.glb",
       type: "9",
@@ -288,7 +288,7 @@ $(document).ready(function() {
       format: "gltf",
     },
     {
-      name: "Deskcorner",
+      name: 'Deskcorner',
       image: "models/thumbnails_new/deskCorner.png",
       model: "models/gltf/deskCorner.glb",
       type: "2",
@@ -1003,7 +1003,7 @@ $(document).ready(function() {
     },
 	];
 	
-	
+
 var modelTypesNum = ["0", "1", "2", "3", "4", "7", "8", "9"];
 
 var modelTypesIds = ["item-items", "floor-items", "wall-items", "in-wall-items", "roof-items", "in-wall-floor-items", "on-floor-items", "wall-floor-items"];

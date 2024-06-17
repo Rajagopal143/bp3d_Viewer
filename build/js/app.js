@@ -150,6 +150,7 @@ var ViewerFloorplanner = function (blueprint3d) {
     });
   }
 
+  
   this.updateFloorplanView = function () {
     scope.floorplanner.reset();
   };

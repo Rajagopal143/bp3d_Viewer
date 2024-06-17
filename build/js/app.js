@@ -23,9 +23,7 @@ var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"
 console.log(myhome)
 const  fetchTextDataFromDropbox = async ()=> {
   try {
-    const response = await fetch(
-      "http://localhost:4000/api/bpfile/"
-    ); // Replace with your server's URL
+    const response = await fetch("http://23.20.122.223:4000/api/bpfile/"); // Replace with your server's URL
     const data = await response.json();
 
     console.log(data.data);
@@ -150,7 +148,7 @@ var ViewerFloorplanner = function (blueprint3d) {
     });
   }
 
-  
+
   this.updateFloorplanView = function () {
     scope.floorplanner.reset();
   };

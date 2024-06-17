@@ -136,10 +136,10 @@ var ViewerFloorplanner = function (blueprint3d) {
       BP3DJS.Configuration.setValue("wallThickness", wallthickness);
     });
     $("#generatePlan").click(() => {
-      fetch("http://localhost:4000/api/bpfile/generate")
+      fetch("http://23.20.122.223:4000/api/bpfile/generate")
         .then((response) => response.json()) // Parse response as JSON
         .then((data) => {
-          console.log(data)
+          console.log(data);
           blueprint3d.model.loadSerialized(JSON.stringify(data));
         })
         .catch((error) => {

@@ -308,3 +308,11 @@ button[type="submit"]:hover {
   top: 20px;
   right: 16px;
 }
+
+#generatePlan{
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}

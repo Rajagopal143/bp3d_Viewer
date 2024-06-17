@@ -17,7 +17,7 @@ const length = String(getQueryParam("length"));
 const breath = String(getQueryParam("breath"));
 const height = String(getQueryParam("height"));
 console.log(RoomName);
-var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":${height}},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":${length},"elevation":${height}},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":${breath},"y":${length},"elevation":${height}},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":${breath},"y":0,"elevation":${height}}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"${RoomName}"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}`;
+var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":3},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":5,"elevation":3},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":5,"y":5,"elevation":3},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":5,"y":0,"elevation":3}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"${RoomName}"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}`;
 // console.log(myhome)
 // $(document).load(async () => {
 console.log(myhome)
@@ -34,8 +34,7 @@ const  fetchTextDataFromDropbox = async ()=> {
       throw new Error(data.error);
     }
 
-    const textData = data.data;
-    myhome = JSON.stringify(data.data);
+    const textData = JSON.stringify(data.data);
     console.log("Text data fetched successfully:", textData);
     return textData;
   } catch (error) {
@@ -43,7 +42,8 @@ const  fetchTextDataFromDropbox = async ()=> {
     throw error;
   }
 }
-// $(document).ready(function () { 
+
+// $(document).ready(function () {
 //   fetchTextDataFromDropbox()
 //     .then((data) => {
 //       // Process the fetched text data here
@@ -70,8 +70,9 @@ const  fetchTextDataFromDropbox = async ()=> {
 //     console.error("Error:", error);
 //     // Handle errors during fetch or HTTP errors
 //   });
-  // });
+// });
 var ViewerFloorplanner = function (blueprint3d) {
+  
   var canvasWrapper = "#floorplanner";
   // buttons
   var move = "#move";
@@ -84,10 +85,12 @@ var ViewerFloorplanner = function (blueprint3d) {
  
  
   function init() {
+    
+    
     fetchTextDataFromDropbox()
       .then((data) => {
         // Process the fetched text data here
-        blueprint3d.model.loadSerialized(JSON.stringify(data));
+        blueprint3d.model.loadSerialized(data);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -134,6 +137,17 @@ var ViewerFloorplanner = function (blueprint3d) {
       const wallthickness = $(this).val();
       BP3DJS.Configuration.setValue("wallThickness", wallthickness);
     });
+    $("#generatePlan").click(() => {
+      fetch("http://localhost:4000/api/bpfile/generate")
+        .then((response) => response.json()) // Parse response as JSON
+        .then((data) => {
+          console.log(data)
+          blueprint3d.model.loadSerialized(JSON.stringify(data));
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
   }
 
   this.updateFloorplanView = function () {
@@ -147,7 +161,26 @@ var ViewerFloorplanner = function (blueprint3d) {
 
   init();
 };
- 
+
+const getGeneratedData = async () => {
+  var data = blueprint3d.model.exportSerialized();
+  
+  console.log(data);
+   const edgedata = blueprint3d.three.getvertices().edges;
+   const chunkedArray = [];
+   data = JSON.parse(data);
+   console.log(data["floorplan"]);
+   for (let i = 0; i < data["floorplan"]["walls"].length; i += 1) {
+     const [chunk] = edgedata[i].getBottomPhase();
+     data["floorplan"]["walls"][i]["vertices"] = chunk;
+     console.log(data["floorplan"]["walls"][i]);
+     chunkedArray.push(chunk);
+   }
+   data["vertices"] = chunkedArray;
+   data = JSON.stringify(data);
+  //  console.log(data);
+};
+
 var mainControls = function (blueprint3d) {
   var blueprint3d = blueprint3d;
 
@@ -1224,19 +1257,19 @@ function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
     }
   });
      
-  const urlNumber =Number(getQueryParam("image"));
+//   const urlNumber =Number(getQueryParam("image"));
 
-  console.log(urlNumber)
-  switch (urlNumber) {
-  case 0:
-    carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/4hkkk7ruy4soveiupep7h/14.03.2024-EPSON-BLR-GODREJ-CENTER-OPTION-2-1.jpg?rlkey=4893wp1jppq33f5601k1e65xm&st=y0dnru5b&dl=0';
-    break;
-  case 1:
-    carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/vnvtv09064nrvmpz5i50l/fp-comparison.webp?rlkey=6fwamo1x6n6yagacb6jyvw6hu&st=iol79hby&dl=0';
-    break;
-  default:
-    carbonsheet.url = '';
-}
+//   console.log(urlNumber)
+//   switch (urlNumber) {
+//   case 0:
+//     carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/4hkkk7ruy4soveiupep7h/14.03.2024-EPSON-BLR-GODREJ-CENTER-OPTION-2-1.jpg?rlkey=4893wp1jppq33f5601k1e65xm&st=y0dnru5b&dl=0';
+//     break;
+//   case 1:
+//     carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/vnvtv09064nrvmpz5i50l/fp-comparison.webp?rlkey=6fwamo1x6n6yagacb6jyvw6hu&st=iol79hby&dl=0';
+//     break;
+//   default:
+//     carbonsheet.url = '';
+// }
 
   
   var f = gui.addFolder("Carbon Sheet");
@@ -1454,6 +1487,7 @@ $(document).ready( function () {
     blueprint3d.three.pauseTheRendering(true);
     blueprint3d.three.getController().setSelectedObject(null);
   });
+ 
 
   $("#showDesign").click(function () {
      

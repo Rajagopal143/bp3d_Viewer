@@ -505,9 +505,6 @@ export class Main extends EventDispatcher
 		this.render(true);
 	}
 	getvertices() {
-		setInterval(function () {
-			console.log(this.floorplan);
-		}, 1000);
 		return this.floorplan;
 	}
 

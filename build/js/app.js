@@ -20,10 +20,10 @@ console.log(RoomName);
 var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":3},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":5,"elevation":3},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":5,"y":5,"elevation":3},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":5,"y":0,"elevation":3}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"${RoomName}"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}`;
 // console.log(myhome)
 // $(document).load(async () => {
-console.log(myhome)
-const  fetchTextDataFromDropbox = async ()=> {
+console.log(myhome);
+const fetchTextDataFromDropbox = async () => {
   try {
-    const response = await fetch("http://23.20.122.223:4000/api/bpfile/"); // Replace with your server's URL
+    const response = await fetch("http://localhost:4000/api/bpfile/"); // Replace with your server's URL
     const data = await response.json();
 
     console.log(data.data);
@@ -39,7 +39,7 @@ const  fetchTextDataFromDropbox = async ()=> {
     console.error("Error fetching text data:", error);
     throw error;
   }
-}
+};
 
 // $(document).ready(function () {
 //   fetchTextDataFromDropbox()
@@ -70,7 +70,6 @@ const  fetchTextDataFromDropbox = async ()=> {
 //   });
 // });
 var ViewerFloorplanner = function (blueprint3d) {
-  
   var canvasWrapper = "#floorplanner";
   // buttons
   var move = "#move";
@@ -80,11 +79,8 @@ var ViewerFloorplanner = function (blueprint3d) {
   var activeStlye = "btn-primary disabled";
   this.floorplanner = blueprint3d.floorplanner;
   var scope = this;
- 
- 
+
   function init() {
-    
-    
     fetchTextDataFromDropbox()
       .then((data) => {
         // Process the fetched text data here
@@ -128,26 +124,14 @@ var ViewerFloorplanner = function (blueprint3d) {
       scope.floorplanner.setMode(BP3DJS.floorplannerModes.DELETE);
     });
 
-     $(doors).click(function () {
-       scope.floorplanner.setMode(BP3DJS.floorplannerModes.DOOR);
-     });
-    $("#wallthickness").on('change', function () {
+    $(doors).click(function () {
+      scope.floorplanner.setMode(BP3DJS.floorplannerModes.DOOR);
+    });
+    $("#wallthickness").on("change", function () {
       const wallthickness = $(this).val();
       BP3DJS.Configuration.setValue("wallThickness", wallthickness);
     });
-    $("#generatePlan").click(() => {
-      fetch("http://localhost:4000/api/bpfile/generate")
-        .then((response) => response.json()) // Parse response as JSON
-        .then((data) => {
-          console.log(data);
-          blueprint3d.model.loadSerialized(JSON.stringify(data));
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    });
   }
-
 
   this.updateFloorplanView = function () {
     scope.floorplanner.reset();
@@ -163,21 +147,21 @@ var ViewerFloorplanner = function (blueprint3d) {
 
 const getGeneratedData = async () => {
   var data = blueprint3d.model.exportSerialized();
-  
-  console.log(data);
-   const edgedata = blueprint3d.three.getvertices().edges;
-   const chunkedArray = [];
-   data = JSON.parse(data);
-   console.log(data["floorplan"]);
-   for (let i = 0; i < data["floorplan"]["walls"].length; i += 1) {
-     const [chunk] = edgedata[i].getBottomPhase();
-     data["floorplan"]["walls"][i]["vertices"] = chunk;
-     console.log(data["floorplan"]["walls"][i]);
-     chunkedArray.push(chunk);
-   }
-   data["vertices"] = chunkedArray;
-   data = JSON.stringify(data);
-  //  console.log(data);
+
+  const edgedata = blueprint3d.three.getvertices().edges;
+  const chunkedArray = [];
+  data = JSON.parse(data);
+  console.log(data["floorplan"]);
+  for (let i = 0; i < data["floorplan"]["walls"].length; i += 1) {
+    const [chunk] = edgedata[i].getBottomPhase();
+    data["floorplan"]["walls"][i]["vertices"] = chunk;
+    console.log(data["floorplan"]["walls"][i]);
+    chunkedArray.push(chunk);
+  }
+  data["vertices"] = chunkedArray;
+
+  console.log(JSON.stringify(data));
+  return data;
 };
 
 var mainControls = function (blueprint3d) {
@@ -199,7 +183,6 @@ var mainControls = function (blueprint3d) {
     };
     reader.readAsText(files[0]);
   }
-   
 
   function saveDesign() {
     var data = blueprint3d.model.exportSerialized();
@@ -214,7 +197,6 @@ var mainControls = function (blueprint3d) {
       chunkedArray.push(chunk);
     }
     data["vertices"] = chunkedArray;
-    data["InteriorVertices"] = getInteriorVertices();
     data = JSON.stringify(data);
     var a = window.document.createElement("a");
     var blob = new Blob([data], { type: "text" });
@@ -228,10 +210,10 @@ var mainControls = function (blueprint3d) {
   function getInteriorVertices() {
     const interiorPoints = [];
     const edgedata = blueprint3d.three.getvertices().edges;
-    for (let i = 0; i < edgedata.length; i += 1) { 
+    for (let i = 0; i < edgedata.length; i += 1) {
       const [chunk] = edgedata[i].getBottomPhase();
-      addObjectToArray(interiorPoints,chunk[0])
-      addObjectToArray(interiorPoints,chunk[1])
+      addObjectToArray(interiorPoints, chunk[0]);
+      addObjectToArray(interiorPoints, chunk[1]);
     }
     return interiorPoints;
   }
@@ -263,11 +245,11 @@ var mainControls = function (blueprint3d) {
     } else {
     }
   }
-  function setMyHome(data={}) {
+  function setMyHome(data = {}) {
     const myroom = JSON.parse(myhome);
     const floorplan = myroom.floorplan;
     const firstKey = Object.keys(floorplan.rooms)[0];
-      floorplan.rooms[firstKey].name = data[0].name;
+    floorplan.rooms[firstKey].name = data[0].name;
     floorplan.rooms[firstKey].name = RoomName;
     myroom.floorplan = floorplan;
     myhome = JSON.stringify(myroom);
@@ -479,15 +461,10 @@ const addRoomDiv = () => {
 	   <h3>${name}</h3>
 	    <span>${price}</span>
 	</div>`;
-
-
-
-}
+};
 const getproducts = () => {
   const url = "http://localhost:3000/getProducts";
-  
-}
-
+};
 
 var RoomProperties = function (room, gui) {
   var scope = this;
@@ -548,7 +525,6 @@ var RoomProperties = function (room, gui) {
   }
 
   function removeData(data) {
-    
     const key = $(data).data("key");
     this.room.deleteRoomDetails(key);
     renderFormFields(this.room.roomDetails);
@@ -623,7 +599,6 @@ var RoomProperties = function (room, gui) {
   //   .add(addKeyValueButton, "addKeyValue")
   //   .name("Add Key-Value");
 
-  
   return this.f;
 };
 
@@ -1224,10 +1199,10 @@ function getGlobalPropertiesFolder(gui, global, floorplanner) {
   f.open();
   return f;
 }
- function getQueryParam(param) {
-   const urlParams = new URLSearchParams(window.location.search);
-   return urlParams.get(param);
- }
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
 function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
   // $("#carbonsheet").show();
   console.log(carbonsheet);
@@ -1255,22 +1230,21 @@ function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
       $("#textInput").prop("disabled", true);
     }
   });
-     
-//   const urlNumber =Number(getQueryParam("image"));
 
-//   console.log(urlNumber)
-//   switch (urlNumber) {
-//   case 0:
-//     carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/4hkkk7ruy4soveiupep7h/14.03.2024-EPSON-BLR-GODREJ-CENTER-OPTION-2-1.jpg?rlkey=4893wp1jppq33f5601k1e65xm&st=y0dnru5b&dl=0';
-//     break;
-//   case 1:
-//     carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/vnvtv09064nrvmpz5i50l/fp-comparison.webp?rlkey=6fwamo1x6n6yagacb6jyvw6hu&st=iol79hby&dl=0';
-//     break;
-//   default:
-//     carbonsheet.url = '';
-// }
+  //   const urlNumber =Number(getQueryParam("image"));
 
-  
+  //   console.log(urlNumber)
+  //   switch (urlNumber) {
+  //   case 0:
+  //     carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/4hkkk7ruy4soveiupep7h/14.03.2024-EPSON-BLR-GODREJ-CENTER-OPTION-2-1.jpg?rlkey=4893wp1jppq33f5601k1e65xm&st=y0dnru5b&dl=0';
+  //     break;
+  //   case 1:
+  //     carbonsheet.url = 'https://dl.dropboxusercontent.com/scl/fi/vnvtv09064nrvmpz5i50l/fp-comparison.webp?rlkey=6fwamo1x6n6yagacb6jyvw6hu&st=iol79hby&dl=0';
+  //     break;
+  //   default:
+  //     carbonsheet.url = '';
+  // }
+
   var f = gui.addFolder("Carbon Sheet");
   var url = f.add(carbonsheet, "url").name("Url");
   var width = f
@@ -1414,28 +1388,28 @@ function datGUI(three, floorplanner) {
   selectionsFolder = gui.addFolder("Selections");
 }
 async function setFloorPlan() {
-   const urlSearchParams = new URLSearchParams(window.location.search);
-    if (urlSearchParams.has("fp")) {
-      // Do something with the value
-      const value = urlSearchParams.get("fp");
-      const data = await getFileData(value);
-      blueprint3d.model.loadSerialized(data);
-    }
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  if (urlSearchParams.has("fp")) {
+    // Do something with the value
+    const value = urlSearchParams.get("fp");
+    const data = await getFileData(value);
+    blueprint3d.model.loadSerialized(data);
+  }
 }
- const getFileData = async (url) => {
-   try {
-     const response = await fetch(url);
-     if (!response.ok) {
-       throw new Error(`Error fetching file: ${response.status}`);
-     }
-     const data = await response.text(); // Adjust for data type (JSON, etc.)
-     return data;
-   } catch (error) {
-     console.error("Error:", error);
-   }
- };
-$(document).ready( function () {
-   console.log("hi ");
+const getFileData = async (url) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error fetching file: ${response.status}`);
+    }
+    const data = await response.text(); // Adjust for data type (JSON, etc.)
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+$(document).ready(function () {
+  console.log("hi ");
   // setFloorPlan();
   dat.GUI.prototype.removeFolder = function (name) {
     var folder = this.__folders[name];
@@ -1463,8 +1437,6 @@ $(document).ready( function () {
   });
 
   mainControls(blueprint3d);
- 
-  
 
   addBlueprintListeners(blueprint3d);
   datGUI(blueprint3d.three, blueprint3d.floorplanner);
@@ -1486,10 +1458,8 @@ $(document).ready( function () {
     blueprint3d.three.pauseTheRendering(true);
     blueprint3d.three.getController().setSelectedObject(null);
   });
- 
 
   $("#showDesign").click(function () {
-     
     blueprint3d.model.floorplan.update();
     $(".card").flip(true);
     //		gui.closed = false;
@@ -1626,7 +1596,7 @@ $(document).ready( function () {
     data["vertices"] = chunkedArray;
     //(data);
     try {
-      const response = await fetch("http://localhost:3000/api/architect", {
+      const response = await fetch("http://localhost:4000/api/architect", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1634,11 +1604,35 @@ $(document).ready( function () {
         body: JSON.stringify(data),
       });
       const json = await response.json();
-      //(json);
+      console.log(json);
     } catch (err) {
       //(err);
       return;
     }
+  });
+  $("#generatePlan").click(async () => {
+    const edgedata = blueprint3d.three.getvertices().edges;
+    const chunkedArray = [];
+    for (let i = 0; i < edgedata.length; i += 1) {
+      const [chunk] = edgedata[i].getBottomPhase();
+      chunkedArray.push(chunk);
+    }
+    
+    fetch("http://localhost:4000/api/bpfile/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(chunkedArray),
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        blueprint3d.model.loadSerialized(JSON.stringify(responseData));
+        console.log("Success:", responseData);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   });
 
   // 	function jsonToCsv(jsonData) {
@@ -1673,7 +1667,7 @@ $(document).ready( function () {
   }
   $("#downloadReport").click(async () => {
     // API endpoint URL
-    const apiUrl = "http://localhost:3000/api/getgraph";
+    const apiUrl = "http://localhost:4000/api/getgraph";
     // Make a fetch request to the API
     fetch(apiUrl)
       .then((response) => {

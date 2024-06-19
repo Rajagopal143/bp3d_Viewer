@@ -508,7 +508,7 @@ export class Floorplan extends EventDispatcher {
   getMetaRoomData() {
     var metaRoomData = {};
     this.rooms.forEach((room, index) => {
-      var metaroom = {'roomDetails':{}};
+      var metaroom = {};
       // var cornerids = [];
       // room.corners.forEach((corner)=>{
       // cornerids.push(corner.id);
@@ -519,9 +519,8 @@ export class Floorplan extends EventDispatcher {
       metaroom['name'] = room.name;
       const roomData = room.roomDetails;
       Object.keys(room.roomDetails).map(key => {
-        metaroom['roomDetails'][key] = roomData[key];
+        metaroom[key] = roomData[key];
       });
-      metaroom['vertices'] = room.edgeVertices;
       metaroom['area'] =Dimensioning.cmToMeasure(room.floorplan.rooms[index].area, 2) +  String.fromCharCode(178);
       metaRoomData[ids] = metaroom;
     });

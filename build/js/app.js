@@ -198,6 +198,7 @@ var mainControls = function (blueprint3d) {
     }
     data["vertices"] = chunkedArray;
     data["floorplan"]["carbonSheet"] = {};
+    data["InteriorVertices"] = getInteriorVertices();
     data = JSON.stringify(data);
     var a = window.document.createElement("a");
     var blob = new Blob([data], { type: "text" });

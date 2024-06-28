@@ -189,7 +189,7 @@ var mainControls = function (blueprint3d) {
     const edgedata = blueprint3d.three.getvertices().edges;
     const chunkedArray = [];
     data = JSON.parse(data);
-    console.log(data["floorplan"]);
+    console.log(JSON.stringify(data["floorplan"]));
     for (let i = 0; i < data["floorplan"]["walls"].length; i += 1) {
       const [chunk] = edgedata[i].getBottomPhase();
       data["floorplan"]["walls"][i]["vertices"] = chunk;
@@ -197,13 +197,11 @@ var mainControls = function (blueprint3d) {
       chunkedArray.push(chunk);
     }
     data["vertices"] = chunkedArray;
-    data["floorplan"]["carbonSheet"] = {};
-    data["InteriorVertices"] = getInteriorVertices();
     data = JSON.stringify(data);
     var a = window.document.createElement("a");
     var blob = new Blob([data], { type: "text" });
     a.href = window.URL.createObjectURL(blob);
-    a.download = "design.blueprint3d";
+    a.download = "design.bps";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -473,6 +471,7 @@ var RoomProperties = function (room, gui) {
   this.gui = gui;
   this.room = room;
   this.name = room.name;
+  this.spaceCode = room.spaceCode;
   this.f = gui.addFolder("CurrentRoom");
   this.data = {};
 
@@ -480,9 +479,13 @@ var RoomProperties = function (room, gui) {
   $(".container").show();
   $("#roomname").on("change", function () {
     const value = $(this).val();
-    setName(value);
+    setName(value.trim());
   });
-
+  $("#spacename").on("change", function () {
+    const value = $(this).val();
+    setspaceCode(value);
+  });
+$("#spacename").val(this.room.spaceCode);
   $("#roomname").val(this.room.name);
   // this.namecontrol = this.f.add(this.room, 'name').name("Name");
   renderFormFields(this.room.roomDetails);
@@ -499,6 +502,9 @@ var RoomProperties = function (room, gui) {
   });
   function setName(value) {
     this.room.name = value;
+  }
+  function setspaceCode(value) {
+    this.room.spaceCode = value;
   }
   function addkeyValue(key, value) {
     if (key == "" && value == "") {
@@ -1125,7 +1131,7 @@ function construct2dInterfaceFolder(f, global, floorplanner) {
     .name(`Grid Resolution(${units})`)
     .onChange(onChangeGridResolution);
   view2df
-    .add(BP3DJS.config, "scale", 0.25, 5)
+    .add(BP3DJS.config, "scale", 0.25, 20)
     .step(0.25)
     .onChange(() => {
       //	view2df.add(BP3DJS.config, 'scale', 1.0, 10, ).step(0.25).onChange(()=>{
@@ -1252,12 +1258,12 @@ function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
   var width = f
     .add(carbonsheet, "width")
     .name("Real Width")
-    .max(1000.0)
+    .max(100000.0)
     .step(0.01);
   var height = f
     .add(carbonsheet, "height")
     .name("Real Height")
-    .max(1000.0)
+    .max(1000000.0)
     .step(0.01);
   var proportion = f
     .add(carbonsheet, "maintainProportion")
@@ -1592,6 +1598,7 @@ $(document).ready(function () {
       chunkedArray.push(chunk);
     }
     const data = JSON.parse(floorplan);
+    console.log(data)
     //(data);
     data.carbonSheet = "";
     data.floorplan.carbonSheet = "";

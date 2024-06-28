@@ -18,7 +18,7 @@ export const gridSpacing = 'gridSpacing';
 export const snapToGrid = 'snapToGrid';
 export const snapTolerance = 'snapTolerance';//In CMS
 
-export var config = {dimUnit: dimCentiMeter, wallHeight: 250, wallThickness: 10, systemUI: false, scale: 1, snapToGrid: false, snapTolerance: 25, gridSpacing: 50};
+export var config = {dimUnit: dimCentiMeter, wallHeight: 250, wallThickness: 3, systemUI: false, scale: 1, snapToGrid: false, snapTolerance: 25, gridSpacing: 50};
 
 export var wallInformation = {exterior: false, interior: false, midline: true, labels: true, exteriorlabel:'e:', interiorlabel:'i:', midlinelabel:'m:'};
 

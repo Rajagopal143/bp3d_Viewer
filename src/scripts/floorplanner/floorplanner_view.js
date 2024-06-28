@@ -81,6 +81,7 @@ export class FloorplannerView2D {
     this.imageUrl;
     $('#loadImage2d').on('change', (event) => {
       const file = event.target.files[0];
+      console.log(file)
       this.setfile(file);
     });
     
@@ -708,6 +709,8 @@ export class FloorplannerView2D {
     $('#formsubmit').click(() => {
       var name = $('#roomname').val();
       room.name = name;
+      var spaceCode = $("#spacename").val();
+      room.spaceCode = spaceCode;
     });
     this.floorplan.addEventListener(EVENT_ROOM_2D_CLICKED, (room) => {
     });

@@ -102,7 +102,7 @@ export class Model extends EventDispatcher
 	newRoom(floorplan, items)
 	{
 		this.scene.clearItems();
-		// console.log(floorplan);
+		console.log(floorplan);
 		this.floorplan.loadFloorplan(floorplan);
 		items.forEach((item) => {
 			var matColors = (item.material_colors) ? item.material_colors : [];

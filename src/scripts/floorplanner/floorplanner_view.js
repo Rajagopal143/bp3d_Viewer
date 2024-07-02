@@ -709,7 +709,7 @@ export class FloorplannerView2D {
     $('#formsubmit').click(() => {
       var name = $('#roomname').val();
       room.name = name;
-      var spaceCode = $("#spacename").val();
+      var spaceCode = $("#spaceNo").val();
       room.spaceCode = spaceCode;
     });
     this.floorplan.addEventListener(EVENT_ROOM_2D_CLICKED, (room) => {

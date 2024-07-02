@@ -23,7 +23,9 @@ export class Room extends EventDispatcher {
   constructor(floorplan, corners) {
     super();
     this._name = "A New Room";
-    this._spaceCode = "";
+    this._spaceCode = null;
+    this._usageType = null;
+    this._ahuZone = null;
     this.min = null;
     this.max = null;
     this.center = null;
@@ -63,25 +65,49 @@ export class Room extends EventDispatcher {
   }
 
   set name(value) {
-    var oldname = this._name;
+    var oldname = this;
     this._name = value;
     this.dispatchEvent({
       type: EVENT_ROOM_ATTRIBUTES_CHANGED,
       item: this,
-      info: { from: oldname, to: this._name },
+      info: { from: oldname, to: this },
     });
   }
   set spaceCode(value) {
-    var oldname = this._spaceCode;
+    var oldname = this;
     this._spaceCode = value;
     this.dispatchEvent({
       type: EVENT_ROOM_ATTRIBUTES_CHANGED,
       item: this,
-      info: { from: oldname, to: this._spaceCode },
+      info: { from: oldname, to: this },
+    });
+  }
+  set usagetype(value) {
+    var oldname = this;
+    this._usageType = value;
+    this.dispatchEvent({
+      type: EVENT_ROOM_ATTRIBUTES_CHANGED,
+      item: this,
+      info: { from: oldname, to: this },
+    });
+  }
+  set ahuZone(value) {
+    var oldname = this;
+    this._ahuZone = value;
+    this.dispatchEvent({
+      type: EVENT_ROOM_ATTRIBUTES_CHANGED,
+      item: this,
+      info: { from: oldname, to: this },
     });
   }
   get name() {
     return this._name;
+  }
+  get ahuZone() {
+    return this._ahuZone;
+  }
+  get usagetype() {
+    return this._usageType;
   }
   get spaceCode() {
     return this._spaceCode;

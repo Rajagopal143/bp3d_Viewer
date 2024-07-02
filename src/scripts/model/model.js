@@ -40,6 +40,7 @@ export class Model extends EventDispatcher
 		//      this.roomLoadingCallbacks.fire();
           
 		var data = JSON.parse(json);
+		console.log(data);
 		//("data",data);
 		this.newRoom(data.floorplan, data.items);
 

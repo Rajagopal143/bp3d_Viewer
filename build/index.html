@@ -239,26 +239,39 @@
 	   <div class="container">
         <h1>Room</h1>
         <form id="jsonForm">
-			<div id="mainDetails">
-				<label for="name">Room Name</label><input type="text" id="roomname" placeholder="Name"><br>
-				<label for="name">space Name</label><input type="text" id="spacename" placeholder="Space Code"><br>
-				<label for="name">Area</label><br><input type="text" id="roomarea"   disabled title="can't change the value">
-			</div>
-            <div id="formFields">
-                <!-- Dynamic input fields will be added here -->
-            </div>
-            <button type="button" id="addButton">Add</button>
-            <button type="submit">Submit</button>
-        </form>
+        <label for="roomname">Space Name</label>
+        <input type="text" id="roomname" name="spaceName" placeholder="Name"><br>
+        
+        <label for="spaceNo">Space NO.</label>
+        <input type="text" id="spaceNo" name="spaceNo" placeholder="Space Code"><br>
+        
+        <label for="usagetype">Usage Type</label>
+        <select name="usageType" id="usagetype">
+            <option value="type1">Type 1</option>
+            <option value="type2">Type 2</option>
+            <option value="type3">Type 3</option>
+            <option value="AHU">AHU</option>
+        </select><br>
+        
+		<div class="ahucontainer">
+
+			<label for="ahuzone">AHU Zone</label>
+			<select name="ahuZone" id="ahuzone">
+				<option value="ahu1">AHU 1</option>
+				<option value="ahu2">AHU 2</option>
+				<option value="ahu3">AHU 3</option>
+			</select><br>
+		</div>
+        
+        <label for="roomarea">Area</label>
+        <input type="text" id="roomarea" name="area" disabled title="can't change the value"><br>
+        
+        <button type="button" id="addButton">Add</button>
+        <button type="submit">Submit</button>
+    </form>
     </div>
 	</div>
-	<div id="getkeyValue">
-		<label for="key">Key</label>
-		<input type="text" id="key" name="key" placeholder="key">
-		<label for="Value">Value</label>
-		<input type="text" id="value" name="Value" placeholder="Value">
-		<button id="setKeyValue">submit</button>
-	</div>
+	
 
 	<div class="wallDetails">
 		<h1>Wall</h1>

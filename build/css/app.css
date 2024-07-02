@@ -316,3 +316,6 @@ button[type="submit"]:hover {
   right: 20px;
   z-index: 1000;
 }
+#ahuzone{
+  display: flex;
+}

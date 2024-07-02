@@ -518,6 +518,8 @@ export class Floorplan extends EventDispatcher {
       // //(ids);
       metaroom['name'] = room.name;
       metaroom["spaceCode"] = room.spaceCode;
+      metaroom["ahuZone"] = room.ahuZone;
+      metaroom["usagetype"] = room.usagetype;
       const roomData = room.roomDetails;
       Object.keys(room.roomDetails).map(key => {
         metaroom[key] = roomData[key];
@@ -616,7 +618,7 @@ export class Floorplan extends EventDispatcher {
    * @emits {EVENT_LOADED}
    */
   loadFloorplan(floorplan) {
-    // console.log(floorplan);//
+    console.log(floorplan);//
     this.reset();
     var corners = {};
     if (
@@ -786,7 +788,6 @@ export class Floorplan extends EventDispatcher {
     });
 
     roomCorners.forEach((corners) => {
-      console.log(this.metaroomsdata);
       const values = Object.values(this.metaroomsdata);
       console.log(values);
       var room = new Room(scope, corners);
@@ -810,7 +811,6 @@ export class Floorplan extends EventDispatcher {
         } else {
           scope.metaroomsdata[room.roomByCornersId] = {};
           scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;
-          scope.metaroomsdata[room.roomByCornersId]["spaceCode"] = room.spaceCode;
           scope.metaroomsdata[room.roomByCornersId]['roomDetails'] = room.roomDetails;
         }
       });
@@ -818,7 +818,7 @@ export class Floorplan extends EventDispatcher {
       if (scope.metaroomsdata) {
         if (scope.metaroomsdata[room.roomByCornersId]) {
           room.name = scope.metaroomsdata[room.roomByCornersId]['name'];
-         room.spaceCode= scope.metaroomsdata[room.roomByCornersId]["spaceCode"] ;
+         room.spaceCode= scope.metaroomsdata[room.roomByCornersId]['spaceCode'] ;
           room.setObjectDetails(
             this.metaroomsdata[room.roomByCornersId]["roomDetails"]
           );

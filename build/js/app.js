@@ -481,73 +481,59 @@ var RoomProperties = function (room, gui) {
     const value = $(this).val();
     setName(value.trim());
   });
-  $("#spacename").on("change", function () {
+  $("#spaceNo").on("change", function () {
     const value = $(this).val();
-    setspaceCode(value);
+    setspaceCode(value.trim());
   });
-$("#spacename").val(this.room.spaceCode);
+  $("#usagetype").val(this.room.usagetype);
+   if (this.room.usagetype === "AHU") {
+     $("#ahuzone").hide();
+   } else {
+     $("#ahuzone").show();
+   }
+  
+  $("#usagetype").on("change", function () {
+    const value = $(this).val();
+    setusagetype(value.trim());
+    if (value === "AHU") {
+      $("#ahuzone").hide();
+    } else {
+      $("#ahuzone").show();
+      
+    }
+  });
+  $("#ahuzone").on("change", function () {
+    const value = $(this).val();
+    setahuzone(value.trim())
+  });
   $("#roomname").val(this.room.name);
+  $("#spaceNo").val(this.room._spaceCode);
   // this.namecontrol = this.f.add(this.room, 'name').name("Name");
-  renderFormFields(this.room.roomDetails);
-  $("#addButton").click(() => {
-    $("#getkeyValue").show();
-    $(document).on("click", "#setKeyValue", function () {
-      const key = $("#key").val();
-      const value = $("#value").val();
-      addkeyValue(key, value);
-    });
-    $(document).on("click", "#remove-button", function () {
-      removeData(this);
-    });
-  });
+ 
   function setName(value) {
     this.room.name = value;
+  }
+  function setusagetype(value) {
+        this.room.usagetype = value.trim();
+  }
+  function setahuzone(value) {
+    this.room.ahuZone = value;
   }
   function setspaceCode(value) {
     this.room.spaceCode = value;
   }
-  function addkeyValue(key, value) {
-    if (key == "" && value == "") {
-      $("#getkeyValue").hide();
-      return;
-    }
-    $("#getkeyValue").hide();
-    this.room.setRoomDetails(key, value);
-    renderFormFields(this.room.roomDetails);
-    $("#key").val("");
-    $("#value").val("");
-  }
-
-  function renderFormFields(data) {
-    $("#formFields").empty(); // Clear existing fields
-    for (let key in data) {
-      $("#formFields").append(`
-                <div class="key-value-pair form-group">
-                    <label for="${key}">${key}</label>
-                    <input type="text" id="${key}" name="${key}" value="${data[key]}" data-key="${key}" />
-                    <span class="colon">:</span>
-                    <button type="button" id="remove-button" data-key="${key}">Del</button>
-                </div>
-            `);
-    }
-  }
-
-  function removeData(data) {
-    const key = $(data).data("key");
-    this.room.deleteRoomDetails(key);
-    renderFormFields(this.room.roomDetails);
-  }
+  
   $("#jsonForm").submit((e) => {
+    e.preventDefault();
     submitfrom(e);
   });
   function submitfrom(e) {
-    e.preventDefault();
-    const jsonData = {};
-    const formData = $("#jsonForm").serializeArray();
-    // formData.forEach((item) => {
-    //   addkeyValue(item.name, item.value);
-    // });
-    this.room.setAllroomDetails(formData);
+      const jsonData = {};
+      const formData = $("#jsonForm").serializeArray();
+      formData.forEach((field) => {
+        jsonData[field.name] = field.value;
+      });
+      console.log(jsonData);
     $(".container").hide();
     $("#getkeyValue").hide();
   }

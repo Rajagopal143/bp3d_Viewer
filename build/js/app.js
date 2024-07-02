@@ -23,7 +23,7 @@ var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"
 console.log(myhome);
 const fetchTextDataFromDropbox = async () => {
   try {
-    const response = await fetch("http://localhost:4000/api/bpfile/"); // Replace with your server's URL
+    const response = await fetch("http://23.20.122.223:4000/api/bpfile/"); // Replace with your server's URL
     const data = await response.json();
 
     console.log(data.data);
@@ -463,7 +463,7 @@ const addRoomDiv = () => {
 	</div>`;
 };
 const getproducts = () => {
-  const url = "http://localhost:3000/getProducts";
+  const url = "http://23.20.122.223:3000/getProducts";
 };
 
 var RoomProperties = function (room, gui) {
@@ -1591,7 +1591,7 @@ $(document).ready(function () {
     data["vertices"] = chunkedArray;
     //(data);
     try {
-      const response = await fetch("http://localhost:4000/api/architect", {
+      const response = await fetch("http://23.20.122.223:4000/api/architect", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1613,7 +1613,7 @@ $(document).ready(function () {
       chunkedArray.push(chunk);
     }
     
-    fetch("http://localhost:4000/api/bpfile/generate", {
+    fetch("http://23.20.122.223:4000/api/bpfile/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -1662,7 +1662,7 @@ $(document).ready(function () {
   }
   $("#downloadReport").click(async () => {
     // API endpoint URL
-    const apiUrl = "http://localhost:4000/api/getgraph";
+    const apiUrl = "http://23.20.122.223:4000/api/getgraph";
     // Make a fetch request to the API
     fetch(apiUrl)
       .then((response) => {

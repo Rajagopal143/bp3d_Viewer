@@ -44,7 +44,7 @@ The above command will generate `build/js/bp3djs.min.js` a minified and uglified
 ```
      rollup -c -w
 ```
-Then, visit `http://localhost:10001` in your browser.
+Then, visit `http://23.20.122.223:10001` in your browser.
 
 
 ## Directory Structure

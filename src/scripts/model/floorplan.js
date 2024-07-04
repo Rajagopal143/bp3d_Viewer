@@ -509,11 +509,6 @@ export class Floorplan extends EventDispatcher {
     var metaRoomData = {};
     this.rooms.forEach((room, index) => {
       var metaroom = {};
-      // var cornerids = [];
-      // room.corners.forEach((corner)=>{
-      // cornerids.push(corner.id);
-      // });
-      // var ids = cornerids.join(',');
       var ids = room.roomByCornersId;
       // //(ids);
       metaroom['name'] = room.name;
@@ -563,6 +558,7 @@ export class Floorplan extends EventDispatcher {
         floorplans.walls.push({
           corner1: wall.getStart().id,
           corner2: wall.getEnd().id,
+          direction: wall.direction,
           frontTexture: wall.frontTexture,
           backTexture: wall.backTexture,
           wallType: wall.wallType.description,
@@ -744,7 +740,6 @@ export class Floorplan extends EventDispatcher {
    *          updates to metaroomdata
    */
   roomNameChanged(e) {
-    console.log(e)
     if (this.metaroomsdata) {
       this.metaroomsdata[e.item.roomByCornersId] = e.newname;
     }
@@ -789,7 +784,6 @@ export class Floorplan extends EventDispatcher {
 
     roomCorners.forEach((corners) => {
       const values = Object.values(this.metaroomsdata);
-      console.log(values);
       var room = new Room(scope, corners);
       // scope.metaroomsdata
       room.updateArea();
@@ -801,7 +795,6 @@ export class Floorplan extends EventDispatcher {
       });
       room.addEventListener(EVENT_ROOM_ATTRIBUTES_CHANGED, function (o) {
         var room = o.item;
-        console.log(room);
         scope.dispatchEvent(o);
         if (scope.metaroomsdata[room.roomByCornersId]) {
           scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;

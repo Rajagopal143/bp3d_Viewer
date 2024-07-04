@@ -16,11 +16,9 @@ const RoomName = String(getQueryParam("name"));
 const length = String(getQueryParam("length"));
 const breath = String(getQueryParam("breath"));
 const height = String(getQueryParam("height"));
-console.log(RoomName);
 var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":3},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":5,"elevation":3},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":5,"y":5,"elevation":3},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":5,"y":0,"elevation":3}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"${RoomName}"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}`;
 // console.log(myhome)
 // $(document).load(async () => {
-console.log(myhome);
 const fetchTextDataFromDropbox = async () => {
   try {
     const response = await fetch("http://23.20.122.223:4000/api/bpfile/"); // Replace with your server's URL
@@ -199,7 +197,9 @@ var mainControls = function (blueprint3d) {
     data["vertices"] = chunkedArray;
     data = JSON.stringify(data);
     var a = window.document.createElement("a");
-    var blob = new Blob([data], { type: "text" });
+    var blob = new Blob([data], {
+      type: "text"
+    });
     a.href = window.URL.createObjectURL(blob);
     a.download = "design.bps";
     document.body.appendChild(a);
@@ -217,6 +217,7 @@ var mainControls = function (blueprint3d) {
     }
     return interiorPoints;
   }
+
   function addObjectToArray(array, object) {
     // Check if the object with the same x and y values already exists in the array
     const exists = array.some(
@@ -228,6 +229,7 @@ var mainControls = function (blueprint3d) {
       array.push(object);
     }
   }
+
   function updateJson(event) {
     console.log("hi");
     const file = event.target.files[0];
@@ -242,9 +244,9 @@ var mainControls = function (blueprint3d) {
         }
       };
       reader.readAsText(file);
-    } else {
-    }
+    } else {}
   }
+
   function setMyHome(data = {}) {
     const myroom = JSON.parse(myhome);
     const floorplan = myroom.floorplan;
@@ -263,7 +265,9 @@ var mainControls = function (blueprint3d) {
   function saveGLTFCallback(o) {
     var data = o.gltf;
     var a = window.document.createElement("a");
-    var blob = new Blob([data], { type: "text" });
+    var blob = new Blob([data], {
+      type: "text"
+    });
     a.href = window.URL.createObjectURL(blob);
     a.download = "design.gltf";
     document.body.appendChild(a);
@@ -274,7 +278,9 @@ var mainControls = function (blueprint3d) {
   function saveMesh() {
     var data = blueprint3d.model.exportMeshAsObj();
     var a = window.document.createElement("a");
-    var blob = new Blob([data], { type: "text" });
+    var blob = new Blob([data], {
+      type: "text"
+    });
     a.href = window.URL.createObjectURL(blob);
     a.download = "design.obj";
     document.body.appendChild(a);
@@ -324,7 +330,13 @@ var mainControls = function (blueprint3d) {
 var GlobalProperties = function () {
   this.name = "Global";
   //a - feet and inches, b = inches, c - cms, d - millimeters, e - meters
-  this.units = { a: false, b: false, c: false, d: false, e: true };
+  this.units = {
+    a: false,
+    b: false,
+    c: false,
+    d: false,
+    e: true
+  };
   this.unitslabel = {
     a: BP3DJS.dimFeetAndInch,
     b: BP3DJS.dimInch,
@@ -413,9 +425,11 @@ var CornerProperties = function (corner, gui) {
   function onChangeX() {
     scope.corner.x = BP3DJS.Dimensioning.cmFromMeasureRaw(scope.x);
   }
+
   function onChangeY() {
     scope.corner.y = BP3DJS.Dimensioning.cmFromMeasureRaw(scope.y);
   }
+
   function onChangeElevation() {
     scope.corner.elevation = BP3DJS.Dimensioning.cmFromMeasureRaw(
       scope.elevation
@@ -486,12 +500,12 @@ var RoomProperties = function (room, gui) {
     setspaceCode(value.trim());
   });
   $("#usagetype").val(this.room.usagetype);
-   if (this.room.usagetype === "AHU") {
-     $("#ahuzone").hide();
-   } else {
-     $("#ahuzone").show();
-   }
-  
+  if (this.room.usagetype === "AHU") {
+    $("#ahuzone").hide();
+  } else {
+    $("#ahuzone").show();
+  }
+
   $("#usagetype").on("change", function () {
     const value = $(this).val();
     setusagetype(value.trim());
@@ -499,41 +513,44 @@ var RoomProperties = function (room, gui) {
       $("#ahuzone").hide();
     } else {
       $("#ahuzone").show();
-      
     }
   });
   $("#ahuzone").on("change", function () {
     const value = $(this).val();
-    setahuzone(value.trim())
+    setahuzone(value.trim());
   });
   $("#roomname").val(this.room.name);
   $("#spaceNo").val(this.room._spaceCode);
   // this.namecontrol = this.f.add(this.room, 'name').name("Name");
- 
+
   function setName(value) {
     this.room.name = value;
   }
+
   function setusagetype(value) {
-        this.room.usagetype = value.trim();
+    this.room.usagetype = value.trim();
   }
+
   function setahuzone(value) {
     this.room.ahuZone = value;
   }
+
   function setspaceCode(value) {
     this.room.spaceCode = value;
   }
-  
+
   $("#jsonForm").submit((e) => {
     e.preventDefault();
     submitfrom(e);
   });
+
   function submitfrom(e) {
-      const jsonData = {};
-      const formData = $("#jsonForm").serializeArray();
-      formData.forEach((field) => {
-        jsonData[field.name] = field.value;
-      });
-      console.log(jsonData);
+    const jsonData = {};
+    const formData = $("#jsonForm").serializeArray();
+    formData.forEach((field) => {
+      jsonData[field.name] = field.value;
+    });
+    console.log(jsonData);
     $(".container").hide();
     $("#getkeyValue").hide();
   }
@@ -597,26 +614,113 @@ var RoomProperties = function (room, gui) {
 };
 
 var Wall2DProperties = function (wall2d, gui) {
+  $("#isDooritems").empty();
   var scope = this;
   this.gui = gui;
   this.wall2d = wall2d;
   this.walltype = "Straight";
+  console.log(this.wall2d);
+  this.doorItems = this.wall2d.DoorItems;
+  this.WindowItems = this.wall2d.WindowItems;
   this.walllength = BP3DJS.Dimensioning.cmToMeasureRaw(wall2d.wallSize);
+  this.data={door:this.doorItems.length,window:this.WindowItems.length}
   $(".wallDetails").show();
   $("#wallLength").val(this.walllength);
   $("#wallLength").on("change", function () {
     setWallLength($(this).val());
   });
-  $("#walltype").val("Straight");
-  $("#walltype").on("change", function () {
-    setWallType($(this).val());
+  $("#directions").val(scope.wall2d.direction);
+ 
+  
+  
+  $("#isDoor").on("change", function () {
+    var isDoorChecked = $(this).is(":checked");
+    if (isDoorChecked) {
+      $("#addDoor").show();
+      renderFormFields();
+    } else {
+      $("#isDooritems").empty();
+      $("#addDoor").hide();
+    }
   });
+$(document).ready(function () {
+  // Ensure the event listener is bound only once
+  $("#addDoor")
+    .off("click")
+    .on("click", (e) => {
+      console.log("hi");
+      $("#isDooritems").append(`
+      <div class="doordiv"> 
+        <label for="doortype">Door type</label> 
+        <select name="doortype" id="doortype">
+          <option value="type1">type1</option>
+          <option value="type2">type2</option>
+          <option value="type3">type3</option>
+          <option value="type4">type4</option>
+        </select>
+        <label for="doorwidth">Door width</label>  
+        <input type="text" id="doorwidth">
+        <label for="doorheight">Door height</label>  
+        <input type="text" id="doorheight">
+        <button type="button" class="remove-button">Del</button>
+      </div>
+    `);
+    });
+});
+  function renderFormFields() {
+    const data = scope.doorItems;
+    console.log(data);
+    // Clear existing fields
+    $("#isDooritems").empty();
+    for (let key = 0; key < scope.data.door;key++) {
+      $("#isDooritems").append(`
+               <div class="doordiv"> <label for="doortype">Door type</label> <select name="doortype" id="doortype">
+        <option value="type1">type1</option>
+        <option value="type2">type2</option>
+        <option value="type3">type3</option>
+        <option value="type4">type4</option>
+      </select>
+     <label for="doorwidth">door width</label>  <input type="text" id="doorwidth">
+     <label for="doorheight">door height</label>  <input type="text" id="doorheight">
+                    <button type="button" id="remove-button" data-key="">Del</button>
+                </div>
+            `);
+    }
+  }
+   $(document).on("click", "#remove-button", function () {
+     removeData(this);
+   });
+  function removeData(element) {
+      scope.data.door = scope.data.door -1;
+    $(element).closest(".doordiv").remove();
+  }
+
+ $("#wallPropSubmit").submit((e) => {
+   submitfrom(e);
+ });
+ function submitfrom(e) {
+   e.preventDefault();
+   const formData = $("#isDooritems").serializeArray();
+   console.log(formData)
+ }
   // $("#wallthikness").val(
   //   BP3DJS.Configuration.getStringValue(BP3DJS.configWallThickness)
   // );
   $("#wallthikness").on("change", function () {
     BP3DJS.Configuration.setValue(BP3DJS.configWallThickness, $(this).val());
   });
+
+  function setWalldirection(value) {
+    scope.wall2d.direction = value;
+  }
+
+  function setisDoor(value) {
+    scope.wall2d.isDoor = value;
+  }
+
+  function setisWindow(value) {
+    scope.wall2d.isWindow = value;
+  }
 
   function setWallType(value) {
     const select = value;
@@ -669,6 +773,7 @@ var Wall2DProperties = function (wall2d, gui) {
         onChangeWallLength();
       });
   }
+  $("#isDooritems").empty();
   return this.f;
 };
 
@@ -717,9 +822,9 @@ var ItemProperties = function (gui) {
         this.totalmaterials = material.length;
         for (var i = 0; i < material.length; i++) {
           this.materials["mat_" + i] = "#" + material[i].color.getHexString();
-          var matname = material[i].name
-            ? material[i].name
-            : "Material " + (i + 1);
+          var matname = material[i].name ?
+            material[i].name :
+            "Material " + (i + 1);
           var ccontrol = this.materialsfolder
             .addColor(this.materials, "mat_" + i)
             .name(matname)
@@ -854,7 +959,6 @@ var WallProperties = function () {
 
   this.setFloor = function (floor) {
     this.currentFloor = floor;
-    console.log(this.currentFloor);
   };
   this.setWallMatriealName = function (val) {
     this.wallmaterialname = val;
@@ -878,6 +982,7 @@ function addBlueprintListeners(blueprint3d) {
       selectionsFolder.removeFolder(wallPropFolder.name);
     }
   }
+
   function wallClicked(wall) {
     closeCurrent3DSelectionFolders();
 
@@ -917,6 +1022,7 @@ function addBlueprintListeners(blueprint3d) {
     itemPropFolder.open();
     selectionsFolder.open();
   }
+
   function itemUnselected() {
     closeCurrent3DSelectionFolders();
     if (anItem != null) {
@@ -975,6 +1081,7 @@ function addBlueprintListeners(blueprint3d) {
       $(".container").hide();
       $("#getkeyValue").hide();
       $(".wallDetails").hide();
+       $("#isDooritems").empty();
       // $("#carbonsheet").show();
     }
     if (currentFolder) {
@@ -1193,13 +1300,14 @@ function getGlobalPropertiesFolder(gui, global, floorplanner) {
   f.open();
   return f;
 }
+
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
 }
+
 function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
   // $("#carbonsheet").show();
-  console.log(carbonsheet);
   $(".widthValue").text(carbonsheet.width);
   $("#ImageWidth").on("input", function () {
     $(".widthValue").text(carbonsheet.width);
@@ -1346,9 +1454,13 @@ function getWallAndFloorPropertiesFolder(gui, aWall) {
     })
     .name("Wall");
   var fcontrol = f
-    .add(aWall, "floormaterialname", { "Fine Wood": 5, "Hard Wood": 6 })
+    .add(aWall, "floormaterialname", {
+      "Fine Wood": 5,
+      "Hard Wood": 6
+    })
     .name("Floor");
   var multicontrol = f.add(aWall, "forAllWalls").name("All Walls In Room");
+
   function wchanged() {
     aWall.wchanged();
   }
@@ -1403,7 +1515,6 @@ const getFileData = async (url) => {
   }
 };
 $(document).ready(function () {
-  console.log("hi ");
   // setFloorPlan();
   dat.GUI.prototype.removeFolder = function (name) {
     var folder = this.__folders[name];
@@ -1440,7 +1551,10 @@ $(document).ready(function () {
   $("#showAddItems").hide();
   $("#viewcontrols").hide();
 
-  $(".card").flip({ trigger: "manual", axis: "x" });
+  $(".card").flip({
+    trigger: "manual",
+    axis: "x"
+  });
   $("#showFloorPlan").click(function () {
     $(".card").flip(false);
     $(this).addClass("active");
@@ -1525,8 +1639,10 @@ $(document).ready(function () {
           null,
           null,
           null,
-          false,
-          { position: placeAt, edge: aWall.currentWall }
+          false, {
+            position: placeAt,
+            edge: aWall.currentWall
+          }
         );
       } else if (aWall.currentFloor) {
         var placeAt = aWall.currentFloor.center.clone();
@@ -1537,8 +1653,9 @@ $(document).ready(function () {
           null,
           null,
           null,
-          false,
-          { position: placeAt }
+          false, {
+            position: placeAt
+          }
         );
       } else {
         blueprint3d.model.scene.addItem(itemType, modelUrl, metadata);
@@ -1553,11 +1670,12 @@ $(document).ready(function () {
       //(chunk);
       chunkedArray.push(chunk);
     }
-    console.log(chunkedArray);
     const jsonString = JSON.stringify(chunkedArray, null, 2);
 
     // Create a Blob from the JSON string
-    const blob = new Blob([jsonString], { type: "application/json" });
+    const blob = new Blob([jsonString], {
+      type: "application/json"
+    });
 
     // Create a temporary anchor element
     const a = document.createElement("a");
@@ -1584,7 +1702,6 @@ $(document).ready(function () {
       chunkedArray.push(chunk);
     }
     const data = JSON.parse(floorplan);
-    console.log(data)
     //(data);
     data.carbonSheet = "";
     data.floorplan.carbonSheet = "";
@@ -1599,7 +1716,6 @@ $(document).ready(function () {
         body: JSON.stringify(data),
       });
       const json = await response.json();
-      console.log(json);
     } catch (err) {
       //(err);
       return;
@@ -1612,14 +1728,14 @@ $(document).ready(function () {
       const [chunk] = edgedata[i].getBottomPhase();
       chunkedArray.push(chunk);
     }
-    
+
     fetch("http://23.20.122.223:4000/api/bpfile/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(chunkedArray),
-    })
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(chunkedArray),
+      })
       .then((response) => response.json())
       .then((responseData) => {
         blueprint3d.model.loadSerialized(JSON.stringify(responseData));
@@ -1679,7 +1795,9 @@ $(document).ready(function () {
         // const csvData = jsonToCsv(data);
         // const blob = new Blob([csvData], { type: "text/csv" });
         const jsonData = JSON.stringify(data, null, 2);
-        const blob = new Blob([jsonData], { type: "application/json" });
+        const blob = new Blob([jsonData], {
+          type: "application/json"
+        });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;

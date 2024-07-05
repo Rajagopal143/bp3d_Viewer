@@ -146,13 +146,13 @@ export class Wall extends EventDispatcher {
     return this._DoorItems;
   }
   set DoorItems(value) {
-    this._isDoor = value;
+    this._DoorItems = value;
   }
   get WindowItems() {
     return this._WindowItems;
   }
   set WindowItems(value) {
-    this._isWindow = value;
+    this._WindowItems = value;
   }
 
   set a(location) {

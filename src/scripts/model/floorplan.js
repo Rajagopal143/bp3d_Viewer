@@ -515,6 +515,7 @@ export class Floorplan extends EventDispatcher {
       metaroom["spaceCode"] = room.spaceCode;
       metaroom["ahuZone"] = room.ahuZone;
       metaroom["usagetype"] = room.usagetype;
+      metaroom["NoOfOccupants"] = room.NoOfOccupants;
       const roomData = room.roomDetails;
       Object.keys(room.roomDetails).map(key => {
         metaroom[key] = roomData[key];
@@ -559,6 +560,8 @@ export class Floorplan extends EventDispatcher {
           corner1: wall.getStart().id,
           corner2: wall.getEnd().id,
           direction: wall.direction,
+          door: wall.DoorItems,
+          window: wall.WindowItems,
           frontTexture: wall.frontTexture,
           backTexture: wall.backTexture,
           wallType: wall.wallType.description,
@@ -645,6 +648,15 @@ export class Floorplan extends EventDispatcher {
       if (wall.backTexture) {
         newWall.backTexture = wall.backTexture;
       }
+      if (wall.direction) {
+        newWall.direction = wall.direction;
+      }
+      if (wall.door) {
+        newWall.DoorItems = wall.door;
+      }
+      if (wall.window) {
+        newWall.WindowItems = wall.window;
+      }
       // Adding of a, b, wallType (straight, curved) for walls happened
       // with introduction of 0.0.2a
       if (Version.isVersionHigherThan(floorplan.version, '0.0.2a')) {
@@ -663,7 +675,7 @@ export class Floorplan extends EventDispatcher {
     }
     // console.log(floorplan);
     this.metaroomsdata = floorplan.rooms;
-    // //(this.metaroomsdata);
+    console.log(this.metaroomsdata);
     this.update();
 
     if ('carbonSheet' in floorplan) {
@@ -740,6 +752,7 @@ export class Floorplan extends EventDispatcher {
    *          updates to metaroomdata
    */
   roomNameChanged(e) {
+    console.log(e);
     if (this.metaroomsdata) {
       this.metaroomsdata[e.item.roomByCornersId] = e.newname;
     }
@@ -785,9 +798,10 @@ export class Floorplan extends EventDispatcher {
     roomCorners.forEach((corners) => {
       const values = Object.values(this.metaroomsdata);
       var room = new Room(scope, corners);
-      // scope.metaroomsdata
+      console.log(scope.metaroomsdata);
       room.updateArea();
-      room.name = values.length!=0? values[0].name:'';
+      room.name = values.length != 0 ? values[0].name : '';
+      room.ahuZone = 
       scope.rooms.push(room);
 
       room.addEventListener(EVENT_ROOM_NAME_CHANGED, (e) => {
@@ -799,12 +813,18 @@ export class Floorplan extends EventDispatcher {
         if (scope.metaroomsdata[room.roomByCornersId]) {
           scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;
           scope.metaroomsdata[room.roomByCornersId]['spaceCode'] = room.spaceCode;
-          scope.metaroomsdata[room.roomByCornersId]['roomDetails'] =
-          room.roomDetails;
+          scope.metaroomsdata[room.roomByCornersId]['ahuZone'] =
+          room.ahuZone;
+          scope.metaroomsdata[room.roomByCornersId]['usagetype'] =
+          room.usagetype;
+          scope.metaroomsdata[room.roomByCornersId]['NoOfOccupants'] =
+          room.NoOfOccupants;
         } else {
           scope.metaroomsdata[room.roomByCornersId] = {};
           scope.metaroomsdata[room.roomByCornersId]['name'] = room.name;
-          scope.metaroomsdata[room.roomByCornersId]['roomDetails'] = room.roomDetails;
+          scope.metaroomsdata[room.roomByCornersId]['ahuZone'] = room.ahuZone;
+          scope.metaroomsdata[room.roomByCornersId]['usagetype'] = room.usagetype;
+          scope.metaroomsdata[room.roomByCornersId]['NoOfOccupants'] = room.NoOfOccupants;
         }
       });
       
@@ -812,9 +832,10 @@ export class Floorplan extends EventDispatcher {
         if (scope.metaroomsdata[room.roomByCornersId]) {
           room.name = scope.metaroomsdata[room.roomByCornersId]['name'];
          room.spaceCode= scope.metaroomsdata[room.roomByCornersId]['spaceCode'] ;
-          room.setObjectDetails(
-            this.metaroomsdata[room.roomByCornersId]["roomDetails"]
-          );
+         room.ahuZone= scope.metaroomsdata[room.roomByCornersId]['ahuZone'] ;
+         room.usagetype= scope.metaroomsdata[room.roomByCornersId]['usagetype'] ;
+         room.NoOfOccupants= scope.metaroomsdata[room.roomByCornersId]['NoOfOccupants'] ;
+          
         }
       }
     });

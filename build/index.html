@@ -272,14 +272,14 @@
 
 				<label for="ahuzone">AHU Zone</label>
 				<select name="ahuZone" id="ahuzone">
-					<option value="ahu1">AHU 1</option>
-					<option value="ahu2">AHU 2</option>
-					<option value="ahu3">AHU 3</option>
+				
 				</select><br>
 			</div>
 
 			<label for="roomarea">Area</label>
 			<input type="text" id="roomarea" name="area" disabled title="can't change the value"><br>
+			<label for="roomarea">NoOfOccupants</label>
+			<input type="text" id="NoOfOccupants" name="NoOfOccupants"  ><br>
 
 			<button type="button" id="addButton">Add</button>
 			<button type="submit">Submit</button>
@@ -292,35 +292,61 @@
 		<h1>Wall</h1>
 		<label for="walllength">Wall Length</label>
 		<input type="text" placeholder="Wall length" id="wallLength">
-		<form action="" id="wallPropSubmit">
-		<label for="directions">Direction</label>
-		<select name="direction" id="directions">
-			<option value="North">North</option>
-			<option value="South">South</option>
-			<option value="East">East</option>
-			<option value="West">West</option>
-			<option value="NorthEast">NorthEast</option>
-			<option value="NorthWest">NorthWest</option>
-			<option value="southEast">southEast</option>
-			<option value="southWest">southWest</option>
-		</select>
-				<div style="display: flex;justify-content: space-between; align-items: center;">
-					<label for="isDoor">door<input type="checkbox" name="isDoor" id="isDoor"></label>
-				</div>
-				<img src="./plus.png" alt="" id="addDoor"/>
-				<div id="isDooritems">
-					
-				</div>	
-				<label for="isWindow">Window</label><input type="checkbox" name="isWindow" id="isWindow">
-				<div id="isWindowitems">
-					
-				</div>
-		
-			
-			<button type="submit">Submit</button>
+		<form action="" >
+			<label for="directions">Direction</label>
+			<select name="direction" id="directions">
+				<option value="North">North</option>
+				<option value="South">South</option>
+				<option value="East">East</option>
+				<option value="West">West</option>
+				<option value="NorthEast">NorthEast</option>
+				<option value="NorthWest">NorthWest</option>
+				<option value="southEast">southEast</option>
+				<option value="southWest">southWest</option>
+			</select>
+			<div style="display: flex;justify-content: space-between; align-items: center;">
+				<label for="isDoor">door<input type="checkbox" name="isDoor" id="isDoor"
+						style="margin-left: 30px;"></label>
+				<img src="./plus.png" alt="" id="addDoor" />
+			</div>
+			<div id="isDooritems">
+
+			</div>
+			<div style="display: flex;justify-content: space-between; align-items: center;">
+				<label for="isWindow">Window<input type="checkbox" name="isWindow" id="isWindow" style="margin-left: 8px;"></label>
+				<img src="./plus.png" alt="" id="addWindow" />
+			</div>
+			<div id="isWindowitems">
+
+			</div>
+
+
+			<button type="submit" id="wallPropSubmit">Submit</button>
 		</form>
-			
-		</div>
+
+	</div>
+	<div class="doorprop">
+<label for="doortype">Door type</label> <select name="doortype" id="doortype">
+        <option value="type1">type1</option>
+        <option value="type2">type2</option>
+        <option value="type3">type3</option>
+        <option value="type4">type4</option>
+      </select>
+     <label for="doorwidth">door width</label>  <input type="text" id="doorwidth">
+     <label for="doorheight">door height</label>  <input type="text" id="doorheight">
+	 <button id="doorsubmit">submit</button>
+	</div>
+	<div class="windowprop">
+<label for="windowtype">window type</label> <select name="windowtype" id="windowtype">
+        <option value="type1">type1</option>
+        <option value="type2">type2</option>
+        <option value="type3">type3</option>
+        <option value="type4">type4</option>
+      </select>
+     <label for="windowwidth">window width</label>  <input type="text" id="windowwidth">
+     <label for="windowheight">window height</label>  <input type="text" id="windowheight">
+	 <button id="windowsubmit">submit</button>
+	</div>
 
 	<div id="carbonsheet">
 		<label for="ImageWidth">Image Width</label>

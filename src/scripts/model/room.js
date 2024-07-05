@@ -26,6 +26,7 @@ export class Room extends EventDispatcher {
     this._spaceCode = null;
     this._usageType = null;
     this._ahuZone = null;
+    this._NoOfOccupants = 0;
     this.min = null;
     this.max = null;
     this.center = null;
@@ -70,7 +71,7 @@ export class Room extends EventDispatcher {
     this.dispatchEvent({
       type: EVENT_ROOM_ATTRIBUTES_CHANGED,
       item: this,
-      info: { from: oldname, to: this },
+      info: { from: oldname, to: this._name },
     });
   }
   set spaceCode(value) {
@@ -114,6 +115,18 @@ export class Room extends EventDispatcher {
   }
   get roomDetails() {
     return this._roomDetails;
+  }
+  get NoOfOccupants() {
+    return this._NoOfOccupants
+  }
+  set NoOfOccupants(value) {
+      var oldname = this._NoOfOccupants;
+      this._NoOfOccupants = value;
+      this.dispatchEvent({
+        type: EVENT_ROOM_ATTRIBUTES_CHANGED,
+        item: this,
+        info: { from: oldname, to: this._NoOfOccupants },
+      });
   }
   setAllroomDetails(data) {
     var oldvalues = this;

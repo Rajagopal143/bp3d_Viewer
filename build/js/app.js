@@ -17,6 +17,7 @@ const length = String(getQueryParam("length"));
 const breath = String(getQueryParam("breath"));
 const height = String(getQueryParam("height"));
 var myhome = `{"floorplan":{"corners":{"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":0,"y":0,"elevation":3},"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":0,"y":5,"elevation":3},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":5,"y":5,"elevation":3},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":5,"y":0,"elevation":3}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"rooms":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e,71d4f128-ae80-3d58-9bd2-711c6ce6cdf2,4e3d65cb-54c0-0681-28bf-bddcc7bdb571,da026c08-d76a-a944-8e7b-096b752da9ed":{"name":"${RoomName}"}},"wallTextures":[],"floorTextures":{},"newFloorTextures":{},"carbonSheet":{"url":"","transparency":1,"x":0,"y":0,"anchorX":0,"anchorY":0,"width":0.01,"height":0.01}},"items":[]}`;
+var AHURooms = [];
 // console.log(myhome)
 // $(document).load(async () => {
 const fetchTextDataFromDropbox = async () => {
@@ -166,10 +167,12 @@ var mainControls = function (blueprint3d) {
   var blueprint3d = blueprint3d;
 
   function newDesign() {
+    AHURooms=[]
     blueprint3d.model.loadSerialized(myhome);
   }
 
   function loadDesign() {
+     AHURooms = [];
     files = $("#loadFile").get(0).files;
     if (files.length == 0) {
       files = $("#loadFile2d").get(0).files;
@@ -198,7 +201,7 @@ var mainControls = function (blueprint3d) {
     data = JSON.stringify(data);
     var a = window.document.createElement("a");
     var blob = new Blob([data], {
-      type: "text"
+      type: "text",
     });
     a.href = window.URL.createObjectURL(blob);
     a.download = "design.bps";
@@ -244,7 +247,8 @@ var mainControls = function (blueprint3d) {
         }
       };
       reader.readAsText(file);
-    } else {}
+    } else {
+    }
   }
 
   function setMyHome(data = {}) {
@@ -266,7 +270,7 @@ var mainControls = function (blueprint3d) {
     var data = o.gltf;
     var a = window.document.createElement("a");
     var blob = new Blob([data], {
-      type: "text"
+      type: "text",
     });
     a.href = window.URL.createObjectURL(blob);
     a.download = "design.gltf";
@@ -279,7 +283,7 @@ var mainControls = function (blueprint3d) {
     var data = blueprint3d.model.exportMeshAsObj();
     var a = window.document.createElement("a");
     var blob = new Blob([data], {
-      type: "text"
+      type: "text",
     });
     a.href = window.URL.createObjectURL(blob);
     a.download = "design.obj";
@@ -335,7 +339,7 @@ var GlobalProperties = function () {
     b: false,
     c: false,
     d: false,
-    e: true
+    e: true,
   };
   this.unitslabel = {
     a: BP3DJS.dimFeetAndInch,
@@ -490,6 +494,7 @@ var RoomProperties = function (room, gui) {
   this.data = {};
 
   $("#roomarea").val(BP3DJS.Dimensioning.cmToMeasure(this.room.area, 2));
+  $("#NoOfOccupants").val(scope.room.NoOfOccupants);
   $(".container").show();
   $("#roomname").on("change", function () {
     const value = $(this).val();
@@ -500,7 +505,8 @@ var RoomProperties = function (room, gui) {
     setspaceCode(value.trim());
   });
   $("#usagetype").val(this.room.usagetype);
-  if (this.room.usagetype === "AHU") {
+  $("#ahuzone").val(this.room.ahuZone)
+  if (this.room.usagetype === "AHU" || this.room.usagetype == null) {
     $("#ahuzone").hide();
   } else {
     $("#ahuzone").show();
@@ -509,8 +515,9 @@ var RoomProperties = function (room, gui) {
   $("#usagetype").on("change", function () {
     const value = $(this).val();
     setusagetype(value.trim());
-    if (value === "AHU") {
+    if (value === "AHU" || value == null) {
       $("#ahuzone").hide();
+      setahuzone(null);
     } else {
       $("#ahuzone").show();
     }
@@ -519,9 +526,21 @@ var RoomProperties = function (room, gui) {
     const value = $(this).val();
     setahuzone(value.trim());
   });
+  $("#NoOfOccupants").on("change", function () {
+    const value = $(this).val();
+    scope.room.NoOfOccupants = value.trim();
+  });
   $("#roomname").val(this.room.name);
   $("#spaceNo").val(this.room._spaceCode);
   // this.namecontrol = this.f.add(this.room, 'name').name("Name");
+
+  function renderAHU() {
+    $("#ahuzone").empty();
+    AHURooms.forEach((room) => {
+      const element = `<option value="${room}">${room}</option>`;
+      $("#ahuzone").append(element);
+    });
+  }
 
   function setName(value) {
     this.room.name = value;
@@ -541,6 +560,18 @@ var RoomProperties = function (room, gui) {
 
   $("#jsonForm").submit((e) => {
     e.preventDefault();
+    const value = $("#usagetype").val();
+    console.log(AHURooms);
+    if (value === "AHU") {
+      if (!AHURooms.includes(scope.room.name)) {
+        AHURooms.push(scope.room.name)
+      }
+      renderAHU();
+      setahuzone(null);
+    } else {
+      setahuzone($("#ahuzone").val());
+      $("#ahuzone").show();
+    }
     submitfrom(e);
   });
 
@@ -553,6 +584,7 @@ var RoomProperties = function (room, gui) {
     console.log(jsonData);
     $(".container").hide();
     $("#getkeyValue").hide();
+
   }
   // this.detailsFolder = this.f.addFolder("Room Details");
 
@@ -614,7 +646,6 @@ var RoomProperties = function (room, gui) {
 };
 
 var Wall2DProperties = function (wall2d, gui) {
-  $("#isDooritems").empty();
   var scope = this;
   this.gui = gui;
   this.wall2d = wall2d;
@@ -623,86 +654,139 @@ var Wall2DProperties = function (wall2d, gui) {
   this.doorItems = this.wall2d.DoorItems;
   this.WindowItems = this.wall2d.WindowItems;
   this.walllength = BP3DJS.Dimensioning.cmToMeasureRaw(wall2d.wallSize);
-  this.data={door:this.doorItems.length,window:this.WindowItems.length}
+  renderWindowFormFields();
+  renderdoorFormFields();
   $(".wallDetails").show();
   $("#wallLength").val(this.walllength);
   $("#wallLength").on("change", function () {
     setWallLength($(this).val());
   });
   $("#directions").val(scope.wall2d.direction);
- 
-  
-  
+
   $("#isDoor").on("change", function () {
     var isDoorChecked = $(this).is(":checked");
     if (isDoorChecked) {
       $("#addDoor").show();
-      renderFormFields();
     } else {
-      $("#isDooritems").empty();
       $("#addDoor").hide();
     }
   });
-$(document).ready(function () {
-  // Ensure the event listener is bound only once
+
+  $("#isWindow").on("change", function () {
+    var isWindowChecked = $(this).is(":checked");
+    if (isWindowChecked) {
+      $("#addWindow").show();
+    } else {
+      $("#addWindow").hide();
+    }
+  });
+
   $("#addDoor")
     .off("click")
     .on("click", (e) => {
-      console.log("hi");
-      $("#isDooritems").append(`
-      <div class="doordiv"> 
-        <label for="doortype">Door type</label> 
-        <select name="doortype" id="doortype">
-          <option value="type1">type1</option>
-          <option value="type2">type2</option>
-          <option value="type3">type3</option>
-          <option value="type4">type4</option>
-        </select>
-        <label for="doorwidth">Door width</label>  
-        <input type="text" id="doorwidth">
-        <label for="doorheight">Door height</label>  
-        <input type="text" id="doorheight">
-        <button type="button" class="remove-button">Del</button>
-      </div>
-    `);
+      $("#doortype").focus();
+      $(".doorprop").show();
     });
-});
-  function renderFormFields() {
+  $("#addWindow")
+    .off("click")
+    .on("click", (e) => {
+      $(".windowprop").show();
+    });
+
+  $("#doorsubmit")
+    .off("click")
+    .on("click", function () {
+      const doortype = $("#doortype").val();
+      const doorWidth = $("#doorwidth").val();
+      const doorHeight = $("#doorheight").val();
+      if (doortype == null || doorWidth == "" || doorHeight == "") {
+        return alert("Please Fill required fields");
+      }
+      const data = {
+        doortype,
+        doorWidth,
+        doorHeight,
+      };
+      console.log(data);
+
+      scope.doorItems.push(data);
+      renderdoorFormFields();
+      $(".doorprop").hide();
+    });
+
+  $("#windowsubmit")
+    .off("click")
+    .on("click", function () {
+      const windowtype = $("#windowtype").val();
+      const windowWidth = $("#windowwidth").val();
+      const windowHeight = $("#windowheight").val();
+      if (windowtype == null || windowWidth == "" || windowHeight == "") {
+        return alert("Please Fill required fields");
+      }
+      const data = {
+        windowtype,
+        windowWidth,
+        windowHeight,
+      };
+      console.log(data);
+
+      scope.WindowItems.push(data);
+      $(".windowprop").hide();
+      renderWindowFormFields();
+    });
+
+  function renderdoorFormFields() {
     const data = scope.doorItems;
     console.log(data);
     // Clear existing fields
     $("#isDooritems").empty();
-    for (let key = 0; key < scope.data.door;key++) {
-      $("#isDooritems").append(`
-               <div class="doordiv"> <label for="doortype">Door type</label> <select name="doortype" id="doortype">
-        <option value="type1">type1</option>
-        <option value="type2">type2</option>
-        <option value="type3">type3</option>
-        <option value="type4">type4</option>
-      </select>
-     <label for="doorwidth">door width</label>  <input type="text" id="doorwidth">
-     <label for="doorheight">door height</label>  <input type="text" id="doorheight">
-                    <button type="button" id="remove-button" data-key="">Del</button>
-                </div>
+    for (let object of data) {
+      $("#isDooritems").append(`<div class="doordiv">
+      <span class="head">doorType</span>  :<span>${object.doortype}</span> <br/>
+       <span class="head">doorWidth</span>   :<span>${object.doorWidth}</span> <span class="remove-button">-</span> <br/>
+      <span class="head">doorHeight</span>  :  <span>${object.doorHeight}</span> <br/>
+        </div>
             `);
     }
+    $("#doortype").val("");
+    $("#doorwidth").val("");
+    $("#doorheight").val("");
   }
-   $(document).on("click", "#remove-button", function () {
-     removeData(this);
-   });
-  function removeData(element) {
-      scope.data.door = scope.data.door -1;
-    $(element).closest(".doordiv").remove();
+  function renderWindowFormFields() {
+    const data = scope.WindowItems;
+    console.log(data);
+    // Clear existing fields
+    $("#isWindowitems").empty();
+    for (let object of data) {
+      $("#isWindowitems").append(`<div class="windowdiv">
+      <span class="head">windowType</span>  :<span>${object.windowtype}</span> <br/>
+       <span class="head">windowWidth</span>   :<span>${object.windowWidth}</span> <span class="remove-button" onclick="removeWindowData(object)">-</span> <br/>
+      <span class="head">windowHeight</span>  :  <span>${object.windowHeight}</span> <br/>
+        </div>
+            `);
+    }
+    $("#windowtype").val("");
+    $("#windowwidth").val("");
+    $("#windowheight").val("");
   }
 
- $("#wallPropSubmit").submit((e) => {
-   submitfrom(e);
- });
- function submitfrom(e) {
-   e.preventDefault();
-   const formData = $("#isDooritems").serializeArray();
-   console.log(formData)
- }
+  $("#wallPropSubmit")
+    .off("click")
+    .on("click", (e) => {
+      submitfrom(e);
+    });
+  function submitfrom(e) {
+    e.preventDefault();
+    const direction = $("#directions").val();
+    if (direction == null) return alert("please fill direction");
+    const doors = scope.doorItems;
+    const window = scope.WindowItems;
+    console.log(direction);
+    this.wall2d.direction = direction;
+    this.wall2d.DoorItems = doors;
+    this.wall2d.WindowItems = window;
+    $(".wallDetails").hide();
+  }
   // $("#wallthikness").val(
   //   BP3DJS.Configuration.getStringValue(BP3DJS.configWallThickness)
   // );
@@ -773,7 +857,6 @@ $(document).ready(function () {
         onChangeWallLength();
       });
   }
-  $("#isDooritems").empty();
   return this.f;
 };
 
@@ -822,9 +905,9 @@ var ItemProperties = function (gui) {
         this.totalmaterials = material.length;
         for (var i = 0; i < material.length; i++) {
           this.materials["mat_" + i] = "#" + material[i].color.getHexString();
-          var matname = material[i].name ?
-            material[i].name :
-            "Material " + (i + 1);
+          var matname = material[i].name
+            ? material[i].name
+            : "Material " + (i + 1);
           var ccontrol = this.materialsfolder
             .addColor(this.materials, "mat_" + i)
             .name(matname)
@@ -1081,7 +1164,6 @@ function addBlueprintListeners(blueprint3d) {
       $(".container").hide();
       $("#getkeyValue").hide();
       $(".wallDetails").hide();
-       $("#isDooritems").empty();
       // $("#carbonsheet").show();
     }
     if (currentFolder) {
@@ -1456,7 +1538,7 @@ function getWallAndFloorPropertiesFolder(gui, aWall) {
   var fcontrol = f
     .add(aWall, "floormaterialname", {
       "Fine Wood": 5,
-      "Hard Wood": 6
+      "Hard Wood": 6,
     })
     .name("Floor");
   var multicontrol = f.add(aWall, "forAllWalls").name("All Walls In Room");
@@ -1553,7 +1635,7 @@ $(document).ready(function () {
 
   $(".card").flip({
     trigger: "manual",
-    axis: "x"
+    axis: "x",
   });
   $("#showFloorPlan").click(function () {
     $(".card").flip(false);
@@ -1639,9 +1721,10 @@ $(document).ready(function () {
           null,
           null,
           null,
-          false, {
+          false,
+          {
             position: placeAt,
-            edge: aWall.currentWall
+            edge: aWall.currentWall,
           }
         );
       } else if (aWall.currentFloor) {
@@ -1653,8 +1736,9 @@ $(document).ready(function () {
           null,
           null,
           null,
-          false, {
-            position: placeAt
+          false,
+          {
+            position: placeAt,
           }
         );
       } else {
@@ -1674,7 +1758,7 @@ $(document).ready(function () {
 
     // Create a Blob from the JSON string
     const blob = new Blob([jsonString], {
-      type: "application/json"
+      type: "application/json",
     });
 
     // Create a temporary anchor element
@@ -1708,7 +1792,7 @@ $(document).ready(function () {
     data["vertices"] = chunkedArray;
     //(data);
     try {
-      const response = await fetch("http://23.20.122.223:4000/api/architect", {
+      const response = await fetch("http://localhost:4000/api/architect", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1730,12 +1814,12 @@ $(document).ready(function () {
     }
 
     fetch("http://23.20.122.223:4000/api/bpfile/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(chunkedArray),
-      })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(chunkedArray),
+    })
       .then((response) => response.json())
       .then((responseData) => {
         blueprint3d.model.loadSerialized(JSON.stringify(responseData));
@@ -1796,7 +1880,7 @@ $(document).ready(function () {
         // const blob = new Blob([csvData], { type: "text/csv" });
         const jsonData = JSON.stringify(data, null, 2);
         const blob = new Blob([jsonData], {
-          type: "application/json"
+          type: "application/json",
         });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");

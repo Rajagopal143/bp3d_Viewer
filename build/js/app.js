@@ -1862,7 +1862,7 @@ $(document).ready(function () {
   }
   $("#downloadReport").click(async () => {
     // API endpoint URL
-    const apiUrl = "http://23.20.122.223:4000/api/getgraph";
+    const apiUrl = "http://localhost:4000/api/getgraph";
     // Make a fetch request to the API
     fetch(apiUrl)
       .then((response) => {
@@ -1874,18 +1874,18 @@ $(document).ready(function () {
         return response.json();
       })
       .then((data) => {
-        //(data);
+        console.log(data);
         // Once data is received, convert it to CSV format
         // const csvData = jsonToCsv(data);
-        // const blob = new Blob([csvData], { type: "text/csv" });
-        const jsonData = JSON.stringify(data, null, 2);
-        const blob = new Blob([jsonData], {
-          type: "application/json",
-        });
+        const blob = new Blob([data], { type: "text/csv" });
+        // const jsonData = JSON.stringify(data, null, 2);
+        // const blob = new Blob([jsonData], {
+        //   type: "application/json",
+        // });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "graphReport.json";
+        a.download = "graphReport.csv";
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);

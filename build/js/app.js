@@ -22,7 +22,7 @@ var AHURooms = [];
 // $(document).load(async () => {
 const fetchTextDataFromDropbox = async () => {
   try {
-    const response = await fetch("http://23.20.122.223:4000/api/bpfile/"); // Replace with your server's URL
+    const response = await fetch("http://localhost:4000/api/bpfile/"); // Replace with your server's URL
     const data = await response.json();
 
     console.log(data.data);
@@ -1877,11 +1877,11 @@ $(document).ready(function () {
         console.log(data);
         // Once data is received, convert it to CSV format
         // const csvData = jsonToCsv(data);
-        const blob = new Blob([data], { type: "text/csv" });
-        // const jsonData = JSON.stringify(data, null, 2);
-        // const blob = new Blob([jsonData], {
-        //   type: "application/json",
-        // });
+        // const blob = new Blob([data], { type: "text/csv" });
+        const jsonData = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonData], {
+          type: "application/json",
+        });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;

@@ -511,9 +511,9 @@ export class Floorplan extends EventDispatcher {
       var metaroom = {};
       var ids = room.roomByCornersId;
       // //(ids);
-      metaroom['name'] = room.name;
-      metaroom["spaceCode"] = room.spaceCode;
-      metaroom["ahuZone"] = room.ahuZone;
+      metaroom['Space Name'] = room.name;
+      metaroom["Space No."] = room.spaceCode;
+      metaroom["AHU Zone"] = room.ahuZone;
       metaroom["usagetype"] = room.usagetype;
       metaroom["NoOfOccupants"] = room.NoOfOccupants;
       const roomData = room.roomDetails;

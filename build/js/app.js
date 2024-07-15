@@ -1434,19 +1434,18 @@ function getCarbonSheetPropertiesFolder(gui, carbonsheet, globalproperties) {
   var width = f
     .add(carbonsheet, "width")
     .name("Real Width")
-    .max(100000.0)
+    .max(10000000.0)
     .step(0.01);
   var height = f
     .add(carbonsheet, "height")
     .name("Real Height")
-    .max(1000000.0)
+    .max(100000000.0)
     .step(0.01);
   var proportion = f
     .add(carbonsheet, "maintainProportion")
     .name("Maintain Proportion");
   var x = f.add(carbonsheet, "x").name("Move in X");
   var y = f.add(carbonsheet, "y").name("Move in Y");
-
   var ax = f.add(carbonsheet, "anchorX").name("Anchor X");
   var ay = f.add(carbonsheet, "anchorY").name("Anchor Y");
   var transparency = f
@@ -1885,7 +1884,7 @@ $(document).ready(function () {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "graphReport.csv";
+        a.download = "graphReport.json";
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
